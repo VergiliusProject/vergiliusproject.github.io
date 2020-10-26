@@ -16,7 +16,16 @@ struct _TP_CALLBACK_ENVIRON_V3
     VOID* RaceDll;                                                          //0x10
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ACTIVATION_CONTEXT'> _ACTIVATION_CONTEXT</a>* ActivationContext;                          //0x14
     VOID (*FinalizationCallback)(struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_TP_CALLBACK_INSTANCE'> _TP_CALLBACK_INSTANCE</a>* arg1, VOID* arg2); //0x18
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x1c
+    union
+    {
+        ULONG Flags;                                                        //0x1c
+        struct
+        {
+            ULONG LongFunction:1;                                           //0x1c
+            ULONG Persistent:1;                                             //0x1c
+            ULONG Private:30;                                               //0x1c
+        } s;                                                                //0x1c
+    } u;                                                                    //0x1c
     enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_TP_CALLBACK_PRIORITY'> _TP_CALLBACK_PRIORITY</a> CallbackPriority;                            //0x20
     ULONG Size;                                                             //0x24
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

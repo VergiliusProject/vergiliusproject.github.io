@@ -15,5 +15,96 @@ struct _IO_RESOURCE_DESCRIPTOR
     UCHAR Spare1;                                                           //0x3
     USHORT Flags;                                                           //0x4
     USHORT Spare2;                                                          //0x6
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x8
+    union
+    {
+        struct
+        {
+            ULONG Length;                                                   //0x8
+            ULONG Alignment;                                                //0xc
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MinimumAddress;                            //0x10
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MaximumAddress;                            //0x18
+        } Port;                                                             //0x8
+        struct
+        {
+            ULONG Length;                                                   //0x8
+            ULONG Alignment;                                                //0xc
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MinimumAddress;                            //0x10
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MaximumAddress;                            //0x18
+        } Memory;                                                           //0x8
+        struct
+        {
+            ULONG MinimumVector;                                            //0x8
+            ULONG MaximumVector;                                            //0xc
+            USHORT AffinityPolicy;                                          //0x10
+            USHORT Group;                                                   //0x12
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IRQ_PRIORITY'> _IRQ_PRIORITY</a> PriorityPolicy;                              //0x14
+            ULONG TargetedProcessors;                                       //0x18
+        } Interrupt;                                                        //0x8
+        struct
+        {
+            ULONG MinimumChannel;                                           //0x8
+            ULONG MaximumChannel;                                           //0xc
+        } Dma;                                                              //0x8
+        struct
+        {
+            ULONG RequestLine;                                              //0x8
+            ULONG Reserved;                                                 //0xc
+            ULONG Channel;                                                  //0x10
+            ULONG TransferWidth;                                            //0x14
+        } DmaV3;                                                            //0x8
+        struct
+        {
+            ULONG Length;                                                   //0x8
+            ULONG Alignment;                                                //0xc
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MinimumAddress;                            //0x10
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MaximumAddress;                            //0x18
+        } Generic;                                                          //0x8
+        struct
+        {
+            ULONG Data[3];                                                  //0x8
+        } DevicePrivate;                                                    //0x8
+        struct
+        {
+            ULONG Length;                                                   //0x8
+            ULONG MinBusNumber;                                             //0xc
+            ULONG MaxBusNumber;                                             //0x10
+            ULONG Reserved;                                                 //0x14
+        } BusNumber;                                                        //0x8
+        struct
+        {
+            ULONG Priority;                                                 //0x8
+            ULONG Reserved1;                                                //0xc
+            ULONG Reserved2;                                                //0x10
+        } ConfigData;                                                       //0x8
+        struct
+        {
+            ULONG Length40;                                                 //0x8
+            ULONG Alignment40;                                              //0xc
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MinimumAddress;                            //0x10
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MaximumAddress;                            //0x18
+        } Memory40;                                                         //0x8
+        struct
+        {
+            ULONG Length48;                                                 //0x8
+            ULONG Alignment48;                                              //0xc
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MinimumAddress;                            //0x10
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MaximumAddress;                            //0x18
+        } Memory48;                                                         //0x8
+        struct
+        {
+            ULONG Length64;                                                 //0x8
+            ULONG Alignment64;                                              //0xc
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MinimumAddress;                            //0x10
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MaximumAddress;                            //0x18
+        } Memory64;                                                         //0x8
+        struct
+        {
+            UCHAR Class;                                                    //0x8
+            UCHAR Type;                                                     //0x9
+            UCHAR Reserved1;                                                //0xa
+            UCHAR Reserved2;                                                //0xb
+            ULONG IdLowPart;                                                //0xc
+            ULONG IdHighPart;                                               //0x10
+        } Connection;                                                       //0x8
+    } u;                                                                    //0x8
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ARBITER_ALTERNATIVE" tabindex="-1" class="related">_ARBITER_ALTERNATIVE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ARBITER_INSTANCE" tabindex="-1" class="related">_ARBITER_INSTANCE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ARBITER_LIST_ENTRY" tabindex="-1" class="related">_ARBITER_LIST_ENTRY</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ARBITER_QUERY_CONFLICT_PARAMETERS" tabindex="-1" class="related">_ARBITER_QUERY_CONFLICT_PARAMETERS</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IO_RESOURCE_LIST" tabindex="-1" class="related">_IO_RESOURCE_LIST</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_PNP_RESOURCE_CONFLICT_TRACE_CONTEXT" tabindex="-1" class="related">_PNP_RESOURCE_CONFLICT_TRACE_CONTEXT</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

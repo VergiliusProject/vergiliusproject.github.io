@@ -10,6 +10,16 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 struct _LOADER_RESET_REASON
 {
     UCHAR Supplied;                                                         //0x0
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> Basic;                                                         //0x8
+    union
+    {
+        struct
+        {
+            UCHAR Pch;                                                      //0x8
+            UCHAR EmbeddedController;                                       //0x9
+            UCHAR Reserved[6];                                              //0xa
+        } Component;                                                        //0x8
+        ULONGLONG AsULONG64;                                                //0x8
+        UCHAR AsBytes[8];                                                   //0x8
+    } Basic;                                                                //0x8
     ULONG AdditionalInfo[8];                                                //0x10
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LOADER_PARAMETER_EXTENSION" tabindex="-1" class="related">_LOADER_PARAMETER_EXTENSION</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

@@ -13,5 +13,29 @@ struct _DBGKD_MANIPULATE_STATE32
     USHORT ProcessorLevel;                                                  //0x4
     USHORT Processor;                                                       //0x6
     LONG ReturnStatus;                                                      //0x8
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0xc
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_READ_MEMORY32'>_DBGKD_READ_MEMORY32</a> ReadMemory;                             //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_WRITE_MEMORY32'>_DBGKD_WRITE_MEMORY32</a> WriteMemory;                           //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_READ_MEMORY64'>_DBGKD_READ_MEMORY64</a> ReadMemory64;                           //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_WRITE_MEMORY64'>_DBGKD_WRITE_MEMORY64</a> WriteMemory64;                         //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_GET_CONTEXT'>_DBGKD_GET_CONTEXT</a> GetContext;                               //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_SET_CONTEXT'>_DBGKD_SET_CONTEXT</a> SetContext;                               //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_WRITE_BREAKPOINT32'>_DBGKD_WRITE_BREAKPOINT32</a> WriteBreakPoint;                   //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_RESTORE_BREAKPOINT'>_DBGKD_RESTORE_BREAKPOINT</a> RestoreBreakPoint;                 //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_CONTINUE'>_DBGKD_CONTINUE</a> Continue;                                    //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_CONTINUE2'>_DBGKD_CONTINUE2</a> Continue2;                                  //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_READ_WRITE_IO32'>_DBGKD_READ_WRITE_IO32</a> ReadWriteIo;                          //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_READ_WRITE_IO_EXTENDED32'>_DBGKD_READ_WRITE_IO_EXTENDED32</a> ReadWriteIoExtended;         //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_QUERY_SPECIAL_CALLS'>_DBGKD_QUERY_SPECIAL_CALLS</a> QuerySpecialCalls;                //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_SET_SPECIAL_CALL32'>_DBGKD_SET_SPECIAL_CALL32</a> SetSpecialCall;                    //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_SET_INTERNAL_BREAKPOINT32'>_DBGKD_SET_INTERNAL_BREAKPOINT32</a> SetInternalBreakpoint;      //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_GET_INTERNAL_BREAKPOINT32'>_DBGKD_GET_INTERNAL_BREAKPOINT32</a> GetInternalBreakpoint;      //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_GET_VERSION32'>_DBGKD_GET_VERSION32</a> GetVersion32;                           //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_BREAKPOINTEX'>_DBGKD_BREAKPOINTEX</a> BreakPointEx;                            //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_READ_WRITE_MSR'>_DBGKD_READ_WRITE_MSR</a> ReadWriteMsr;                          //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_SEARCH_MEMORY'>_DBGKD_SEARCH_MEMORY</a> SearchMemory;                           //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_CONTEXT_EX'>_DBGKD_CONTEXT_EX</a> GetContextEx;                              //0xc
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DBGKD_CONTEXT_EX'>_DBGKD_CONTEXT_EX</a> SetContextEx;                              //0xc
+    } u;                                                                    //0xc
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

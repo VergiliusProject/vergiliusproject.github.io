@@ -31,7 +31,12 @@ struct _POP_POWER_ACTION
     ULONGLONG SleepTime;                                                    //0x50
     ULONGLONG WakeFirstUnattendedTime;                                      //0x58
     enum<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/SYSTEM_POWER_CONDITION'> SYSTEM_POWER_CONDITION</a> WakeAlarmSignaled;                          //0x60
-    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> WakeAlarm[3];                                                 //0x68
+    struct
+    {
+        ULONGLONG RequestedTime;                                            //0x68
+        ULONGLONG ProgrammedTime;                                           //0x70
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_DIAGNOSTIC_BUFFER'> _DIAGNOSTIC_BUFFER</a>* TimerInfo;                               //0x78
+    } WakeAlarm[3];                                                         //0x68
     UCHAR WakeAlarmPaused;                                                  //0xb0
     ULONGLONG WakeAlarmLastTime;                                            //0xb8
     ULONGLONG DozeDeferralStartTime;                                        //0xc0

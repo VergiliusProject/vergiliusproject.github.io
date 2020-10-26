@@ -14,10 +14,28 @@ union _KGDTENTRY64
         USHORT LimitLow;                                                    //0x0
         USHORT BaseLow;                                                     //0x2
     };
-    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Bytes;                                                        //0x4
     struct
     {
-        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Bits;                                                     //0x4
+        UCHAR BaseMiddle;                                                   //0x4
+        UCHAR Flags1;                                                       //0x5
+        UCHAR Flags2;                                                       //0x6
+        UCHAR BaseHigh;                                                     //0x7
+    } Bytes;                                                                //0x4
+    struct
+    {
+        struct
+    {
+        ULONG BaseMiddle:8;                                                 //0x4
+        ULONG Type:5;                                                       //0x4
+        ULONG Dpl:2;                                                        //0x4
+        ULONG Present:1;                                                    //0x4
+        ULONG LimitHigh:4;                                                  //0x4
+        ULONG System:1;                                                     //0x4
+        ULONG LongMode:1;                                                   //0x4
+        ULONG DefaultBig:1;                                                 //0x4
+        ULONG Granularity:1;                                                //0x4
+        ULONG BaseHigh:8;                                                   //0x4
+    } Bits;                                                                 //0x4
         ULONG BaseUpper;                                                    //0x8
     };
     struct

@@ -18,11 +18,19 @@ struct _SUBSECTION
         struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_CONTROL_AREA_WAIT_BLOCK'> _MI_CONTROL_AREA_WAIT_BLOCK</a>* CreationWaitList;               //0xc
         struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_PER_SESSION_PROTOS'> _MI_PER_SESSION_PROTOS</a>* SessionDriverProtos;                 //0xc
     };
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x10
+    union
+    {
+        ULONG LongFlags;                                                    //0x10
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMSUBSECTION_FLAGS'>_MMSUBSECTION_FLAGS</a> SubsectionFlags;                         //0x10
+    } u;                                                                    //0x10
     ULONG StartingSector;                                                   //0x14
     ULONG NumberOfFullSectors;                                              //0x18
     ULONG PtesInSubsection;                                                 //0x1c
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x20
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_SUBSECTION_ENTRY1'>_MI_SUBSECTION_ENTRY1</a> e1;                                    //0x20
+        ULONG EntireField;                                                  //0x20
+    } u1;                                                                   //0x20
     ULONG UnusedPtes:30;                                                    //0x24
     ULONG ExtentQueryNeeded:1;                                              //0x24
     ULONG DirtyPages:1;                                                     //0x24

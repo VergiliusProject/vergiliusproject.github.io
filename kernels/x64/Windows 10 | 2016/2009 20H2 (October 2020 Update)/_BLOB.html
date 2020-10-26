@@ -14,7 +14,17 @@ struct _BLOB
         struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> ResourceList;                                    //0x0
         struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_SLIST_ENTRY'>_SLIST_ENTRY</a> FreeListEntry;                                  //0x0
     };
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x10
+    union
+    {
+        struct
+        {
+            UCHAR ReferenceCache:1;                                         //0x10
+            UCHAR Lookaside:1;                                              //0x10
+            UCHAR Initializing:1;                                           //0x10
+            UCHAR Deleted:1;                                                //0x10
+        } s1;                                                               //0x10
+        UCHAR Flags;                                                        //0x10
+    } u1;                                                                   //0x10
     UCHAR ResourceId;                                                       //0x11
     SHORT CachedReferences;                                                 //0x12
     LONGLONG ReferenceCount;                                                //0x18

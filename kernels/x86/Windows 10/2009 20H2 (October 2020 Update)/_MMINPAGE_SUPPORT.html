@@ -19,15 +19,27 @@ struct _MMINPAGE_SUPPORT
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_KEVENT'>_KEVENT</a> CollidedEvent;                                           //0x20
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IO_STATUS_BLOCK'>_IO_STATUS_BLOCK</a> IoStatus;                                       //0x30
     union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> ReadOffset;                                        //0x38
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u2;                                                            //0x40
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_KAPC_STATE'>_KAPC_STATE</a> ApcState;                                        //0x40
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_HARD_FAULT_STATE'>_MI_HARD_FAULT_STATE</a> HardFaultState;                         //0x40
+    } u2;                                                                   //0x40
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ETHREAD'> _ETHREAD</a>* Thread;                                                //0x58
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPFN'> _MMPFN</a>* LockedProtoPfn;                                          //0x5c
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPTE'>_MMPTE</a> PteContents;                                              //0x60
     volatile LONG WaitCount;                                                //0x68
     volatile LONG InjectRetry;                                              //0x6c
     ULONG ByteCount;                                                        //0x70
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u3;                                                            //0x74
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x78
+    union
+    {
+        ULONG ImagePteOffset;                                               //0x74
+        ULONG TossPage;                                                     //0x74
+    } u3;                                                                   //0x74
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMINPAGE_FLAGS'>_MMINPAGE_FLAGS</a> e1;                                          //0x78
+        ULONG LongFlags;                                                    //0x78
+    } u1;                                                                   //0x78
     union
     {
         struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_OBJECT'> _FILE_OBJECT</a>* FilePointer;                                   //0x7c

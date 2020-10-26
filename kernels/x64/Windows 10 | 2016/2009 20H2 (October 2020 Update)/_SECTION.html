@@ -12,9 +12,19 @@ struct _SECTION
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_RTL_BALANCED_NODE'>_RTL_BALANCED_NODE</a> SectionNode;                                  //0x0
     ULONGLONG StartingVpn;                                                  //0x18
     ULONGLONG EndingVpn;                                                    //0x20
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x28
+    union
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_CONTROL_AREA'> _CONTROL_AREA</a>* ControlArea;                                  //0x28
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_FILE_OBJECT'> _FILE_OBJECT</a>* FileObject;                                    //0x28
+        ULONGLONG RemoteImageFileObject:1;                                  //0x28
+        ULONGLONG RemoteDataFileObject:1;                                   //0x28
+    } u1;                                                                   //0x28
     ULONGLONG SizeOfSection;                                                //0x30
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x38
+    union
+    {
+        ULONG LongFlags;                                                    //0x38
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_MMSECTION_FLAGS'>_MMSECTION_FLAGS</a> Flags;                                      //0x38
+    } u;                                                                    //0x38
     ULONG InitialPageProtection:12;                                         //0x3c
     ULONG SessionId:19;                                                     //0x3c
     ULONG NoValidationNeeded:1;                                             //0x3c

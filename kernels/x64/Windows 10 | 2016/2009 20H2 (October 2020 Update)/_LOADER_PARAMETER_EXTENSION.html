@@ -125,7 +125,11 @@ struct _LOADER_PARAMETER_EXTENSION
     ULONG FeatureSettings;                                                  //0xd84
     ULONG HotPatchReserveSize;                                              //0xd88
     ULONG RetpolineReserveSize;                                             //0xd8c
-    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> MiniExecutive;                                                //0xd90
+    struct
+    {
+        VOID* CodeBase;                                                     //0xd90
+        ULONGLONG CodeSize;                                                 //0xd98
+    } MiniExecutive;                                                        //0xd90
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_VSM_PERFORMANCE_DATA'>_VSM_PERFORMANCE_DATA</a> VsmPerformanceData;                        //0xda0
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_NUMA_MEMORY_RANGE'> _NUMA_MEMORY_RANGE</a>* NumaMemoryRanges;                            //0xde0
     ULONG NumaMemoryRangeCount;                                             //0xde8

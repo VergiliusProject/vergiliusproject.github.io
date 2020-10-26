@@ -10,6 +10,14 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 struct _VF_TARGET_DRIVER
 {
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_VF_AVL_TREE_NODE_EX'>_VF_AVL_TREE_NODE_EX</a> TreeNode;                                   //0x0
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0xc
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_VF_TARGET_ALL_SHARED_EXPORT_THUNKS'>_VF_TARGET_ALL_SHARED_EXPORT_THUNKS</a> AllSharedExportThunks;   //0xc
+        struct
+        {
+            ULONG SnapSharedExportsFailed:1;                                //0xc
+            ULONG Spare:31;                                                 //0xc
+        } Flags;                                                            //0xc
+    } u1;                                                                   //0xc
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_VF_TARGET_VERIFIED_DRIVER_DATA'> _VF_TARGET_VERIFIED_DRIVER_DATA</a>* VerifiedData;                   //0x1c
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

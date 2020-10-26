@@ -15,7 +15,13 @@ struct _HEAP_SEG_CONTEXT
     UCHAR FirstDescriptorIndex;                                             //0xa
     UCHAR CachedCommitSoftShift;                                            //0xb
     UCHAR CachedCommitHighShift;                                            //0xc
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> Flags;                                                         //0xd
+    union
+    {
+        UCHAR LargePagePolicy:3;                                            //0xd
+        UCHAR FullDecommit:1;                                               //0xd
+        UCHAR ReleaseEmptySegments:1;                                       //0xd
+        UCHAR AllFlags;                                                     //0xd
+    } Flags;                                                                //0xd
     ULONG MaxAllocationSize;                                                //0x10
     SHORT OlpStatsOffset;                                                   //0x14
     SHORT MemStatsOffset;                                                   //0x16

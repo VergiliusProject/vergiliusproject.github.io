@@ -17,7 +17,11 @@ struct _HALP_DMA_ADAPTER_OBJECT
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_HALP_DMA_TRANSLATION_BUFFER'> _HALP_DMA_TRANSLATION_BUFFER</a>* ScatterTranslations;               //0x30
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_HALP_DMA_TRANSLATION_BUFFER_POSITION'>_HALP_DMA_TRANSLATION_BUFFER_POSITION</a> ContiguousTranslationEnd;  //0x38
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_HALP_DMA_TRANSLATION_BUFFER_POSITION'>_HALP_DMA_TRANSLATION_BUFFER_POSITION</a> ScatterTranslationEnd;     //0x48
-    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CrashDump;                                                    //0x58
+    struct
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_HALP_DMA_TRANSLATION_BUFFER_POSITION'>_HALP_DMA_TRANSLATION_BUFFER_POSITION</a> ContiguousHint;        //0x58
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_HALP_DMA_TRANSLATION_BUFFER_POSITION'>_HALP_DMA_TRANSLATION_BUFFER_POSITION</a> ScatterHint;           //0x68
+    } CrashDump;                                                            //0x58
     ULONGLONG SpinLock;                                                     //0x78
     ULONGLONG GrowLock;                                                     //0x80
     union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> MaximumPhysicalAddress;                            //0x88

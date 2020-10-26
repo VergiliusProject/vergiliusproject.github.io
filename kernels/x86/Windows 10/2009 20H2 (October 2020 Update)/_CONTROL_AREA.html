@@ -19,13 +19,53 @@ struct _CONTROL_AREA
     ULONG NumberOfPfnReferences;                                            //0x10
     ULONG NumberOfMappedViews;                                              //0x14
     ULONG NumberOfUserReferences;                                           //0x18
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x1c
+    union
+    {
+        ULONG LongFlags;                                                    //0x1c
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMSECTION_FLAGS'>_MMSECTION_FLAGS</a> Flags;                                      //0x1c
+    } u;                                                                    //0x1c
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_EX_FAST_REF'>_EX_FAST_REF</a> FilePointer;                                        //0x20
     volatile LONG ControlAreaLock;                                          //0x24
     ULONG ModifiedWriteCount;                                               //0x28
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_CONTROL_AREA_WAIT_BLOCK'> _MI_CONTROL_AREA_WAIT_BLOCK</a>* WaitList;                           //0x2c
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u2;                                                            //0x30
+    union
+    {
+        struct
+        {
+            union
+            {
+                ULONG NumberOfSystemCacheViews;                             //0x30
+                ULONG ImageRelocationStartBit;                              //0x30
+            };
+            union
+            {
+                volatile LONG WritableUserReferences;                       //0x34
+                struct
+                {
+                    ULONG ImageRelocationSizeIn64k:16;                      //0x34
+                    ULONG SystemImage:1;                                    //0x34
+                    ULONG CantMove:1;                                       //0x34
+                    ULONG StrongCode:2;                                     //0x34
+                    ULONG BitMap:2;                                         //0x34
+                    ULONG ImageActive:1;                                    //0x34
+                    ULONG ImageBaseOkToReuse:1;                             //0x34
+                };
+            };
+            union
+            {
+                ULONG FlushInProgressCount;                                 //0x38
+                ULONG NumberOfSubsections;                                  //0x38
+                struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_IMAGE_SECURITY_REFERENCE'> _MI_IMAGE_SECURITY_REFERENCE</a>* SeImageStub;           //0x38
+            };
+        } e2;                                                               //0x30
+    } u2;                                                                   //0x30
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> FileObjectLock;                                    //0x3c
     volatile ULONGLONG LockedPages;                                         //0x40
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u3;                                                            //0x48
-}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/&lt;anonymous-tag&gt;" tabindex="-1" class="related">&lt;anonymous-tag&gt;</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MAPPED_FILE_SEGMENT" tabindex="-1" class="related">_MAPPED_FILE_SEGMENT</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_SECTION_STATE" tabindex="-1" class="related">_MI_SECTION_STATE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMINPAGE_SUPPORT" tabindex="-1" class="related">_MMINPAGE_SUPPORT</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMMOD_WRITER_MDL_ENTRY" tabindex="-1" class="related">_MMMOD_WRITER_MDL_ENTRY</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SEGMENT" tabindex="-1" class="related">_SEGMENT</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SUBSECTION" tabindex="-1" class="related">_SUBSECTION</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>
+    union
+    {
+        ULONG IoAttributionContext:29;                                      //0x48
+        ULONG Spare:3;                                                      //0x48
+        ULONG ImageCrossPartitionCharge;                                    //0x48
+        ULONG CommittedPageCount:20;                                        //0x48
+    } u3;                                                                   //0x48
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MAPPED_FILE_SEGMENT" tabindex="-1" class="related">_MAPPED_FILE_SEGMENT</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_PHYSICAL_VIEW" tabindex="-1" class="related">_MI_PHYSICAL_VIEW</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_SECTION_STATE" tabindex="-1" class="related">_MI_SECTION_STATE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMINPAGE_SUPPORT" tabindex="-1" class="related">_MMINPAGE_SUPPORT</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMMOD_WRITER_MDL_ENTRY" tabindex="-1" class="related">_MMMOD_WRITER_MDL_ENTRY</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SECTION" tabindex="-1" class="related">_SECTION</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SEGMENT" tabindex="-1" class="related">_SEGMENT</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SUBSECTION" tabindex="-1" class="related">_SUBSECTION</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

@@ -15,7 +15,13 @@ struct _MMPFN
         struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_RTL_BALANCED_NODE'>_RTL_BALANCED_NODE</a> TreeNode;                                 //0x0
         struct
         {
-            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                    //0x0
+            union
+            {
+                struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> NextSlistPfn;                     //0x0
+                VOID* Next;                                                 //0x0
+                ULONG Flink;                                                //0x0
+                struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_ACTIVE_PFN'>_MI_ACTIVE_PFN</a> Active;                               //0x0
+            } u1;                                                           //0x0
             union
             {
                 struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPTE'> _MMPTE</a>* PteAddress;                                  //0x4
@@ -25,6 +31,34 @@ struct _MMPFN
         };
     };
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MIPFNBLINK'>_MIPFNBLINK</a> u2;                                                  //0x10
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u3;                                                            //0x14
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u4;                                                            //0x18
+    union
+    {
+        struct
+        {
+            USHORT ReferenceCount;                                          //0x14
+            struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPFNENTRY1'>_MMPFNENTRY1</a> e1;                                         //0x16
+        };
+        struct
+        {
+            struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPFNENTRY3'>_MMPFNENTRY3</a> e3;                                         //0x17
+        struct
+        {
+            USHORT ReferenceCount;                                          //0x14
+        } e2;                                                               //0x14
+        };
+        struct
+        {
+            ULONG EntireField;                                              //0x14
+        } e4;                                                               //0x14
+    } u3;                                                                   //0x14
+    union
+    {
+        ULONG PteFrame:23;                                                  //0x18
+        ULONG ResidentPage:1;                                               //0x18
+        ULONG AnchorLargePageSize:2;                                        //0x18
+        ULONG ModifiedListBucketIndex:2;                                    //0x18
+        ULONG PageIdentity:3;                                               //0x18
+        ULONG PrototypePte:1;                                               //0x18
+        ULONG EntireField;                                                  //0x18
+    } u4;                                                                   //0x18
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_COMMON_PAGE_STATE" tabindex="-1" class="related">_MI_COMMON_PAGE_STATE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_HARD_FAULT_STATE" tabindex="-1" class="related">_MI_HARD_FAULT_STATE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_PAGELIST_STATE" tabindex="-1" class="related">_MI_PAGELIST_STATE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_SECTION_STATE" tabindex="-1" class="related">_MI_SECTION_STATE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_SYSTEM_NODE_INFORMATION" tabindex="-1" class="related">_MI_SYSTEM_NODE_INFORMATION</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_SYSTEM_PTE_STATE" tabindex="-1" class="related">_MI_SYSTEM_PTE_STATE</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMINPAGE_SUPPORT" tabindex="-1" class="related">_MMINPAGE_SUPPORT</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

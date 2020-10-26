@@ -20,7 +20,15 @@ struct _SEGMENT
         VOID* BasedAddress;                                                 //0x18
     };
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> SegmentLock;                                       //0x1c
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x20
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u2;                                                            //0x24
+    union
+    {
+        ULONG ImageCommitment;                                              //0x20
+        ULONG CreatingProcessId;                                            //0x20
+    } u1;                                                                   //0x20
+    union
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_SECTION_IMAGE_INFORMATION'> _MI_SECTION_IMAGE_INFORMATION</a>* ImageInformation;             //0x24
+        VOID* FirstMappedVa;                                                //0x24
+    } u2;                                                                   //0x24
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPTE'> _MMPTE</a>* PrototypePte;                                            //0x28
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CONTROL_AREA" tabindex="-1" class="related">_CONTROL_AREA</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPAGE_FILE_EXPANSION" tabindex="-1" class="related">_MMPAGE_FILE_EXPANSION</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

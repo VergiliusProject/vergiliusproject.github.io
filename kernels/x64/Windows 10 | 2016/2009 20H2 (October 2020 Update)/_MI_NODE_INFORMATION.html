@@ -22,7 +22,11 @@ struct _MI_NODE_INFORMATION
     ULONG MmShiftedColor;                                                   //0x1070
     ULONG Color;                                                            //0x1074
     volatile ULONGLONG ChannelFreeCount[4][2];                              //0x1078
-    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Flags;                                                        //0x10b8
+    struct
+    {
+        ULONG ChannelsHotCold:1;                                            //0x10b8
+        ULONG Spare:31;                                                     //0x10b8
+    } Flags;                                                                //0x10b8
     ULONG LargeListMoveInProgress;                                          //0x10bc
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_MI_LARGE_PAGE_LISTS_CHANGING'> _MI_LARGE_PAGE_LISTS_CHANGING</a>* LargeListWaiters;                 //0x10c0
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> NodeLock;                                          //0x10c8

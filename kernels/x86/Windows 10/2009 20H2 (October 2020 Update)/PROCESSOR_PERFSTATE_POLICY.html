@@ -16,7 +16,14 @@ struct PROCESSOR_PERFSTATE_POLICY
     union
     {
         UCHAR Spare;                                                        //0x7
-        union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> Flags;                                                     //0x7
+        union
+        {
+            UCHAR AsUCHAR;                                                  //0x7
+            UCHAR NoDomainAccounting:1;                                     //0x7
+            UCHAR IncreasePolicy:2;                                         //0x7
+            UCHAR DecreasePolicy:2;                                         //0x7
+            UCHAR Reserved:3;                                               //0x7
+        } Flags;                                                            //0x7
     };
     ULONG TimeCheck;                                                        //0x8
     ULONG IncreaseTime;                                                     //0xc

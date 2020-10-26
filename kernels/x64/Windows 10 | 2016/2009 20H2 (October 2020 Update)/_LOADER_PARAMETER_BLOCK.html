@@ -36,7 +36,11 @@ struct _LOADER_PARAMETER_BLOCK
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_NLS_DATA_BLOCK'> _NLS_DATA_BLOCK</a>* NlsData;                                        //0xe0
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_ARC_DISK_INFORMATION'> _ARC_DISK_INFORMATION</a>* ArcDiskInformation;                       //0xe8
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LOADER_PARAMETER_EXTENSION'> _LOADER_PARAMETER_EXTENSION</a>* Extension;                          //0xf0
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0xf8
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_I386_LOADER_BLOCK'>_I386_LOADER_BLOCK</a> I386;                                     //0xf8
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_ARM_LOADER_BLOCK'>_ARM_LOADER_BLOCK</a> Arm;                                       //0xf8
+    } u;                                                                    //0xf8
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_FIRMWARE_INFORMATION_LOADER_BLOCK'>_FIRMWARE_INFORMATION_LOADER_BLOCK</a> FirmwareInformation;          //0x108
     CHAR* OsBootstatPathName;                                               //0x148
     CHAR* ArcOSDataDeviceName;                                              //0x150

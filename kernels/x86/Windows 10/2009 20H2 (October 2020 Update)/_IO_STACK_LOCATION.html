@@ -13,9 +13,246 @@ struct _IO_STACK_LOCATION
     UCHAR MinorFunction;                                                    //0x1
     UCHAR Flags;                                                            //0x2
     UCHAR Control;                                                          //0x3
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> Parameters;                                                    //0x4
+    union
+    {
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IO_SECURITY_CONTEXT'> _IO_SECURITY_CONTEXT</a>* SecurityContext;                   //0x4
+            ULONG Options;                                                  //0x8
+            USHORT FileAttributes;                                          //0xc
+            USHORT ShareAccess;                                             //0xe
+            ULONG EaLength;                                                 //0x10
+        } Create;                                                           //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IO_SECURITY_CONTEXT'> _IO_SECURITY_CONTEXT</a>* SecurityContext;                   //0x4
+            ULONG Options;                                                  //0x8
+            USHORT Reserved;                                                //0xc
+            USHORT ShareAccess;                                             //0xe
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_NAMED_PIPE_CREATE_PARAMETERS'> _NAMED_PIPE_CREATE_PARAMETERS</a>* Parameters;               //0x10
+        } CreatePipe;                                                       //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IO_SECURITY_CONTEXT'> _IO_SECURITY_CONTEXT</a>* SecurityContext;                   //0x4
+            ULONG Options;                                                  //0x8
+            USHORT Reserved;                                                //0xc
+            USHORT ShareAccess;                                             //0xe
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MAILSLOT_CREATE_PARAMETERS'> _MAILSLOT_CREATE_PARAMETERS</a>* Parameters;                 //0x10
+        } CreateMailslot;                                                   //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            ULONG Key;                                                      //0x8
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> ByteOffset;                                //0xc
+        } Read;                                                             //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            ULONG Key;                                                      //0x8
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> ByteOffset;                                //0xc
+        } Write;                                                            //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_UNICODE_STRING'> _UNICODE_STRING</a>* FileName;                               //0x8
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_INFORMATION_CLASS'> _FILE_INFORMATION_CLASS</a> FileInformationClass;              //0xc
+            ULONG FileIndex;                                                //0x10
+        } QueryDirectory;                                                   //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            ULONG CompletionFilter;                                         //0x8
+        } NotifyDirectory;                                                  //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            ULONG CompletionFilter;                                         //0x8
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DIRECTORY_NOTIFY_INFORMATION_CLASS'> _DIRECTORY_NOTIFY_INFORMATION_CLASS</a> DirectoryNotifyInformationClass; //0xc
+        } NotifyDirectoryEx;                                                //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_INFORMATION_CLASS'> _FILE_INFORMATION_CLASS</a> FileInformationClass;              //0x8
+        } QueryFile;                                                        //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_INFORMATION_CLASS'> _FILE_INFORMATION_CLASS</a> FileInformationClass;              //0x8
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_OBJECT'> _FILE_OBJECT</a>* FileObject;                                //0xc
+            union
+            {
+                struct
+                {
+                    UCHAR ReplaceIfExists;                                  //0x10
+                    UCHAR AdvanceOnly;                                      //0x11
+                };
+                ULONG ClusterCount;                                         //0x10
+                VOID* DeleteHandle;                                         //0x10
+            };
+        } SetFile;                                                          //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            VOID* EaList;                                                   //0x8
+            ULONG EaListLength;                                             //0xc
+            ULONG EaIndex;                                                  //0x10
+        } QueryEa;                                                          //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+        } SetEa;                                                            //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FSINFOCLASS'> _FSINFOCLASS</a> FsInformationClass;                           //0x8
+        } QueryVolume;                                                      //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FSINFOCLASS'> _FSINFOCLASS</a> FsInformationClass;                           //0x8
+        } SetVolume;                                                        //0x4
+        struct
+        {
+            ULONG OutputBufferLength;                                       //0x4
+            ULONG InputBufferLength;                                        //0x8
+            ULONG FsControlCode;                                            //0xc
+            VOID* Type3InputBuffer;                                         //0x10
+        } FileSystemControl;                                                //0x4
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a>* Length;                                   //0x4
+            ULONG Key;                                                      //0x8
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> ByteOffset;                                //0xc
+        } LockControl;                                                      //0x4
+        struct
+        {
+            ULONG OutputBufferLength;                                       //0x4
+            ULONG InputBufferLength;                                        //0x8
+            ULONG IoControlCode;                                            //0xc
+            VOID* Type3InputBuffer;                                         //0x10
+        } DeviceIoControl;                                                  //0x4
+        struct
+        {
+            ULONG SecurityInformation;                                      //0x4
+            ULONG Length;                                                   //0x8
+        } QuerySecurity;                                                    //0x4
+        struct
+        {
+            ULONG SecurityInformation;                                      //0x4
+            VOID* SecurityDescriptor;                                       //0x8
+        } SetSecurity;                                                      //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_VPB'> _VPB</a>* Vpb;                                               //0x4
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_OBJECT'> _DEVICE_OBJECT</a>* DeviceObject;                            //0x8
+        } MountVolume;                                                      //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_VPB'> _VPB</a>* Vpb;                                               //0x4
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_OBJECT'> _DEVICE_OBJECT</a>* DeviceObject;                            //0x8
+        } VerifyVolume;                                                     //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SCSI_REQUEST_BLOCK'> _SCSI_REQUEST_BLOCK</a>* Srb;                                //0x4
+        } Scsi;                                                             //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+            VOID* StartSid;                                                 //0x8
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_GET_QUOTA_INFORMATION'> _FILE_GET_QUOTA_INFORMATION</a>* SidList;                    //0xc
+            ULONG SidListLength;                                            //0x10
+        } QueryQuota;                                                       //0x4
+        struct
+        {
+            ULONG Length;                                                   //0x4
+        } SetQuota;                                                         //0x4
+        struct
+        {
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_RELATION_TYPE'> _DEVICE_RELATION_TYPE</a> Type;                                //0x4
+        } QueryDeviceRelations;                                             //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_GUID'> _GUID</a>* InterfaceType;                                    //0x4
+            USHORT Size;                                                    //0x8
+            USHORT Version;                                                 //0xa
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_INTERFACE'> _INTERFACE</a>* Interface;                                   //0xc
+            VOID* InterfaceSpecificData;                                    //0x10
+        } QueryInterface;                                                   //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_CAPABILITIES'> _DEVICE_CAPABILITIES</a>* Capabilities;                      //0x4
+        } DeviceCapabilities;                                               //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IO_RESOURCE_REQUIREMENTS_LIST'> _IO_RESOURCE_REQUIREMENTS_LIST</a>* IoResourceRequirementList; //0x4
+        } FilterResourceRequirements;                                       //0x4
+        struct
+        {
+            ULONG WhichSpace;                                               //0x4
+            VOID* Buffer;                                                   //0x8
+            ULONG Offset;                                                   //0xc
+            ULONG Length;                                                   //0x10
+        } ReadWriteConfig;                                                  //0x4
+        struct
+        {
+            UCHAR Lock;                                                     //0x4
+        } SetLock;                                                          //0x4
+        struct
+        {
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/BUS_QUERY_ID_TYPE'> BUS_QUERY_ID_TYPE</a> IdType;                                  //0x4
+        } QueryId;                                                          //0x4
+        struct
+        {
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/DEVICE_TEXT_TYPE'> DEVICE_TEXT_TYPE</a> DeviceTextType;                           //0x4
+            ULONG LocaleId;                                                 //0x8
+        } QueryDeviceText;                                                  //0x4
+        struct
+        {
+            UCHAR InPath;                                                   //0x4
+            UCHAR Reserved[3];                                              //0x5
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_USAGE_NOTIFICATION_TYPE'> _DEVICE_USAGE_NOTIFICATION_TYPE</a> Type;                      //0x8
+        } UsageNotification;                                                //0x4
+        struct
+        {
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SYSTEM_POWER_STATE'> _SYSTEM_POWER_STATE</a> PowerState;                            //0x4
+        } WaitWake;                                                         //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_POWER_SEQUENCE'> _POWER_SEQUENCE</a>* PowerSequence;                          //0x4
+        } PowerSequence;                                                    //0x4
+        struct
+        {
+            union
+            {
+                ULONG SystemContext;                                        //0x4
+                struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_SYSTEM_POWER_STATE_CONTEXT'>_SYSTEM_POWER_STATE_CONTEXT</a> SystemPowerStateContext; //0x4
+            };
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_POWER_STATE_TYPE'> _POWER_STATE_TYPE</a> Type;                                    //0x8
+            union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_POWER_STATE'> _POWER_STATE</a> State;                                       //0xc
+            enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/POWER_ACTION'> POWER_ACTION</a> ShutdownType;                                 //0x10
+        } Power;                                                            //0x4
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CM_RESOURCE_LIST'> _CM_RESOURCE_LIST</a>* AllocatedResources;                   //0x4
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CM_RESOURCE_LIST'> _CM_RESOURCE_LIST</a>* AllocatedResourcesTranslated;         //0x8
+        } StartDevice;                                                      //0x4
+        struct
+        {
+            ULONG ProviderId;                                               //0x4
+            VOID* DataPath;                                                 //0x8
+            ULONG BufferSize;                                               //0xc
+            VOID* Buffer;                                                   //0x10
+        } WMI;                                                              //0x4
+        struct
+        {
+            VOID* Argument1;                                                //0x4
+            VOID* Argument2;                                                //0x8
+            VOID* Argument3;                                                //0xc
+            VOID* Argument4;                                                //0x10
+        } Others;                                                           //0x4
+    } Parameters;                                                           //0x4
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_OBJECT'> _DEVICE_OBJECT</a>* DeviceObject;                                    //0x14
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_OBJECT'> _FILE_OBJECT</a>* FileObject;                                        //0x18
     LONG (*CompletionRoutine)(struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_OBJECT'> _DEVICE_OBJECT</a>* arg1, struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IRP'> _IRP</a>* arg2, VOID* arg3); //0x1c
     VOID* Context;                                                          //0x20
-}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/&lt;anonymous-tag&gt;" tabindex="-1" class="related">&lt;anonymous-tag&gt;</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IRP" tabindex="-1" class="related">_IRP</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

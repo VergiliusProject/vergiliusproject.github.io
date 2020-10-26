@@ -21,7 +21,11 @@ struct _ACCESS_STATE
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_SECURITY_SUBJECT_CONTEXT'>_SECURITY_SUBJECT_CONTEXT</a> SubjectSecurityContext;                //0x20
     VOID* SecurityDescriptor;                                               //0x40
     VOID* AuxData;                                                          //0x48
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> Privileges;                                                    //0x50
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_INITIAL_PRIVILEGE_SET'>_INITIAL_PRIVILEGE_SET</a> InitialPrivilegeSet;                  //0x50
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_PRIVILEGE_SET'>_PRIVILEGE_SET</a> PrivilegeSet;                                 //0x50
+    } Privileges;                                                           //0x50
     UCHAR AuditPrivileges;                                                  //0x7c
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_UNICODE_STRING'>_UNICODE_STRING</a> ObjectName;                                      //0x80
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_UNICODE_STRING'>_UNICODE_STRING</a> ObjectTypeName;                                  //0x90

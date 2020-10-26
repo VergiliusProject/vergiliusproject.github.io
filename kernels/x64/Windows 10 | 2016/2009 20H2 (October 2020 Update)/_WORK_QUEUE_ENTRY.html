@@ -10,7 +10,50 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 struct _WORK_QUEUE_ENTRY
 {
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> WorkQueueLinks;                                      //0x0
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> Parameters;                                                    //0x10
+    union
+    {
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_FILE_OBJECT'> _FILE_OBJECT</a>* FileObject;                                //0x10
+            VOID* DiskIoAttribution;                                        //0x18
+        } Read;                                                             //0x10
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_SHARED_CACHE_MAP'> _SHARED_CACHE_MAP</a>* SharedCacheMap;                       //0x10
+        } Write;                                                            //0x10
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_KEVENT'> _KEVENT</a>* Event;                                          //0x10
+        } Event;                                                            //0x10
+        struct
+        {
+            ULONG Reason;                                                   //0x10
+        } Notification;                                                     //0x10
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_SHARED_CACHE_MAP'> _SHARED_CACHE_MAP</a>* SharedCacheMap;                       //0x10
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_IO_STATUS_BLOCK'> _IO_STATUS_BLOCK</a>* IoStatus;                              //0x18
+            struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_KEVENT'>_KEVENT</a> CallerWaitEvent;                                 //0x20
+            UCHAR IsLowPriWriteBehind;                                      //0x38
+        } LowPriWrite;                                                      //0x10
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_SHARED_CACHE_MAP'> _SHARED_CACHE_MAP</a>* SharedCacheMap;                       //0x10
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> FileOffset;                                //0x18
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_FILE_OBJECT'> _FILE_OBJECT</a>* FileObject;                                //0x20
+            ULONG Length;                                                   //0x28
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_SINGLE_LIST_ENTRY'> _SINGLE_LIST_ENTRY</a>* PrefetchList;                        //0x30
+            ULONG PrefetchPagePriority;                                     //0x38
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_MDL'> _MDL</a>* Mdl;                                               //0x40
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_IO_STATUS_BLOCK'> _IO_STATUS_BLOCK</a>* IoStatusBlock;                         //0x48
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_CC_ASYNC_READ_CONTEXT'> _CC_ASYNC_READ_CONTEXT</a>* CallbackContext;                 //0x50
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_EPROCESS'> _EPROCESS</a>* OriginatingProcess;                           //0x58
+            struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_ETHREAD'> _ETHREAD</a>* IoIssuerThread;                                //0x60
+            VOID* DiskIoAttribution;                                        //0x68
+            CHAR RequestorMode;                                             //0x70
+            ULONG NestingLevel;                                             //0x74
+        } AsyncRead;                                                        //0x10
+    } Parameters;                                                           //0x10
     UCHAR Function;                                                         //0x78
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_CC_PARTITION'> _CC_PARTITION</a>* Partition;                                        //0x80
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

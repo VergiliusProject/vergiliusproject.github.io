@@ -10,7 +10,10 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 struct _MMMOD_WRITER_MDL_ENTRY
 {
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> Links;                                               //0x0
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x10
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_IO_STATUS_BLOCK'>_IO_STATUS_BLOCK</a> IoStatus;                                   //0x10
+    } u;                                                                    //0x10
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_IRP'> _IRP</a>* Irp;                                                       //0x20
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_MODWRITER_FLAGS'>_MODWRITER_FLAGS</a> u1;                                             //0x28
     ULONG StoreWriteRefCount;                                               //0x2c

@@ -65,7 +65,15 @@ struct _KPROCESS
     UCHAR AddressPolicy;                                                    //0x390
     UCHAR Spare2[71];                                                       //0x391
     VOID* InstrumentationCallback;                                          //0x3d8
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> SecureState;                                                   //0x3e0
+    union
+    {
+        ULONGLONG SecureHandle;                                             //0x3e0
+        struct
+        {
+            ULONGLONG SecureProcess:1;                                      //0x3e0
+            ULONGLONG Unused:1;                                             //0x3e0
+        } Flags;                                                            //0x3e0
+    } SecureState;                                                          //0x3e0
     ULONGLONG KernelWaitTime;                                               //0x3e8
     ULONGLONG UserWaitTime;                                                 //0x3f0
     ULONGLONG EndPadding[8];                                                //0x3f8

@@ -12,15 +12,62 @@ struct _HIVE_LOAD_FAILURE
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_HHIVE'> _HHIVE</a>* Hive;                                                    //0x0
     USHORT Index;                                                           //0x4
     USHORT RecoverableIndex;                                                //0x6
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Locations[8];                                                 //0x8
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> RecoverableLocations[8];                                      //0x68
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> RegistryIO;                                                   //0xc8
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CheckRegistry2;                                               //0xd4
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CheckKey;                                                     //0xd8
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CheckValueList;                                               //0xe8
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CheckHive;                                                    //0xf8
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CheckHive1;                                                   //0x104
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CheckBin;                                                     //0x110
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> RecoverData;                                                  //0x118
+    struct
+    {
+        enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CM_LOAD_FAILURE_TYPE'> _CM_LOAD_FAILURE_TYPE</a> Failure;                                 //0x8
+        LONG Status;                                                        //0xc
+        ULONG Point;                                                        //0x10
+    } Locations[8];                                                         //0x8
+    struct
+    {
+        enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CM_LOAD_FAILURE_TYPE'> _CM_LOAD_FAILURE_TYPE</a> Failure;                                 //0x68
+        LONG Status;                                                        //0x6c
+        ULONG Point;                                                        //0x70
+    } RecoverableLocations[8];                                              //0x68
+    struct
+    {
+        ULONG Action;                                                       //0xc8
+        VOID* Handle;                                                       //0xcc
+        LONG Status;                                                        //0xd0
+    } RegistryIO;                                                           //0xc8
+    struct
+    {
+        VOID* CheckStack;                                                   //0xd4
+    } CheckRegistry2;                                                       //0xd4
+    struct
+    {
+        ULONG Cell;                                                         //0xd8
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CELL_DATA'> _CELL_DATA</a>* CellPoint;                                       //0xdc
+        VOID* RootPoint;                                                    //0xe0
+        ULONG Index;                                                        //0xe4
+    } CheckKey;                                                             //0xd8
+    struct
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CELL_DATA'> _CELL_DATA</a>* List;                                            //0xe8
+        ULONG Index;                                                        //0xec
+        ULONG Cell;                                                         //0xf0
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CELL_DATA'> _CELL_DATA</a>* CellPoint;                                       //0xf4
+    } CheckValueList;                                                       //0xe8
+    struct
+    {
+        ULONG Space;                                                        //0xf8
+        ULONG MapPoint;                                                     //0xfc
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_HBIN'> _HBIN</a>* BinPoint;                                             //0x100
+    } CheckHive;                                                            //0xf8
+    struct
+    {
+        ULONG Space;                                                        //0x104
+        ULONG MapPoint;                                                     //0x108
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_HBIN'> _HBIN</a>* BinPoint;                                             //0x10c
+    } CheckHive1;                                                           //0x104
+    struct
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_HBIN'> _HBIN</a>* Bin;                                                  //0x110
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_HCELL'> _HCELL</a>* CellPoint;                                           //0x114
+    } CheckBin;                                                             //0x110
+    struct
+    {
+        ULONG FileOffset;                                                   //0x118
+    } RecoverData;                                                          //0x118
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_CM_PARSE_DEBUG_INFO'>_CM_PARSE_DEBUG_INFO</a> LinkDebug;                                  //0x11c
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

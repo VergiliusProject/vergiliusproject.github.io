@@ -30,7 +30,18 @@ struct _DUMP_INITIALIZATION_CONTEXT
     VOID* TargetAddress;                                                    //0x78
     LONG (*WritePendingRoutine)(LONG arg1, union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a>* arg2, struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_MDL'> _MDL</a>* arg3, VOID* arg4); //0x80
     ULONG PartitionStyle;                                                   //0x88
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> DiskInfo;                                                      //0x8c
+    union
+    {
+        struct
+        {
+            ULONG Signature;                                                //0x8c
+            ULONG CheckSum;                                                 //0x90
+        } Mbr;                                                              //0x8c
+        struct
+        {
+            struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_GUID'>_GUID</a> DiskId;                                            //0x8c
+        } Gpt;                                                              //0x8c
+    } DiskInfo;                                                             //0x8c
     LONG (*ReadRoutine)(LONG arg1, union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a>* arg2, struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_MDL'> _MDL</a>* arg3); //0xa0
     LONG (*GetDriveTelemetryRoutine)(ULONG arg1, ULONG arg2, VOID* arg3, ULONG arg4); //0xa8
     ULONG LogSectionTruncateSize;                                           //0xb0

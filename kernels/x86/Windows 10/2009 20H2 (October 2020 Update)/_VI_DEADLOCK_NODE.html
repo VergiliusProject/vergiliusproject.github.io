@@ -19,7 +19,14 @@ struct _VI_DEADLOCK_NODE
     };
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_VI_DEADLOCK_RESOURCE'> _VI_DEADLOCK_RESOURCE</a>* Root;                                     //0x1c
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_VI_DEADLOCK_THREAD'> _VI_DEADLOCK_THREAD</a>* ThreadEntry;                                //0x20
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x24
+    union
+    {
+        ULONG Active:1;                                                     //0x24
+        ULONG OnlyTryAcquireUsed:1;                                         //0x24
+        ULONG ReleasedOutOfOrder:1;                                         //0x24
+        ULONG SequenceNumber:29;                                            //0x24
+        ULONG Whole;                                                        //0x24
+    } u1;                                                                   //0x24
     LONG ChildrenCount;                                                     //0x28
     VOID* StackTrace[8];                                                    //0x2c
     VOID* ParentStackTrace[8];                                              //0x4c

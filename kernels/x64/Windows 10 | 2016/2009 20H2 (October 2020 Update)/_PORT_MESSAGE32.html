@@ -9,8 +9,24 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 })();</script><pre><code style="min-height: 300px; padding-left: 0px;" class="c"><button id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy" class="button btn-info">copy</button><div id="copyblock">//0x18 bytes (sizeof)
 struct _PORT_MESSAGE32
 {
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x0
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u2;                                                            //0x4
+    union
+    {
+        struct
+        {
+            SHORT DataLength;                                               //0x0
+            SHORT TotalLength;                                              //0x2
+        } s1;                                                               //0x0
+        ULONG Length;                                                       //0x0
+    } u1;                                                                   //0x0
+    union
+    {
+        struct
+        {
+            SHORT Type;                                                     //0x4
+            SHORT DataInfoOffset;                                           //0x6
+        } s2;                                                               //0x4
+        ULONG ZeroInit;                                                     //0x4
+    } u2;                                                                   //0x4
     union
     {
         struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_CLIENT_ID32'>_CLIENT_ID32</a> ClientId;                                       //0x8

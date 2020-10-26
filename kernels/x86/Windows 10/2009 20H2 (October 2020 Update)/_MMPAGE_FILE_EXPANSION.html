@@ -16,6 +16,10 @@ struct _MMPAGE_FILE_EXPANSION
     ULONG ActualExpansion;                                                  //0x14
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_KEVENT'>_KEVENT</a> Event;                                                   //0x18
     volatile LONG InProgress;                                               //0x28
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x2c
+    union
+    {
+        ULONG LongFlags;                                                    //0x2c
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MMPAGE_FILE_EXPANSION_FLAGS'>_MMPAGE_FILE_EXPANSION_FLAGS</a> Flags;                          //0x2c
+    } u1;                                                                   //0x2c
     VOID** volatile ActiveEntry;                                            //0x30
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_PARTITION_MODWRITES" tabindex="-1" class="related">_MI_PARTITION_MODWRITES</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MI_PARTITION_SEGMENTS" tabindex="-1" class="related">_MI_PARTITION_SEGMENTS</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

@@ -14,7 +14,15 @@ union _IOMMU_SVM_CAPABILITIES
     struct
     {
         ULONG PasidCapability:1;                                            //0x0
-        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> CapReg;                                                   //0x4
+        struct
+    {
+        ULONG PasidMaxWidth:5;                                              //0x4
+        ULONG PasidExePerm:1;                                               //0x4
+        ULONG PasidPrivMode:1;                                              //0x4
+        ULONG AtsPageAlignedRequest:1;                                      //0x4
+        ULONG AtsGlobalInvalidate:1;                                        //0x4
+        ULONG AtsInvalidateQueueDepth:5;                                    //0x4
+    } CapReg;                                                               //0x4
     };
     struct
     {

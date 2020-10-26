@@ -9,9 +9,36 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 })();</script><pre><code style="min-height: 300px; padding-left: 0px;" class="c"><button id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy" class="button btn-info">copy</button><div id="copyblock">//0x14 bytes (sizeof)
 union _FS_FILTER_PARAMETERS
 {
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> AcquireForModifiedPageWriter;                                 //0x0
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> ReleaseForModifiedPageWriter;                                 //0x0
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> AcquireForSectionSynchronization;                             //0x0
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> QueryOpen;                                                    //0x0
-    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Others;                                                       //0x0
+    struct
+    {
+        union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a>* EndingOffset;                                 //0x0
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ERESOURCE'> _ERESOURCE</a>** ResourceToRelease;                              //0x4
+    } AcquireForModifiedPageWriter;                                         //0x0
+    struct
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ERESOURCE'> _ERESOURCE</a>* ResourceToRelease;                               //0x0
+    } ReleaseForModifiedPageWriter;                                         //0x0
+    struct
+    {
+        enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FS_FILTER_SECTION_SYNC_TYPE'> _FS_FILTER_SECTION_SYNC_TYPE</a> SyncType;                         //0x0
+        ULONG PageProtection;                                               //0x4
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FS_FILTER_SECTION_SYNC_OUTPUT'> _FS_FILTER_SECTION_SYNC_OUTPUT</a>* OutputInformation;           //0x8
+        ULONG Flags;                                                        //0xc
+    } AcquireForSectionSynchronization;                                     //0x0
+    struct
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IRP'> _IRP</a>* Irp;                                                   //0x0
+        VOID* FileInformation;                                              //0x4
+        ULONG* Length;                                                      //0x8
+        enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FILE_INFORMATION_CLASS'> _FILE_INFORMATION_CLASS</a> FileInformationClass;                  //0xc
+        LONG CompletionStatus;                                              //0x10
+    } QueryOpen;                                                            //0x0
+    struct
+    {
+        VOID* Argument1;                                                    //0x0
+        VOID* Argument2;                                                    //0x4
+        VOID* Argument3;                                                    //0x8
+        VOID* Argument4;                                                    //0xc
+        VOID* Argument5;                                                    //0x10
+    } Others;                                                               //0x0
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_FS_FILTER_CALLBACK_DATA" tabindex="-1" class="related">_FS_FILTER_CALLBACK_DATA</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

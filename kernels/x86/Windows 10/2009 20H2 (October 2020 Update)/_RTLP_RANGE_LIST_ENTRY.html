@@ -13,8 +13,15 @@ struct _RTLP_RANGE_LIST_ENTRY
     ULONGLONG End;                                                          //0x8
     union
     {
-        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Allocated;                                                //0x10
-        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Merged;                                                   //0x10
+        struct
+        {
+            VOID* UserData;                                                 //0x10
+            VOID* Owner;                                                    //0x14
+        } Allocated;                                                        //0x10
+        struct
+        {
+            struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> ListHead;                                    //0x10
+        } Merged;                                                           //0x10
     };
     UCHAR Attributes;                                                       //0x18
     UCHAR PublicFlags;                                                      //0x19

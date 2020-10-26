@@ -11,8 +11,19 @@ struct _WHEA_RECOVERY_CONTEXT
 {
     union
     {
-        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> MemoryError;                                              //0x0
-        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> PmemError;                                                //0x0
+        struct
+        {
+            ULONG Address;                                                  //0x0
+            UCHAR Consumed;                                                 //0x4
+            USHORT ErrorCode;                                               //0x6
+            UCHAR ErrorIpValid;                                             //0x8
+            UCHAR RestartIpValid;                                           //0x9
+            UCHAR ClearPoison;                                              //0xa
+        } MemoryError;                                                      //0x0
+        struct
+        {
+            ULONG PmemErrInfo;                                              //0x0
+        } PmemError;                                                        //0x0
     };
     ULONGLONG PartitionId;                                                  //0x10
     ULONG VpIndex;                                                          //0x18

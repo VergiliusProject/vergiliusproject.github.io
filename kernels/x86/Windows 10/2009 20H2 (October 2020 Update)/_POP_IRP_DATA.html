@@ -27,8 +27,18 @@ struct _POP_IRP_DATA
     LONG IrpSequenceID;                                                     //0x80
     union
     {
-        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Device;                                                   //0x84
-        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> System;                                                   //0x84
+        struct
+        {
+            VOID (*CallerCompletion)(struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_OBJECT'> _DEVICE_OBJECT</a>* arg1, UCHAR arg2, union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_POWER_STATE'> _POWER_STATE</a> arg3, VOID* arg4, struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_IO_STATUS_BLOCK'> _IO_STATUS_BLOCK</a>* arg5); //0x84
+            VOID* CallerContext;                                            //0x88
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_DEVICE_OBJECT'> _DEVICE_OBJECT</a>* CallerDevice;                            //0x8c
+            UCHAR SystemWake;                                               //0x90
+        } Device;                                                           //0x84
+        struct
+        {
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_PO_DEVICE_NOTIFY'> _PO_DEVICE_NOTIFY</a>* NotifyDevice;                         //0x84
+            UCHAR FxDeviceActivated;                                        //0x88
+        } System;                                                           //0x84
     };
     enum<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_POP_PEP_NOTIFY_DEVICE_DSTATE_REASON'> _POP_PEP_NOTIFY_DEVICE_DSTATE_REASON</a> DStateReason;                 //0x94
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_POP_FX_DEVICE" tabindex="-1" class="related">_POP_FX_DEVICE</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

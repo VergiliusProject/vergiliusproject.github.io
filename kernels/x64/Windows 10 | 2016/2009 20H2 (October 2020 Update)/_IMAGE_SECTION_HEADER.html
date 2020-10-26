@@ -10,7 +10,11 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 struct _IMAGE_SECTION_HEADER
 {
     UCHAR Name[8];                                                          //0x0
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> Misc;                                                          //0x8
+    union
+    {
+        ULONG PhysicalAddress;                                              //0x8
+        ULONG VirtualSize;                                                  //0x8
+    } Misc;                                                                 //0x8
     ULONG VirtualAddress;                                                   //0xc
     ULONG SizeOfRawData;                                                    //0x10
     ULONG PointerToRawData;                                                 //0x14

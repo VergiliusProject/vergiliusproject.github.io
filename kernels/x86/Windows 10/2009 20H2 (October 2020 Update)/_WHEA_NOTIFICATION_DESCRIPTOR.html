@@ -12,5 +12,74 @@ struct _WHEA_NOTIFICATION_DESCRIPTOR
     UCHAR Type;                                                             //0x0
     UCHAR Length;                                                           //0x1
     union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_WHEA_NOTIFICATION_FLAGS'> _WHEA_NOTIFICATION_FLAGS</a> Flags;                                   //0x2
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x4
+    union
+    {
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+        } Polled;                                                           //0x4
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+            ULONG Vector;                                                   //0x8
+            ULONG SwitchToPollingThreshold;                                 //0xc
+            ULONG SwitchToPollingWindow;                                    //0x10
+            ULONG ErrorThreshold;                                           //0x14
+            ULONG ErrorThresholdWindow;                                     //0x18
+        } Interrupt;                                                        //0x4
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+            ULONG Vector;                                                   //0x8
+            ULONG SwitchToPollingThreshold;                                 //0xc
+            ULONG SwitchToPollingWindow;                                    //0x10
+            ULONG ErrorThreshold;                                           //0x14
+            ULONG ErrorThresholdWindow;                                     //0x18
+        } LocalInterrupt;                                                   //0x4
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+            ULONG Vector;                                                   //0x8
+            ULONG SwitchToPollingThreshold;                                 //0xc
+            ULONG SwitchToPollingWindow;                                    //0x10
+            ULONG ErrorThreshold;                                           //0x14
+            ULONG ErrorThresholdWindow;                                     //0x18
+        } Sci;                                                              //0x4
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+            ULONG Vector;                                                   //0x8
+            ULONG SwitchToPollingThreshold;                                 //0xc
+            ULONG SwitchToPollingWindow;                                    //0x10
+            ULONG ErrorThreshold;                                           //0x14
+            ULONG ErrorThresholdWindow;                                     //0x18
+        } Nmi;                                                              //0x4
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+            ULONG Vector;                                                   //0x8
+            ULONG SwitchToPollingThreshold;                                 //0xc
+            ULONG SwitchToPollingWindow;                                    //0x10
+            ULONG ErrorThreshold;                                           //0x14
+            ULONG ErrorThresholdWindow;                                     //0x18
+        } Sea;                                                              //0x4
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+            ULONG Vector;                                                   //0x8
+            ULONG SwitchToPollingThreshold;                                 //0xc
+            ULONG SwitchToPollingWindow;                                    //0x10
+            ULONG ErrorThreshold;                                           //0x14
+            ULONG ErrorThresholdWindow;                                     //0x18
+        } Sei;                                                              //0x4
+        struct
+        {
+            ULONG PollInterval;                                             //0x4
+            ULONG Vector;                                                   //0x8
+            ULONG SwitchToPollingThreshold;                                 //0xc
+            ULONG SwitchToPollingWindow;                                    //0x10
+            ULONG ErrorThreshold;                                           //0x14
+            ULONG ErrorThresholdWindow;                                     //0x18
+        } Gsiv;                                                             //0x4
+    } u;                                                                    //0x4
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_WHEA_GENERIC_ERROR_DESCRIPTOR" tabindex="-1" class="related">_WHEA_GENERIC_ERROR_DESCRIPTOR</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_WHEA_GENERIC_ERROR_DESCRIPTOR_V2" tabindex="-1" class="related">_WHEA_GENERIC_ERROR_DESCRIPTOR_V2</a>,&nbsp;<a href="/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_WHEA_XPF_CMC_DESCRIPTOR" tabindex="-1" class="related">_WHEA_XPF_CMC_DESCRIPTOR</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

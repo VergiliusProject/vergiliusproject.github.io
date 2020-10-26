@@ -16,13 +16,32 @@ struct _INTERRUPT_VECTOR_DATA
     enum<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_KINTERRUPT_MODE'> _KINTERRUPT_MODE</a> Mode;                                             //0x10
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_GROUP_AFFINITY'>_GROUP_AFFINITY</a> TargetProcessors;                                //0x18
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_INTERRUPT_REMAPPING_INFO'>_INTERRUPT_REMAPPING_INFO</a> IntRemapInfo;                          //0x28
-    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> ControllerInput;                                              //0x38
+    struct
+    {
+        ULONG Gsiv;                                                         //0x38
+        ULONG WakeInterrupt:1;                                              //0x3c
+        ULONG ReservedFlags:31;                                             //0x3c
+    } ControllerInput;                                                      //0x38
     ULONGLONG HvDeviceId;                                                   //0x40
     union
     {
-        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> XapicMessage;                                             //0x48
-        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> Hypertransport;                                           //0x48
-        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> GenericMessage;                                           //0x48
-        struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> MessageRequest;                                           //0x48
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Address;                                   //0x48
+            ULONG DataPayload;                                              //0x50
+        } XapicMessage;                                                     //0x48
+        struct
+        {
+            struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_INTERRUPT_HT_INTR_INFO'>_INTERRUPT_HT_INTR_INFO</a> IntrInfo;                        //0x48
+        } Hypertransport;                                                   //0x48
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Address;                                   //0x48
+            ULONG DataPayload;                                              //0x50
+        } GenericMessage;                                                   //0x48
+        struct
+        {
+            enum<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/HAL_APIC_DESTINATION_MODE'> HAL_APIC_DESTINATION_MODE</a> DestinationMode;                 //0x48
+        } MessageRequest;                                                   //0x48
     };
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/HAL_PRIVATE_DISPATCH" tabindex="-1" class="related">HAL_PRIVATE_DISPATCH</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_INTERRUPT_CONNECTION_DATA" tabindex="-1" class="related">_INTERRUPT_CONNECTION_DATA</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

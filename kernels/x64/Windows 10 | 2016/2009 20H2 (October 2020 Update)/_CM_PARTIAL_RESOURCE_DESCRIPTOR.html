@@ -12,5 +12,104 @@ struct _CM_PARTIAL_RESOURCE_DESCRIPTOR
     UCHAR Type;                                                             //0x0
     UCHAR ShareDisposition;                                                 //0x1
     USHORT Flags;                                                           //0x2
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x4
+    union
+    {
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Start;                                     //0x4
+            ULONG Length;                                                   //0xc
+        } Generic;                                                          //0x4
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Start;                                     //0x4
+            ULONG Length;                                                   //0xc
+        } Port;                                                             //0x4
+        struct
+        {
+            USHORT Level;                                                   //0x4
+            USHORT Group;                                                   //0x6
+            ULONG Vector;                                                   //0x8
+            ULONGLONG Affinity;                                             //0xc
+        } Interrupt;                                                        //0x4
+        struct
+        {
+            union
+            {
+                struct
+                {
+                    USHORT Group;                                           //0x4
+                    USHORT MessageCount;                                    //0x6
+                    ULONG Vector;                                           //0x8
+                    ULONGLONG Affinity;                                     //0xc
+                } Raw;                                                      //0x4
+                struct
+                {
+                    USHORT Level;                                           //0x4
+                    USHORT Group;                                           //0x6
+                    ULONG Vector;                                           //0x8
+                    ULONGLONG Affinity;                                     //0xc
+                } Translated;                                               //0x4
+            };
+        } MessageInterrupt;                                                 //0x4
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Start;                                     //0x4
+            ULONG Length;                                                   //0xc
+        } Memory;                                                           //0x4
+        struct
+        {
+            ULONG Channel;                                                  //0x4
+            ULONG Port;                                                     //0x8
+            ULONG Reserved1;                                                //0xc
+        } Dma;                                                              //0x4
+        struct
+        {
+            ULONG Channel;                                                  //0x4
+            ULONG RequestLine;                                              //0x8
+            UCHAR TransferWidth;                                            //0xc
+            UCHAR Reserved1;                                                //0xd
+            UCHAR Reserved2;                                                //0xe
+            UCHAR Reserved3;                                                //0xf
+        } DmaV3;                                                            //0x4
+        struct
+        {
+            ULONG Data[3];                                                  //0x4
+        } DevicePrivate;                                                    //0x4
+        struct
+        {
+            ULONG Start;                                                    //0x4
+            ULONG Length;                                                   //0x8
+            ULONG Reserved;                                                 //0xc
+        } BusNumber;                                                        //0x4
+        struct
+        {
+            ULONG DataSize;                                                 //0x4
+            ULONG Reserved1;                                                //0x8
+            ULONG Reserved2;                                                //0xc
+        } DeviceSpecificData;                                               //0x4
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Start;                                     //0x4
+            ULONG Length40;                                                 //0xc
+        } Memory40;                                                         //0x4
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Start;                                     //0x4
+            ULONG Length48;                                                 //0xc
+        } Memory48;                                                         //0x4
+        struct
+        {
+            union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> Start;                                     //0x4
+            ULONG Length64;                                                 //0xc
+        } Memory64;                                                         //0x4
+        struct
+        {
+            UCHAR Class;                                                    //0x4
+            UCHAR Type;                                                     //0x5
+            UCHAR Reserved1;                                                //0x6
+            UCHAR Reserved2;                                                //0x7
+            ULONG IdLowPart;                                                //0x8
+            ULONG IdHighPart;                                               //0xc
+        } Connection;                                                       //0x4
+    } u;                                                                    //0x4
 }; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_ARBITER_INSTANCE" tabindex="-1" class="related">_ARBITER_INSTANCE</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_ARBITER_LIST_ENTRY" tabindex="-1" class="related">_ARBITER_LIST_ENTRY</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_ARBITER_RETEST_ALLOCATION_PARAMETERS" tabindex="-1" class="related">_ARBITER_RETEST_ALLOCATION_PARAMETERS</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_ARBITER_TEST_ALLOCATION_PARAMETERS" tabindex="-1" class="related">_ARBITER_TEST_ALLOCATION_PARAMETERS</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_CM_PARTIAL_RESOURCE_LIST" tabindex="-1" class="related">_CM_PARTIAL_RESOURCE_LIST</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

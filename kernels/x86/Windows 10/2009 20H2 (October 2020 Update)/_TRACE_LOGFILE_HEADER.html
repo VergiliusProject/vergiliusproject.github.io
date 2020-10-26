@@ -13,7 +13,13 @@ struct _TRACE_LOGFILE_HEADER
     union
     {
         ULONG Version;                                                      //0x4
-        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'><anonymous-tag></a> VersionDetail;                                            //0x4
+        struct
+        {
+            UCHAR MajorVersion;                                             //0x4
+            UCHAR MinorVersion;                                             //0x5
+            UCHAR SubVersion;                                               //0x6
+            UCHAR SubMinorVersion;                                          //0x7
+        } VersionDetail;                                                    //0x4
     };
     ULONG ProviderVersion;                                                  //0x8
     ULONG NumberOfProcessors;                                               //0xc

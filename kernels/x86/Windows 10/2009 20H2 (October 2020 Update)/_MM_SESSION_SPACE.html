@@ -10,7 +10,11 @@ gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/j
 struct _MM_SESSION_SPACE
 {
     volatile LONG ReferenceCount;                                           //0x0
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u;                                                             //0x4
+    union
+    {
+        ULONG LongFlags;                                                    //0x4
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_MM_SESSION_SPACE_FLAGS'>_MM_SESSION_SPACE_FLAGS</a> Flags;                               //0x4
+    } u;                                                                    //0x4
     ULONG SessionId;                                                        //0x8
     volatile LONG ProcessReferenceToSession;                                //0xc
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> ProcessList;                                         //0x10

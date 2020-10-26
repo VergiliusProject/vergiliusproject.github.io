@@ -14,7 +14,13 @@ struct _KALPC_REGION
     ULONGLONG Offset;                                                       //0x18
     ULONGLONG Size;                                                         //0x20
     ULONGLONG ViewSize;                                                     //0x28
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x30
+    union
+    {
+        struct
+        {
+            ULONG Secure:1;                                                 //0x30
+        } s1;                                                               //0x30
+    } u1;                                                                   //0x30
     ULONG NumberOfViews;                                                    //0x34
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> ViewListHead;                                        //0x38
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_KALPC_VIEW'> _KALPC_VIEW</a>* ReadOnlyView;                                       //0x48

@@ -13,7 +13,24 @@ struct _KALPC_MESSAGE
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ALPC_PORT'> _ALPC_PORT</a>* PortQueue;                                           //0x8
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ALPC_PORT'> _ALPC_PORT</a>* OwnerPort;                                           //0xc
     struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_ETHREAD'> _ETHREAD</a>* WaitingThread;                                         //0x10
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x14
+    union
+    {
+        struct
+        {
+            ULONG QueueType:3;                                              //0x14
+            ULONG QueuePortType:4;                                          //0x14
+            ULONG Canceled:1;                                               //0x14
+            ULONG Ready:1;                                                  //0x14
+            ULONG ReleaseMessage:1;                                         //0x14
+            ULONG SharedQuota:1;                                            //0x14
+            ULONG ReplyWaitReply:1;                                         //0x14
+            ULONG OwnerPortReference:1;                                     //0x14
+            ULONG ReceiverReference:1;                                      //0x14
+            ULONG ViewAttributeRetrieved:1;                                 //0x14
+            ULONG InDispatch:1;                                             //0x14
+        } s1;                                                               //0x14
+        ULONG State;                                                        //0x14
+    } u1;                                                                   //0x14
     LONG SequenceNo;                                                        //0x18
     union
     {

@@ -85,7 +85,14 @@ struct _KUSER_SHARED_DATA
     ULONGLONG TestRetInstruction;                                           //0x2f8
     LONGLONG QpcFrequency;                                                  //0x300
     ULONG SystemCall;                                                       //0x308
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> UserCetAvailableEnvironments;                                  //0x30c
+    union
+    {
+        ULONG AllFlags;                                                     //0x30c
+        ULONG Win32Process:1;                                               //0x30c
+        ULONG Sgx2Enclave:1;                                                //0x30c
+        ULONG VbsBasicEnclave:1;                                            //0x30c
+        ULONG SpareBits:29;                                                 //0x30c
+    } UserCetAvailableEnvironments;                                         //0x30c
     ULONGLONG SystemCallPad[2];                                             //0x310
     union
     {

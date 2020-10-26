@@ -21,7 +21,13 @@ struct _KLDR_DATA_TABLE_ENTRY
     struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/_UNICODE_STRING'>_UNICODE_STRING</a> BaseDllName;                                     //0x2c
     ULONG Flags;                                                            //0x34
     USHORT LoadCount;                                                       //0x38
-    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x3a
+    union
+    {
+        USHORT SignatureLevel:4;                                            //0x3a
+        USHORT SignatureType:3;                                             //0x3a
+        USHORT Unused:9;                                                    //0x3a
+        USHORT EntireField;                                                 //0x3a
+    } u1;                                                                   //0x3a
     VOID* SectionPointer;                                                   //0x3c
     ULONG CheckSum;                                                         //0x40
     ULONG CoverageSectionSize;                                              //0x44

@@ -12,7 +12,16 @@ struct _VF_TARGET_VERIFIED_DRIVER_DATA
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_VF_SUSPECT_DRIVER_ENTRY'> _VF_SUSPECT_DRIVER_ENTRY</a>* SuspectDriverEntry;                    //0x0
     VOID* WMICallback;                                                      //0x8
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> EtwHandlesListHead;                                  //0x10
-    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/<anonymous-tag>'> <anonymous-tag></a> u1;                                                            //0x20
+    union
+    {
+        struct
+        {
+            ULONG MissedEtwRegistration:1;                                  //0x20
+            ULONG IsBootDriver:1;                                           //0x20
+            ULONG Spare:30;                                                 //0x20
+        } Flags;                                                            //0x20
+        ULONG Whole;                                                        //0x20
+    } u1;                                                                   //0x20
     ULONGLONG Signature;                                                    //0x28
     UCHAR SeSigningLevel;                                                   //0x30
     union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2009 20H2 (October 2020 Update)/_SLIST_HEADER'> _SLIST_HEADER</a> PoolPageHeaders;                                    //0x40
