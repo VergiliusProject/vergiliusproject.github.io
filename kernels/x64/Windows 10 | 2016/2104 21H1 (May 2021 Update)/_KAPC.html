@@ -16,7 +16,16 @@ struct _KAPC
     ULONG SpareLong0;                                                       //0x4
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2104 21H1 (May 2021 Update)/_KTHREAD'> _KTHREAD</a>* Thread;                                                //0x8
     struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2104 21H1 (May 2021 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> ApcListEntry;                                        //0x10
-    VOID* Reserved[3];                                                      //0x20
+    union
+    {
+        struct
+        {
+            VOID (*KernelRoutine)(struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2104 21H1 (May 2021 Update)/_KAPC'> _KAPC</a>* arg1, VOID (**arg2)(VOID* arg1, VOID* arg2, VOID* arg3), VOID** arg3, VOID** arg4, VOID** arg5); //0x20
+            VOID (*RundownRoutine)(struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2104 21H1 (May 2021 Update)/_KAPC'> _KAPC</a>* arg1);                     //0x28
+            VOID (*NormalRoutine)(VOID* arg1, VOID* arg2, VOID* arg3);      //0x30
+        };
+        VOID* Reserved[3];                                                  //0x20
+    };
     VOID* NormalContext;                                                    //0x38
     VOID* SystemArgument1;                                                  //0x40
     VOID* SystemArgument2;                                                  //0x48
