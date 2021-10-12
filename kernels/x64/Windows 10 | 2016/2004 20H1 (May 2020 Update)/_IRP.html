@@ -11,6 +11,8 @@ struct _IRP
 {
     SHORT Type;                                                             //0x0
     USHORT Size;                                                            //0x2
+    USHORT AllocationProcessorNumber;                                       //0x4
+    USHORT Reserved;                                                        //0x6
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2004 20H1 (May 2020 Update)/_MDL'> _MDL</a>* MdlAddress;                                                //0x8
     ULONG Flags;                                                            //0x10
     union
@@ -64,6 +66,7 @@ struct _IRP
                 ULONG PacketType;                                           //0xb8
             };
             struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2004 20H1 (May 2020 Update)/_FILE_OBJECT'> _FILE_OBJECT</a>* OriginalFileObject;                        //0xc0
+            VOID* IrpExtension;                                             //0xc8
         } Overlay;                                                          //0x78
         struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/2004 20H1 (May 2020 Update)/_KAPC'>_KAPC</a> Apc;                                                   //0x78
         VOID* CompletionKey;                                                //0x78
