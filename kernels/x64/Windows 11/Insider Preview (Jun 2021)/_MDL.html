@@ -12,6 +12,8 @@ struct _MDL
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 11/Insider Preview (Jun 2021)/_MDL'> _MDL</a>* Next;                                                      //0x0
     SHORT Size;                                                             //0x8
     SHORT MdlFlags;                                                         //0xa
+    USHORT AllocationProcessorNumber;                                       //0xc
+    USHORT Reserved;                                                        //0xe
     struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 11/Insider Preview (Jun 2021)/_EPROCESS'> _EPROCESS</a>* Process;                                              //0x10
     VOID* MappedSystemVa;                                                   //0x18
     VOID* StartVa;                                                          //0x20
