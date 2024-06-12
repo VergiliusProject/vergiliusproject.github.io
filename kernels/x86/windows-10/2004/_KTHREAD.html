@@ -1,0 +1,295 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _KTHREAD</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="canonical" href="https://www.vergiliusproject.com/kernels/x86/windows-10/2004/_KTHREAD"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css?v=2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDEP4DNCRR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "G-YDEP4DNCRR", { 'anonymize_ip': true });</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a class="navbar-brand" href="/" tabindex="-1"><img class="d-inline-block logo" src="/images/logo.png" width="52" height="57" alt="">VERGILIUS</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/" tabindex="-1">HOME</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/kernels" tabindex="-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KERNELS</a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"><div class="container dropdown-menu-style d-block"><div class="row"><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x86" tabindex="-1">x86</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8.1" tabindex="-1">- Windows 8.1</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8" tabindex="-1">- Windows 8</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-7" tabindex="-1">- Windows 7</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/server-2003" tabindex="-1">- Server 2003</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-xp" tabindex="-1">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x64" tabindex="-1">x64</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-11" tabindex="-1">- Windows 11</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8.1" tabindex="-1">- Windows 8.1 | Server 2012R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8" tabindex="-1">- Windows 8 | Server 2012</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-7" tabindex="-1">- Windows 7 | Server 2008R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-xp" tabindex="-1">- Windows XP | Server 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a class="nav-link" href="/about" tabindex="-1">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="breadcrumb-link" href="/" tabindex="-1">> Home</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels" tabindex="-1">Kernels</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86" tabindex="-1">x86</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86/windows-10" tabindex="-1">Windows 10</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86/windows-10/2004" tabindex="-1">2004 (May 2020 Update, Vibranium R1)</a></li><li class="breadcrumb-item active" aria-current="page">_KTHREAD</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_KTHREAD</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/1909/_KTHREAD" tabindex="-1">Windows 10 1909 (November 2019 Update, Titanium R2)</a></div></div><div class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/2004/_KTHREAD" tabindex="-1">Windows 10 2004 (May 2020 Update, Vibranium R1)</a></div></div><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/20h2/_KTHREAD" tabindex="-1">Windows 10 20H2 (October 2020 Update, Vibranium R2)</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/1909/_KTHREAD" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/2004/_KTHREAD" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/20h2/_KTHREAD" tabindex="-1"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard("#copy-button");
+})();</script><pre><code class="c" style="min-height: 300px; padding-left: 0px;"><button class="button btn-info" id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy">copy</button><div id="copyblock">//0x280 bytes (sizeof)
+struct _KTHREAD
+{
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_DISPATCHER_HEADER'>_DISPATCHER_HEADER</a> Header;                                       //0x0
+    VOID* SListFaultAddress;                                                //0x10
+    ULONGLONG QuantumTarget;                                                //0x18
+    VOID* InitialStack;                                                     //0x20
+    VOID* volatile StackLimit;                                              //0x24
+    VOID* StackBase;                                                        //0x28
+    ULONG ThreadLock;                                                       //0x2c
+    volatile ULONGLONG CycleTime;                                           //0x30
+    volatile ULONG HighCycleTime;                                           //0x38
+    VOID* ServiceTable;                                                     //0x3c
+    ULONG CurrentRunTime;                                                   //0x40
+    ULONG ExpectedRunTime;                                                  //0x44
+    VOID* KernelStack;                                                      //0x48
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_XSAVE_FORMAT'> _XSAVE_FORMAT</a>* StateSaveArea;                                    //0x4c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KSCHEDULING_GROUP'> _KSCHEDULING_GROUP</a>* volatile SchedulingGroup;                    //0x50
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KWAIT_STATUS_REGISTER'> _KWAIT_STATUS_REGISTER</a> WaitRegister;                              //0x54
+    volatile UCHAR Running;                                                 //0x55
+    UCHAR Alerted[2];                                                       //0x56
+    union
+    {
+        struct
+        {
+            ULONG AutoBoostActive:1;                                        //0x58
+            ULONG ReadyTransition:1;                                        //0x58
+            ULONG WaitNext:1;                                               //0x58
+            ULONG SystemAffinityActive:1;                                   //0x58
+            ULONG Alertable:1;                                              //0x58
+            ULONG UserStackWalkActive:1;                                    //0x58
+            ULONG ApcInterruptRequest:1;                                    //0x58
+            ULONG QuantumEndMigrate:1;                                      //0x58
+            ULONG UmsDirectedSwitchEnable:1;                                //0x58
+            ULONG TimerActive:1;                                            //0x58
+            ULONG SystemThread:1;                                           //0x58
+            ULONG ProcessDetachActive:1;                                    //0x58
+            ULONG CalloutActive:1;                                          //0x58
+            ULONG ScbReadyQueue:1;                                          //0x58
+            ULONG ApcQueueable:1;                                           //0x58
+            ULONG ReservedStackInUse:1;                                     //0x58
+            ULONG UmsPerformingSyscall:1;                                   //0x58
+            ULONG TimerSuspended:1;                                         //0x58
+            ULONG SuspendedWaitMode:1;                                      //0x58
+            ULONG SuspendSchedulerApcWait:1;                                //0x58
+            ULONG CetUserShadowStack:1;                                     //0x58
+            ULONG BypassProcessFreeze:1;                                    //0x58
+            ULONG Reserved:10;                                              //0x58
+        };
+        LONG MiscFlags;                                                     //0x58
+    };
+    union
+    {
+        struct
+        {
+            ULONG ThreadFlagsSpare:2;                                       //0x5c
+            ULONG AutoAlignment:1;                                          //0x5c
+            ULONG DisableBoost:1;                                           //0x5c
+            ULONG AlertedByThreadId:1;                                      //0x5c
+            ULONG QuantumDonation:1;                                        //0x5c
+            ULONG EnableStackSwap:1;                                        //0x5c
+            ULONG GuiThread:1;                                              //0x5c
+            ULONG DisableQuantum:1;                                         //0x5c
+            ULONG ChargeOnlySchedulingGroup:1;                              //0x5c
+            ULONG DeferPreemption:1;                                        //0x5c
+            ULONG QueueDeferPreemption:1;                                   //0x5c
+            ULONG ForceDeferSchedule:1;                                     //0x5c
+            ULONG SharedReadyQueueAffinity:1;                               //0x5c
+            ULONG FreezeCount:1;                                            //0x5c
+            ULONG TerminationApcRequest:1;                                  //0x5c
+            ULONG AutoBoostEntriesExhausted:1;                              //0x5c
+            ULONG KernelStackResident:1;                                    //0x5c
+            ULONG TerminateRequestReason:2;                                 //0x5c
+            ULONG ProcessStackCountDecremented:1;                           //0x5c
+            ULONG RestrictedGuiThread:1;                                    //0x5c
+            ULONG VpBackingThread:1;                                        //0x5c
+            ULONG ThreadFlagsSpare2:1;                                      //0x5c
+            ULONG EtwStackTraceApcInserted:8;                               //0x5c
+        };
+        volatile LONG ThreadFlags;                                          //0x5c
+    };
+    volatile UCHAR Tag;                                                     //0x60
+    UCHAR SystemHeteroCpuPolicy;                                            //0x61
+    UCHAR UserHeteroCpuPolicy:7;                                            //0x62
+    UCHAR ExplicitSystemHeteroCpuPolicy:1;                                  //0x62
+    UCHAR Spare0;                                                           //0x63
+    ULONG SystemCallNumber;                                                 //0x64
+    VOID* FirstArgument;                                                    //0x68
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KTRAP_FRAME'> _KTRAP_FRAME</a>* TrapFrame;                                         //0x6c
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KAPC_STATE'>_KAPC_STATE</a> ApcState;                                        //0x70
+        struct
+        {
+            UCHAR ApcStateFill[23];                                         //0x70
+            CHAR Priority;                                                  //0x87
+        };
+    };
+    ULONG UserIdealProcessor;                                               //0x88
+    ULONG ContextSwitches;                                                  //0x8c
+    volatile UCHAR State;                                                   //0x90
+    CHAR Spare12;                                                           //0x91
+    UCHAR WaitIrql;                                                         //0x92
+    CHAR WaitMode;                                                          //0x93
+    volatile LONG WaitStatus;                                               //0x94
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KWAIT_BLOCK'> _KWAIT_BLOCK</a>* WaitBlockList;                                     //0x98
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> WaitListEntry;                                   //0x9c
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> SwapListEntry;                            //0x9c
+    };
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_DISPATCHER_HEADER'> _DISPATCHER_HEADER</a>* volatile Queue;                              //0xa4
+    VOID* Teb;                                                              //0xa8
+    ULONGLONG RelativeTimerBias;                                            //0xb0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KTIMER'>_KTIMER</a> Timer;                                                   //0xb8
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KWAIT_BLOCK'>_KWAIT_BLOCK</a> WaitBlock[4];                                   //0xe0
+        struct
+        {
+            UCHAR WaitBlockFill8[20];                                       //0xe0
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KTHREAD_COUNTERS'> _KTHREAD_COUNTERS</a>* ThreadCounters;                       //0xf4
+        };
+        struct
+        {
+            UCHAR WaitBlockFill9[44];                                       //0xe0
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_XSTATE_SAVE'> _XSTATE_SAVE</a>* XStateSave;                                //0x10c
+        };
+        struct
+        {
+            UCHAR WaitBlockFill10[68];                                      //0xe0
+            VOID* volatile Win32Thread;                                     //0x124
+        };
+        struct
+        {
+            UCHAR WaitBlockFill11[88];                                      //0xe0
+            ULONG WaitTime;                                                 //0x138
+            union
+            {
+                struct
+                {
+                    SHORT KernelApcDisable;                                 //0x13c
+                    SHORT SpecialApcDisable;                                //0x13e
+                };
+                ULONG CombinedApcDisable;                                   //0x13c
+            };
+        };
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> QueueListEntry;                                      //0x140
+    union
+    {
+        volatile ULONG NextProcessor;                                       //0x148
+        struct
+        {
+            ULONG NextProcessorNumber:31;                                   //0x148
+            ULONG SharedReadyQueue:1;                                       //0x148
+        };
+    };
+    LONG QueuePriority;                                                     //0x14c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KPROCESS'> _KPROCESS</a>* Process;                                              //0x150
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_GROUP_AFFINITY'>_GROUP_AFFINITY</a> UserAffinity;                                //0x154
+        struct
+        {
+            UCHAR UserAffinityFill[6];                                      //0x154
+            CHAR PreviousMode;                                              //0x15a
+            CHAR BasePriority;                                              //0x15b
+            union
+            {
+                CHAR PriorityDecrement;                                     //0x15c
+                struct
+                {
+                    UCHAR ForegroundBoost:4;                                //0x15c
+                    UCHAR UnusualBoost:4;                                   //0x15c
+                };
+            };
+            UCHAR Preempted;                                                //0x15d
+            UCHAR AdjustReason;                                             //0x15e
+            CHAR AdjustIncrement;                                           //0x15f
+        };
+    };
+    ULONG AffinityVersion;                                                  //0x160
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_GROUP_AFFINITY'>_GROUP_AFFINITY</a> Affinity;                                    //0x164
+        struct
+        {
+            UCHAR AffinityFill[6];                                          //0x164
+            UCHAR ApcStateIndex;                                            //0x16a
+            UCHAR WaitBlockCount;                                           //0x16b
+            ULONG IdealProcessor;                                           //0x16c
+        };
+    };
+    ULONG ReadyTime;                                                        //0x170
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KAPC_STATE'>_KAPC_STATE</a> SavedApcState;                                   //0x174
+        struct
+        {
+            UCHAR SavedApcStateFill[23];                                    //0x174
+            UCHAR WaitReason;                                               //0x18b
+        };
+    };
+    CHAR SuspendCount;                                                      //0x18c
+    CHAR Saturation;                                                        //0x18d
+    USHORT SListFaultCount;                                                 //0x18e
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KAPC'>_KAPC</a> SchedulerApc;                                          //0x190
+        struct
+        {
+            UCHAR SchedulerApcFill0[1];                                     //0x190
+            UCHAR ResourceIndex;                                            //0x191
+        };
+        struct
+        {
+            UCHAR SchedulerApcFill1[3];                                     //0x190
+            UCHAR QuantumReset;                                             //0x193
+        };
+        struct
+        {
+            UCHAR SchedulerApcFill2[4];                                     //0x190
+            ULONG KernelTime;                                               //0x194
+        };
+        struct
+        {
+            UCHAR SchedulerApcFill3[36];                                    //0x190
+            struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KPRCB'> _KPRCB</a>* volatile WaitPrcb;                               //0x1b4
+        };
+        struct
+        {
+            UCHAR SchedulerApcFill4[40];                                    //0x190
+            VOID* LegoData;                                                 //0x1b8
+        };
+        struct
+        {
+            UCHAR SchedulerApcFill5[47];                                    //0x190
+            UCHAR CallbackNestingLevel;                                     //0x1bf
+        };
+    };
+    ULONG UserTime;                                                         //0x1c0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KEVENT'>_KEVENT</a> SuspendEvent;                                            //0x1c4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> ThreadListEntry;                                     //0x1d4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> MutantListHead;                                      //0x1dc
+    UCHAR AbEntrySummary;                                                   //0x1e4
+    UCHAR AbWaitEntryCount;                                                 //0x1e5
+    UCHAR AbAllocationRegionCount;                                          //0x1e6
+    CHAR SystemPriority;                                                    //0x1e7
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KLOCK_ENTRY'> _KLOCK_ENTRY</a>* LockEntries;                                       //0x1e8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> PropagateBoostsEntry;                         //0x1ec
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> IoSelfBoostsEntry;                            //0x1f0
+    UCHAR PriorityFloorCounts[16];                                          //0x1f4
+    UCHAR PriorityFloorCountsReserved[16];                                  //0x204
+    ULONG PriorityFloorSummary;                                             //0x214
+    volatile LONG AbCompletedIoBoostCount;                                  //0x218
+    volatile LONG AbCompletedIoQoSBoostCount;                               //0x21c
+    volatile SHORT KeReferenceCount;                                        //0x220
+    UCHAR AbOrphanedEntrySummary;                                           //0x222
+    UCHAR AbOwnedEntryCount;                                                //0x223
+    ULONG ForegroundLossTime;                                               //0x224
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> GlobalForegroundListEntry;                       //0x228
+        struct
+        {
+            struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> ForegroundDpcStackListEntry;          //0x228
+            ULONG InGlobalForegroundList;                                   //0x22c
+        };
+    };
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/2004/_KSCB'> _KSCB</a>* QueuedScb;                                                //0x230
+    ULONGLONG NpxState;                                                     //0x238
+    volatile ULONG ThreadTimerDelay;                                        //0x240
+    union
+    {
+        volatile LONG ThreadFlags3;                                         //0x244
+        struct
+        {
+            ULONG BamQosLevel:8;                                            //0x244
+            ULONG PpmPolicy:2;                                              //0x244
+            ULONG ThreadFlags3Reserved2:22;                                 //0x244
+        };
+    };
+    VOID* volatile AbWaitObject;                                            //0x248
+    ULONG ReservedPreviousReadyTimeValue;                                   //0x24c
+    ULONGLONG KernelWaitTime;                                               //0x250
+    ULONGLONG UserWaitTime;                                                 //0x258
+    ULONG Spare29[3];                                                       //0x260
+    ULONG EndPadding[5];                                                    //0x26c
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a class="related" href="/kernels/x86/windows-10/2004/_CMHIVE" tabindex="-1">_CMHIVE</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_CM_KEY_CONTROL_BLOCK" tabindex="-1">_CM_KEY_CONTROL_BLOCK</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_CM_KEY_HASH_TABLE_ENTRY" tabindex="-1">_CM_KEY_HASH_TABLE_ENTRY</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_ETHREAD" tabindex="-1">_ETHREAD</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_IOV_IRP_TRACE" tabindex="-1">_IOV_IRP_TRACE</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_KAPC" tabindex="-1">_KAPC</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_KINTERRUPT" tabindex="-1">_KINTERRUPT</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_KMUTANT" tabindex="-1">_KMUTANT</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_KPRCB" tabindex="-1">_KPRCB</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_KTRANSACTION" tabindex="-1">_KTRANSACTION</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_KWAIT_BLOCK" tabindex="-1">_KWAIT_BLOCK</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_KWAIT_CHAIN_ENTRY" tabindex="-1">_KWAIT_CHAIN_ENTRY</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_POP_DEVICE_SYS_STATE" tabindex="-1">_POP_DEVICE_SYS_STATE</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_POP_FX_WORK_ORDER_WATCHDOG_INFO" tabindex="-1">_POP_FX_WORK_ORDER_WATCHDOG_INFO</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_POP_FX_WORK_POOL" tabindex="-1">_POP_FX_WORK_POOL</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_POP_POWER_ACTION" tabindex="-1">_POP_POWER_ACTION</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_POP_RW_LOCK" tabindex="-1">_POP_RW_LOCK</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_VI_DEADLOCK_THREAD" tabindex="-1">_VI_DEADLOCK_THREAD</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/2004/_XSTATE_SAVE" tabindex="-1">_XSTATE_SAVE</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row footer-style"><div class="col-md-10"><a class="footer_link" href="/terms" tabindex="-1"><strong>Terms of Service</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="/privacy" tabindex="-1"><strong>Privacy Policy</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="https://github.com/VergiliusProject/vergilius-project/issues" tabindex="-1"><strong>Report a Bug</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span>© 2018-2024 Copyright <a class="footer_link" href="https://github.com/VergiliusProject" tabindex="-1"><strong>VergiliusProject</strong></a></div><div class="col-md-2 d-none d-md-block"><small>revision e101526</small></div></div></div></footer></body></html>

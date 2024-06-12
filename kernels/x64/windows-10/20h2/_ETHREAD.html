@@ -1,0 +1,168 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _ETHREAD</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="canonical" href="https://www.vergiliusproject.com/kernels/x64/windows-10/20h2/_ETHREAD"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css?v=2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDEP4DNCRR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "G-YDEP4DNCRR", { 'anonymize_ip': true });</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a class="navbar-brand" href="/" tabindex="-1"><img class="d-inline-block logo" src="/images/logo.png" width="52" height="57" alt="">VERGILIUS</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/" tabindex="-1">HOME</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/kernels" tabindex="-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KERNELS</a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"><div class="container dropdown-menu-style d-block"><div class="row"><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x86" tabindex="-1">x86</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8.1" tabindex="-1">- Windows 8.1</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8" tabindex="-1">- Windows 8</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-7" tabindex="-1">- Windows 7</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/server-2003" tabindex="-1">- Server 2003</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-xp" tabindex="-1">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x64" tabindex="-1">x64</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-11" tabindex="-1">- Windows 11</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8.1" tabindex="-1">- Windows 8.1 | Server 2012R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8" tabindex="-1">- Windows 8 | Server 2012</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-7" tabindex="-1">- Windows 7 | Server 2008R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-xp" tabindex="-1">- Windows XP | Server 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a class="nav-link" href="/about" tabindex="-1">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="breadcrumb-link" href="/" tabindex="-1">> Home</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels" tabindex="-1">Kernels</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64" tabindex="-1">x64</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/windows-10" tabindex="-1">Windows 10</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/windows-10/20h2" tabindex="-1">20H2 (October 2020 Update, Vibranium R2)</a></li><li class="breadcrumb-item active" aria-current="page">_ETHREAD</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_ETHREAD</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/2004/_ETHREAD" tabindex="-1">Windows 10 2004 (May 2020 Update, Vibranium R1)</a></div></div><div class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/20h2/_ETHREAD" tabindex="-1">Windows 10 20H2 (October 2020 Update, Vibranium R2)</a></div></div><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/21h1/_ETHREAD" tabindex="-1">Windows 10 21H1 (May 2021 Update, Vibranium R3)</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/2004/_ETHREAD" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/20h2/_ETHREAD" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/21h1/_ETHREAD" tabindex="-1"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard("#copy-button");
+})();</script><pre><code class="c" style="min-height: 300px; padding-left: 0px;"><button class="button btn-info" id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy">copy</button><div id="copyblock">//0x898 bytes (sizeof)
+struct _ETHREAD
+{
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_KTHREAD'>_KTHREAD</a> Tcb;                                                    //0x0
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LARGE_INTEGER'> _LARGE_INTEGER</a> CreateTime;                                        //0x430
+    union
+    {
+        union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LARGE_INTEGER'> _LARGE_INTEGER</a> ExitTime;                                      //0x438
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> KeyedWaitChain;                                  //0x438
+    };
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> PostBlockList;                                   //0x448
+        struct
+        {
+            VOID* ForwardLinkShadow;                                        //0x448
+            VOID* StartAddress;                                             //0x450
+        };
+    };
+    union
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_TERMINATION_PORT'> _TERMINATION_PORT</a>* TerminationPort;                          //0x458
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_ETHREAD'> _ETHREAD</a>* ReaperLink;                                        //0x458
+        VOID* KeyedWaitValue;                                               //0x458
+    };
+    ULONGLONG ActiveTimerListLock;                                          //0x460
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> ActiveTimerListHead;                                 //0x468
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_CLIENT_ID'>_CLIENT_ID</a> Cid;                                                  //0x478
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_KSEMAPHORE'>_KSEMAPHORE</a> KeyedWaitSemaphore;                              //0x488
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_KSEMAPHORE'>_KSEMAPHORE</a> AlpcWaitSemaphore;                               //0x488
+    };
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_PS_CLIENT_SECURITY_CONTEXT'> _PS_CLIENT_SECURITY_CONTEXT</a> ClientSecurity;                       //0x4a8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> IrpList;                                             //0x4b0
+    ULONGLONG TopLevelIrp;                                                  //0x4c0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_DEVICE_OBJECT'> _DEVICE_OBJECT</a>* DeviceToVerify;                                  //0x4c8
+    VOID* Win32StartAddress;                                                //0x4d0
+    VOID* ChargeOnlySession;                                                //0x4d8
+    VOID* LegacyPowerObject;                                                //0x4e0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> ThreadListEntry;                                     //0x4e8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_EX_RUNDOWN_REF'>_EX_RUNDOWN_REF</a> RundownProtect;                                  //0x4f8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> ThreadLock;                                        //0x500
+    ULONG ReadClusterSize;                                                  //0x508
+    volatile LONG MmLockOrdering;                                           //0x50c
+    union
+    {
+        ULONG CrossThreadFlags;                                             //0x510
+        struct
+        {
+            ULONG Terminated:1;                                             //0x510
+            ULONG ThreadInserted:1;                                         //0x510
+            ULONG HideFromDebugger:1;                                       //0x510
+            ULONG ActiveImpersonationInfo:1;                                //0x510
+            ULONG HardErrorsAreDisabled:1;                                  //0x510
+            ULONG BreakOnTermination:1;                                     //0x510
+            ULONG SkipCreationMsg:1;                                        //0x510
+            ULONG SkipTerminationMsg:1;                                     //0x510
+            ULONG CopyTokenOnOpen:1;                                        //0x510
+            ULONG ThreadIoPriority:3;                                       //0x510
+            ULONG ThreadPagePriority:3;                                     //0x510
+            ULONG RundownFail:1;                                            //0x510
+            ULONG UmsForceQueueTermination:1;                               //0x510
+            ULONG IndirectCpuSets:1;                                        //0x510
+            ULONG DisableDynamicCodeOptOut:1;                               //0x510
+            ULONG ExplicitCaseSensitivity:1;                                //0x510
+            ULONG PicoNotifyExit:1;                                         //0x510
+            ULONG DbgWerUserReportActive:1;                                 //0x510
+            ULONG ForcedSelfTrimActive:1;                                   //0x510
+            ULONG SamplingCoverage:1;                                       //0x510
+            ULONG ReservedCrossThreadFlags:8;                               //0x510
+        };
+    };
+    union
+    {
+        ULONG SameThreadPassiveFlags;                                       //0x514
+        struct
+        {
+            ULONG ActiveExWorker:1;                                         //0x514
+            ULONG MemoryMaker:1;                                            //0x514
+            ULONG StoreLockThread:2;                                        //0x514
+            ULONG ClonedThread:1;                                           //0x514
+            ULONG KeyedEventInUse:1;                                        //0x514
+            ULONG SelfTerminate:1;                                          //0x514
+            ULONG RespectIoPriority:1;                                      //0x514
+            ULONG ActivePageLists:1;                                        //0x514
+            ULONG SecureContext:1;                                          //0x514
+            ULONG ZeroPageThread:1;                                         //0x514
+            ULONG WorkloadClass:1;                                          //0x514
+            ULONG ReservedSameThreadPassiveFlags:20;                        //0x514
+        };
+    };
+    union
+    {
+        ULONG SameThreadApcFlags;                                           //0x518
+        struct
+        {
+            UCHAR OwnsProcessAddressSpaceExclusive:1;                       //0x518
+            UCHAR OwnsProcessAddressSpaceShared:1;                          //0x518
+            UCHAR HardFaultBehavior:1;                                      //0x518
+            volatile UCHAR StartAddressInvalid:1;                           //0x518
+            UCHAR EtwCalloutActive:1;                                       //0x518
+            UCHAR SuppressSymbolLoad:1;                                     //0x518
+            UCHAR Prefetching:1;                                            //0x518
+            UCHAR OwnsVadExclusive:1;                                       //0x518
+            UCHAR SystemPagePriorityActive:1;                               //0x519
+            UCHAR SystemPagePriority:3;                                     //0x519
+            UCHAR AllowUserWritesToExecutableMemory:1;                      //0x519
+            UCHAR AllowKernelWritesToExecutableMemory:1;                    //0x519
+            UCHAR OwnsVadShared:1;                                          //0x519
+        };
+    };
+    UCHAR CacheManagerActive;                                               //0x51c
+    UCHAR DisablePageFaultClustering;                                       //0x51d
+    UCHAR ActiveFaultCount;                                                 //0x51e
+    UCHAR LockOrderState;                                                   //0x51f
+    ULONG PerformanceCountLowReserved;                                      //0x520
+    LONG PerformanceCountHighReserved;                                      //0x524
+    ULONGLONG AlpcMessageId;                                                //0x528
+    union
+    {
+        VOID* AlpcMessage;                                                  //0x530
+        ULONG AlpcReceiveAttributeSet;                                      //0x530
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> AlpcWaitListEntry;                                   //0x538
+    LONG ExitStatus;                                                        //0x548
+    ULONG CacheManagerCount;                                                //0x54c
+    ULONG IoBoostCount;                                                     //0x550
+    ULONG IoQoSBoostCount;                                                  //0x554
+    ULONG IoQoSThrottleCount;                                               //0x558
+    ULONG KernelStackReference;                                             //0x55c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> BoostList;                                           //0x560
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> DeboostList;                                         //0x570
+    ULONGLONG BoostListLock;                                                //0x580
+    ULONGLONG IrpListLock;                                                  //0x588
+    VOID* ReservedForSynchTracking;                                         //0x590
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> CmCallbackListHead;                           //0x598
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_GUID'> _GUID</a>* ActivityId;                                               //0x5a0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> SeLearningModeListHead;                       //0x5a8
+    VOID* VerifierContext;                                                  //0x5b0
+    VOID* AdjustedClientToken;                                              //0x5b8
+    VOID* WorkOnBehalfThread;                                               //0x5c0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_PS_PROPERTY_SET'>_PS_PROPERTY_SET</a> PropertySet;                                    //0x5c8
+    VOID* PicoContext;                                                      //0x5e0
+    ULONGLONG UserFsBase;                                                   //0x5e8
+    ULONGLONG UserGsBase;                                                   //0x5f0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_THREAD_ENERGY_VALUES'> _THREAD_ENERGY_VALUES</a>* EnergyValues;                             //0x5f8
+    union
+    {
+        ULONGLONG SelectedCpuSets;                                          //0x600
+        ULONGLONG* SelectedCpuSetsIndirect;                                 //0x600
+    };
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_EJOB'> _EJOB</a>* Silo;                                                     //0x608
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_UNICODE_STRING'> _UNICODE_STRING</a>* ThreadName;                                     //0x610
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_CONTEXT'> _CONTEXT</a>* SetContextState;                                       //0x618
+    ULONG LastExpectedRunTime;                                              //0x620
+    ULONG HeapData;                                                         //0x624
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> OwnerEntryListHead;                                  //0x628
+    ULONGLONG DisownedOwnerEntryListLock;                                   //0x638
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_LIST_ENTRY'>_LIST_ENTRY</a> DisownedOwnerEntryListHead;                          //0x640
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/20h2/_KLOCK_ENTRY'>_KLOCK_ENTRY</a> LockEntries[6];                                     //0x650
+    VOID* CmDbgInfo;                                                        //0x890
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a class="related" href="/kernels/x64/windows-10/20h2/_ALPC_DISPATCH_CONTEXT" tabindex="-1">_ALPC_DISPATCH_CONTEXT</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_CC_PARTITION" tabindex="-1">_CC_PARTITION</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_CM_DIRTY_VECTOR_LOG_ENTRY" tabindex="-1">_CM_DIRTY_VECTOR_LOG_ENTRY</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_EPROCESS" tabindex="-1">_EPROCESS</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_ETHREAD" tabindex="-1">_ETHREAD</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_ETW_GUID_ENTRY" tabindex="-1">_ETW_GUID_ENTRY</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_ETW_STACK_TRACE_BLOCK" tabindex="-1">_ETW_STACK_TRACE_BLOCK</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_HIVE_WRITE_WAIT_QUEUE" tabindex="-1">_HIVE_WRITE_WAIT_QUEUE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_IOV_FORCED_PENDING_TRACE" tabindex="-1">_IOV_FORCED_PENDING_TRACE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_IO_WORKITEM" tabindex="-1">_IO_WORKITEM</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_IRP" tabindex="-1">_IRP</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_KALPC_MESSAGE" tabindex="-1">_KALPC_MESSAGE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_LPCP_MESSAGE" tabindex="-1">_LPCP_MESSAGE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_LPCP_PORT_OBJECT" tabindex="-1">_LPCP_PORT_OBJECT</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_MI_PARTITION_MODWRITES" tabindex="-1">_MI_PARTITION_MODWRITES</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_MI_PARTITION_STORES" tabindex="-1">_MI_PARTITION_STORES</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_MI_SHUTDOWN_STATE" tabindex="-1">_MI_SHUTDOWN_STATE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_MI_SYSTEM_IMAGE_STATE" tabindex="-1">_MI_SYSTEM_IMAGE_STATE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_MI_VAD_EVENT_BLOCK" tabindex="-1">_MI_VAD_EVENT_BLOCK</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_MMINPAGE_SUPPORT" tabindex="-1">_MMINPAGE_SUPPORT</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_NONOPAQUE_OPLOCK" tabindex="-1">_NONOPAQUE_OPLOCK</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_POP_IRP_WORKER_ENTRY" tabindex="-1">_POP_IRP_WORKER_ENTRY</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_POP_SHUTDOWN_BUG_CHECK" tabindex="-1">_POP_SHUTDOWN_BUG_CHECK</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_RH_OP_CONTEXT" tabindex="-1">_RH_OP_CONTEXT</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_VF_KE_CRITICAL_REGION_TRACE" tabindex="-1">_VF_KE_CRITICAL_REGION_TRACE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_VF_POOL_TRACE" tabindex="-1">_VF_POOL_TRACE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_VI_FAULT_TRACE" tabindex="-1">_VI_FAULT_TRACE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_WMI_LOGGER_CONTEXT" tabindex="-1">_WMI_LOGGER_CONTEXT</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/20h2/_WORK_QUEUE_ENTRY" tabindex="-1">_WORK_QUEUE_ENTRY</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row footer-style"><div class="col-md-10"><a class="footer_link" href="/terms" tabindex="-1"><strong>Terms of Service</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="/privacy" tabindex="-1"><strong>Privacy Policy</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="https://github.com/VergiliusProject/vergilius-project/issues" tabindex="-1"><strong>Report a Bug</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span>© 2018-2024 Copyright <a class="footer_link" href="https://github.com/VergiliusProject" tabindex="-1"><strong>VergiliusProject</strong></a></div><div class="col-md-2 d-none d-md-block"><small>revision e101526</small></div></div></div></footer></body></html>

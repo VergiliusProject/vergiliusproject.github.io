@@ -1,0 +1,231 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _EPROCESS</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="canonical" href="https://www.vergiliusproject.com/kernels/x86/windows-10/1507/_EPROCESS"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css?v=2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDEP4DNCRR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "G-YDEP4DNCRR", { 'anonymize_ip': true });</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a class="navbar-brand" href="/" tabindex="-1"><img class="d-inline-block logo" src="/images/logo.png" width="52" height="57" alt="">VERGILIUS</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/" tabindex="-1">HOME</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/kernels" tabindex="-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KERNELS</a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"><div class="container dropdown-menu-style d-block"><div class="row"><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x86" tabindex="-1">x86</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8.1" tabindex="-1">- Windows 8.1</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8" tabindex="-1">- Windows 8</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-7" tabindex="-1">- Windows 7</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/server-2003" tabindex="-1">- Server 2003</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-xp" tabindex="-1">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x64" tabindex="-1">x64</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-11" tabindex="-1">- Windows 11</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8.1" tabindex="-1">- Windows 8.1 | Server 2012R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8" tabindex="-1">- Windows 8 | Server 2012</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-7" tabindex="-1">- Windows 7 | Server 2008R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-xp" tabindex="-1">- Windows XP | Server 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a class="nav-link" href="/about" tabindex="-1">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="breadcrumb-link" href="/" tabindex="-1">> Home</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels" tabindex="-1">Kernels</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86" tabindex="-1">x86</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86/windows-10" tabindex="-1">Windows 10</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86/windows-10/1507" tabindex="-1">1507 (Original Release, Threshold 1)</a></li><li class="breadcrumb-item active" aria-current="page">_EPROCESS</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_EPROCESS</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-8.1/update-1/_EPROCESS" tabindex="-1">Windows 8.1 Update 1</a></div></div><div class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/1507/_EPROCESS" tabindex="-1">Windows 10 1507 (Original Release, Threshold 1)</a></div></div><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/1511/_EPROCESS" tabindex="-1">Windows 10 1511 (November Update, Threshold 2)</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-8.1/update-1/_EPROCESS" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/1507/_EPROCESS" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/1511/_EPROCESS" tabindex="-1"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard("#copy-button");
+})();</script><pre><code class="c" style="min-height: 300px; padding-left: 0px;"><button class="button btn-info" id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy">copy</button><div id="copyblock">//0x380 bytes (sizeof)
+struct _EPROCESS
+{
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_KPROCESS'>_KPROCESS</a> Pcb;                                                   //0x0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> ProcessLock;                                       //0xa8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_RUNDOWN_REF'>_EX_RUNDOWN_REF</a> RundownProtect;                                  //0xac
+    VOID* VdmObjects;                                                       //0xb0
+    VOID* UniqueProcessId;                                                  //0xb4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> ActiveProcessLinks;                                  //0xb8
+    union
+    {
+        ULONG Flags2;                                                       //0xc0
+        struct
+        {
+            ULONG JobNotReallyActive:1;                                     //0xc0
+            ULONG AccountingFolded:1;                                       //0xc0
+            ULONG NewProcessReported:1;                                     //0xc0
+            ULONG ExitProcessReported:1;                                    //0xc0
+            ULONG ReportCommitChanges:1;                                    //0xc0
+            ULONG LastReportMemory:1;                                       //0xc0
+            ULONG ForceWakeCharge:1;                                        //0xc0
+            ULONG CrossSessionCreate:1;                                     //0xc0
+            ULONG NeedsHandleRundown:1;                                     //0xc0
+            ULONG RefTraceEnabled:1;                                        //0xc0
+            ULONG DisableDynamicCode:1;                                     //0xc0
+            ULONG EmptyJobEvaluated:1;                                      //0xc0
+            ULONG DefaultPagePriority:3;                                    //0xc0
+            ULONG PrimaryTokenFrozen:1;                                     //0xc0
+            ULONG ProcessVerifierTarget:1;                                  //0xc0
+            ULONG StackRandomizationDisabled:1;                             //0xc0
+            ULONG AffinityPermanent:1;                                      //0xc0
+            ULONG AffinityUpdateEnable:1;                                   //0xc0
+            ULONG PropagateNode:1;                                          //0xc0
+            ULONG ExplicitAffinity:1;                                       //0xc0
+            ULONG ProcessExecutionState:2;                                  //0xc0
+            ULONG DisallowStrippedImages:1;                                 //0xc0
+            ULONG HighEntropyASLREnabled:1;                                 //0xc0
+            ULONG ExtensionPointDisable:1;                                  //0xc0
+            ULONG ForceRelocateImages:1;                                    //0xc0
+            ULONG ProcessStateChangeRequest:2;                              //0xc0
+            ULONG ProcessStateChangeInProgress:1;                           //0xc0
+            ULONG DisallowWin32kSystemCalls:1;                              //0xc0
+        };
+    };
+    union
+    {
+        ULONG Flags;                                                        //0xc4
+        struct
+        {
+            ULONG CreateReported:1;                                         //0xc4
+            ULONG NoDebugInherit:1;                                         //0xc4
+            ULONG ProcessExiting:1;                                         //0xc4
+            ULONG ProcessDelete:1;                                          //0xc4
+            ULONG ControlFlowGuardEnabled:1;                                //0xc4
+            ULONG VmDeleted:1;                                              //0xc4
+            ULONG OutswapEnabled:1;                                         //0xc4
+            ULONG Outswapped:1;                                             //0xc4
+            ULONG FailFastOnCommitFail:1;                                   //0xc4
+            ULONG Wow64VaSpace4Gb:1;                                        //0xc4
+            ULONG AddressSpaceInitialized:2;                                //0xc4
+            ULONG SetTimerResolution:1;                                     //0xc4
+            ULONG BreakOnTermination:1;                                     //0xc4
+            ULONG DeprioritizeViews:1;                                      //0xc4
+            ULONG WriteWatch:1;                                             //0xc4
+            ULONG ProcessInSession:1;                                       //0xc4
+            ULONG OverrideAddressSpace:1;                                   //0xc4
+            ULONG HasAddressSpace:1;                                        //0xc4
+            ULONG LaunchPrefetched:1;                                       //0xc4
+            ULONG Background:1;                                             //0xc4
+            ULONG VmTopDown:1;                                              //0xc4
+            ULONG ImageNotifyDone:1;                                        //0xc4
+            ULONG PdeUpdateNeeded:1;                                        //0xc4
+            ULONG VdmAllowed:1;                                             //0xc4
+            ULONG ProcessRundown:1;                                         //0xc4
+            ULONG ProcessInserted:1;                                        //0xc4
+            ULONG DefaultIoPriority:3;                                      //0xc4
+            ULONG ProcessSelfDelete:1;                                      //0xc4
+            ULONG SetTimerResolutionLink:1;                                 //0xc4
+        };
+    };
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> CreateTime;                                        //0xc8
+    ULONG ProcessQuotaUsage[2];                                             //0xd0
+    ULONG ProcessQuotaPeak[2];                                              //0xd8
+    ULONG PeakVirtualSize;                                                  //0xe0
+    ULONG VirtualSize;                                                      //0xe4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> SessionProcessLinks;                                 //0xe8
+    union
+    {
+        VOID* ExceptionPortData;                                            //0xf0
+        ULONG ExceptionPortValue;                                           //0xf0
+        ULONG ExceptionPortState:3;                                         //0xf0
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_FAST_REF'>_EX_FAST_REF</a> Token;                                              //0xf4
+    ULONG WorkingSetPage;                                                   //0xf8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> AddressCreationLock;                               //0xfc
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> PageTableCommitmentLock;                           //0x100
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_ETHREAD'> _ETHREAD</a>* RotateInProgress;                                      //0x104
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_ETHREAD'> _ETHREAD</a>* ForkInProgress;                                        //0x108
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EJOB'> _EJOB</a>* volatile CommitChargeJob;                                 //0x10c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_RTL_AVL_TREE'>_RTL_AVL_TREE</a> CloneRoot;                                         //0x110
+    volatile ULONG NumberOfPrivatePages;                                    //0x114
+    volatile ULONG NumberOfLockedPages;                                     //0x118
+    VOID* Win32Process;                                                     //0x11c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EJOB'> _EJOB</a>* volatile Job;                                             //0x120
+    VOID* SectionObject;                                                    //0x124
+    VOID* SectionBaseAddress;                                               //0x128
+    ULONG Cookie;                                                           //0x12c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_PAGEFAULT_HISTORY'> _PAGEFAULT_HISTORY</a>* WorkingSetWatch;                             //0x130
+    VOID* Win32WindowStation;                                               //0x134
+    VOID* InheritedFromUniqueProcessId;                                     //0x138
+    VOID* LdtInformation;                                                   //0x13c
+    volatile ULONG OwnerProcessId;                                          //0x140
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_PEB'> _PEB</a>* Peb;                                                       //0x144
+    VOID* Session;                                                          //0x148
+    VOID* AweInfo;                                                          //0x14c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EPROCESS_QUOTA_BLOCK'> _EPROCESS_QUOTA_BLOCK</a>* QuotaBlock;                               //0x150
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_HANDLE_TABLE'> _HANDLE_TABLE</a>* ObjectTable;                                      //0x154
+    VOID* DebugPort;                                                        //0x158
+    VOID* PaeTop;                                                           //0x15c
+    VOID* DeviceMap;                                                        //0x160
+    VOID* EtwDataSource;                                                    //0x164
+    ULONGLONG PageDirectoryPte;                                             //0x168
+    UCHAR ImageFileName[15];                                                //0x170
+    UCHAR PriorityClass;                                                    //0x17f
+    VOID* SecurityPort;                                                     //0x180
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_SE_AUDIT_PROCESS_CREATION_INFO'>_SE_AUDIT_PROCESS_CREATION_INFO</a> SeAuditProcessCreationInfo;      //0x184
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> JobLinks;                                            //0x188
+    VOID* HighestUserAddress;                                               //0x190
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> ThreadListHead;                                      //0x194
+    volatile ULONG ActiveThreads;                                           //0x19c
+    ULONG ImagePathHash;                                                    //0x1a0
+    ULONG DefaultHardErrorProcessing;                                       //0x1a4
+    LONG LastThreadExitStatus;                                              //0x1a8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_FAST_REF'>_EX_FAST_REF</a> PrefetchTrace;                                      //0x1ac
+    VOID* LockedPagesList;                                                  //0x1b0
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> ReadOperationCount;                                //0x1b8
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> WriteOperationCount;                               //0x1c0
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> OtherOperationCount;                               //0x1c8
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> ReadTransferCount;                                 //0x1d0
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> WriteTransferCount;                                //0x1d8
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> OtherTransferCount;                                //0x1e0
+    ULONG CommitChargeLimit;                                                //0x1e8
+    volatile ULONG CommitCharge;                                            //0x1ec
+    volatile ULONG CommitChargePeak;                                        //0x1f0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_MMSUPPORT'>_MMSUPPORT</a> Vm;                                                   //0x1f4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> MmProcessLinks;                                      //0x274
+    ULONG ModifiedPageCount;                                                //0x27c
+    LONG ExitStatus;                                                        //0x280
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_RTL_AVL_TREE'>_RTL_AVL_TREE</a> VadRoot;                                           //0x284
+    VOID* VadHint;                                                          //0x288
+    ULONG VadCount;                                                         //0x28c
+    volatile ULONG VadPhysicalPages;                                        //0x290
+    ULONG VadPhysicalPagesLimit;                                            //0x294
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_ALPC_PROCESS_CONTEXT'>_ALPC_PROCESS_CONTEXT</a> AlpcContext;                               //0x298
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> TimerResolutionLink;                                 //0x2a8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_PO_DIAG_STACK_RECORD'> _PO_DIAG_STACK_RECORD</a>* TimerResolutionStackRecord;               //0x2b0
+    ULONG RequestedTimerResolution;                                         //0x2b4
+    ULONG SmallestTimerResolution;                                          //0x2b8
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LARGE_INTEGER'> _LARGE_INTEGER</a> ExitTime;                                          //0x2c0
+    ULONG ActiveThreadsHighWatermark;                                       //0x2c8
+    ULONG LargePrivateVadCount;                                             //0x2cc
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> ThreadListLock;                                    //0x2d0
+    VOID* WnfContext;                                                       //0x2d4
+    ULONG Spare0;                                                           //0x2d8
+    UCHAR SignatureLevel;                                                   //0x2dc
+    UCHAR SectionSignatureLevel;                                            //0x2dd
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_PS_PROTECTION'>_PS_PROTECTION</a> Protection;                                       //0x2de
+    UCHAR HangCount;                                                        //0x2df
+    union
+    {
+        ULONG Flags3;                                                       //0x2e0
+        struct
+        {
+            ULONG Minimal:1;                                                //0x2e0
+            ULONG ReplacingPageRoot:1;                                      //0x2e0
+            ULONG DisableNonSystemFonts:1;                                  //0x2e0
+            ULONG AuditNonSystemFontLoading:1;                              //0x2e0
+            ULONG Crashed:1;                                                //0x2e0
+            ULONG JobVadsAreTracked:1;                                      //0x2e0
+            ULONG VadTrackingDisabled:1;                                    //0x2e0
+            ULONG AuxiliaryProcess:1;                                       //0x2e0
+            ULONG SubsystemProcess:1;                                       //0x2e0
+            ULONG IndirectCpuSets:1;                                        //0x2e0
+            ULONG InPrivate:1;                                              //0x2e0
+        };
+    };
+    LONG DeviceAsid;                                                        //0x2e4
+    VOID* SvmData;                                                          //0x2e8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> SvmProcessLock;                                    //0x2ec
+    ULONG SvmLock;                                                          //0x2f0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> SvmProcessDeviceListHead;                            //0x2f4
+    ULONGLONG LastFreezeInterruptTime;                                      //0x300
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_PROCESS_DISK_COUNTERS'> _PROCESS_DISK_COUNTERS</a>* DiskCounters;                            //0x308
+    VOID* PicoContext;                                                      //0x30c
+    ULONG KeepAliveCounter;                                                 //0x310
+    ULONG NoWakeKeepAliveCounter;                                           //0x314
+    ULONG HighPriorityFaultsAllowed;                                        //0x318
+    VOID* InstrumentationCallback;                                          //0x31c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_PROCESS_ENERGY_VALUES'> _PROCESS_ENERGY_VALUES</a>* EnergyValues;                            //0x320
+    VOID* VmContext;                                                        //0x324
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_ESILO'> _ESILO</a>* Silo;                                                    //0x328
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> SiloEntry;                                           //0x32c
+    ULONGLONG SequenceNumber;                                               //0x338
+    ULONGLONG CreateInterruptTime;                                          //0x340
+    ULONGLONG CreateUnbiasedInterruptTime;                                  //0x348
+    ULONGLONG TotalUnbiasedFrozenTime;                                      //0x350
+    ULONGLONG LastAppStateUpdateTime;                                       //0x358
+    ULONGLONG LastAppStateUptime:61;                                        //0x360
+    ULONGLONG LastAppState:3;                                               //0x360
+    volatile ULONG SharedCommitCharge;                                      //0x368
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> SharedCommitLock;                                  //0x36c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1507/_LIST_ENTRY'>_LIST_ENTRY</a> SharedCommitLinks;                                   //0x370
+    union
+    {
+        struct
+        {
+            ULONG AllowedCpuSets;                                           //0x378
+            ULONG DefaultCpuSets;                                           //0x37c
+        };
+        struct
+        {
+            ULONG* AllowedCpuSetsIndirect;                                  //0x378
+            ULONG* DefaultCpuSetsIndirect;                                  //0x37c
+        };
+    };
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a class="related" href="/kernels/x86/windows-10/1507/_ALPC_COMPLETION_LIST" tabindex="-1">_ALPC_COMPLETION_LIST</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_ALPC_PORT" tabindex="-1">_ALPC_PORT</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_DIAGNOSTIC_CONTEXT" tabindex="-1">_DIAGNOSTIC_CONTEXT</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_ETW_REALTIME_CONSUMER" tabindex="-1">_ETW_REALTIME_CONSUMER</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_ETW_REG_ENTRY" tabindex="-1">_ETW_REG_ENTRY</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_FAST_IO_DISPATCH" tabindex="-1">_FAST_IO_DISPATCH</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_HANDLE_TABLE" tabindex="-1">_HANDLE_TABLE</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_KALPC_MESSAGE" tabindex="-1">_KALPC_MESSAGE</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_KALPC_SECTION" tabindex="-1">_KALPC_SECTION</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_KALPC_SECURITY_DATA" tabindex="-1">_KALPC_SECURITY_DATA</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_KALPC_VIEW" tabindex="-1">_KALPC_VIEW</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_KRESOURCEMANAGER_COMPLETION_BINDING" tabindex="-1">_KRESOURCEMANAGER_COMPLETION_BINDING</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_LOCK_TRACKER" tabindex="-1">_LOCK_TRACKER</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_LPCP_PORT_OBJECT" tabindex="-1">_LPCP_PORT_OBJECT</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_MDL" tabindex="-1">_MDL</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_MI_REVERSE_VIEW_MAP" tabindex="-1">_MI_REVERSE_VIEW_MAP</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_MI_SESSION_STATE" tabindex="-1">_MI_SESSION_STATE</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_MMVAD" tabindex="-1">_MMVAD</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_MM_PAGE_ACCESS_INFO_HEADER" tabindex="-1">_MM_PAGE_ACCESS_INFO_HEADER</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_NONOPAQUE_OPLOCK" tabindex="-1">_NONOPAQUE_OPLOCK</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_OBJECT_HANDLE_COUNT_ENTRY" tabindex="-1">_OBJECT_HANDLE_COUNT_ENTRY</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_OBJECT_HEADER_PROCESS_INFO" tabindex="-1">_OBJECT_HEADER_PROCESS_INFO</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_OBJECT_TYPE_INITIALIZER" tabindex="-1">_OBJECT_TYPE_INITIALIZER</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_OB_DUPLICATE_OBJECT_STATE" tabindex="-1">_OB_DUPLICATE_OBJECT_STATE</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_POP_SHUTDOWN_BUG_CHECK" tabindex="-1">_POP_SHUTDOWN_BUG_CHECK</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_RH_OP_CONTEXT" tabindex="-1">_RH_OP_CONTEXT</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_SEGMENT" tabindex="-1">_SEGMENT</a>,&nbsp;<a class="related" href="/kernels/x86/windows-10/1507/_WORK_QUEUE_ENTRY" tabindex="-1">_WORK_QUEUE_ENTRY</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row footer-style"><div class="col-md-10"><a class="footer_link" href="/terms" tabindex="-1"><strong>Terms of Service</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="/privacy" tabindex="-1"><strong>Privacy Policy</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="https://github.com/VergiliusProject/vergilius-project/issues" tabindex="-1"><strong>Report a Bug</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span>© 2018-2024 Copyright <a class="footer_link" href="https://github.com/VergiliusProject" tabindex="-1"><strong>VergiliusProject</strong></a></div><div class="col-md-2 d-none d-md-block"><small>revision e101526</small></div></div></div></footer></body></html>

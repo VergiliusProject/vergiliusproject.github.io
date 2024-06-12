@@ -1,0 +1,185 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _EJOB</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="canonical" href="https://www.vergiliusproject.com/kernels/x64/windows-10/2004/_EJOB"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css?v=2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDEP4DNCRR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "G-YDEP4DNCRR", { 'anonymize_ip': true });</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a class="navbar-brand" href="/" tabindex="-1"><img class="d-inline-block logo" src="/images/logo.png" width="52" height="57" alt="">VERGILIUS</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/" tabindex="-1">HOME</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/kernels" tabindex="-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KERNELS</a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"><div class="container dropdown-menu-style d-block"><div class="row"><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x86" tabindex="-1">x86</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8.1" tabindex="-1">- Windows 8.1</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8" tabindex="-1">- Windows 8</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-7" tabindex="-1">- Windows 7</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/server-2003" tabindex="-1">- Server 2003</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-xp" tabindex="-1">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x64" tabindex="-1">x64</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-11" tabindex="-1">- Windows 11</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8.1" tabindex="-1">- Windows 8.1 | Server 2012R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8" tabindex="-1">- Windows 8 | Server 2012</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-7" tabindex="-1">- Windows 7 | Server 2008R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-xp" tabindex="-1">- Windows XP | Server 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a class="nav-link" href="/about" tabindex="-1">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="breadcrumb-link" href="/" tabindex="-1">> Home</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels" tabindex="-1">Kernels</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64" tabindex="-1">x64</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/windows-10" tabindex="-1">Windows 10</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/windows-10/2004" tabindex="-1">2004 (May 2020 Update, Vibranium R1)</a></li><li class="breadcrumb-item active" aria-current="page">_EJOB</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_EJOB</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/1909/_EJOB" tabindex="-1">Windows 10 1909 (November 2019 Update, Titanium R2)</a></div></div><div class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/2004/_EJOB" tabindex="-1">Windows 10 2004 (May 2020 Update, Vibranium R1)</a></div></div><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/20h2/_EJOB" tabindex="-1">Windows 10 20H2 (October 2020 Update, Vibranium R2)</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/1909/_EJOB" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/2004/_EJOB" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/20h2/_EJOB" tabindex="-1"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard("#copy-button");
+})();</script><pre><code class="c" style="min-height: 300px; padding-left: 0px;"><button class="button btn-info" id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy">copy</button><div id="copyblock">//0x640 bytes (sizeof)
+struct _EJOB
+{
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_KEVENT'>_KEVENT</a> Event;                                                   //0x0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> JobLinks;                                            //0x18
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> ProcessListHead;                                     //0x28
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_ERESOURCE'>_ERESOURCE</a> JobLock;                                              //0x38
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> TotalUserTime;                                     //0xa0
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> TotalKernelTime;                                   //0xa8
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> TotalCycleTime;                                    //0xb0
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> ThisPeriodTotalUserTime;                           //0xb8
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> ThisPeriodTotalKernelTime;                         //0xc0
+    ULONGLONG TotalContextSwitches;                                         //0xc8
+    ULONG TotalPageFaultCount;                                              //0xd0
+    ULONG TotalProcesses;                                                   //0xd4
+    ULONG ActiveProcesses;                                                  //0xd8
+    ULONG TotalTerminatedProcesses;                                         //0xdc
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> PerProcessUserTimeLimit;                           //0xe0
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> PerJobUserTimeLimit;                               //0xe8
+    ULONGLONG MinimumWorkingSetSize;                                        //0xf0
+    ULONGLONG MaximumWorkingSetSize;                                        //0xf8
+    ULONG LimitFlags;                                                       //0x100
+    ULONG ActiveProcessLimit;                                               //0x104
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_KAFFINITY_EX'>_KAFFINITY_EX</a> Affinity;                                          //0x108
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_JOB_ACCESS_STATE'> _JOB_ACCESS_STATE</a>* AccessState;                                  //0x1b0
+    VOID* AccessStateQuotaReference;                                        //0x1b8
+    ULONG UIRestrictionsClass;                                              //0x1c0
+    ULONG EndOfJobTimeAction;                                               //0x1c4
+    VOID* CompletionPort;                                                   //0x1c8
+    VOID* CompletionKey;                                                    //0x1d0
+    ULONGLONG CompletionCount;                                              //0x1d8
+    ULONG SessionId;                                                        //0x1e0
+    ULONG SchedulingClass;                                                  //0x1e4
+    ULONGLONG ReadOperationCount;                                           //0x1e8
+    ULONGLONG WriteOperationCount;                                          //0x1f0
+    ULONGLONG OtherOperationCount;                                          //0x1f8
+    ULONGLONG ReadTransferCount;                                            //0x200
+    ULONGLONG WriteTransferCount;                                           //0x208
+    ULONGLONG OtherTransferCount;                                           //0x210
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_PROCESS_DISK_COUNTERS'>_PROCESS_DISK_COUNTERS</a> DiskIoInfo;                               //0x218
+    ULONGLONG ProcessMemoryLimit;                                           //0x240
+    ULONGLONG JobMemoryLimit;                                               //0x248
+    ULONGLONG JobTotalMemoryLimit;                                          //0x250
+    ULONGLONG PeakProcessMemoryUsed;                                        //0x258
+    ULONGLONG PeakJobMemoryUsed;                                            //0x260
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_KAFFINITY_EX'>_KAFFINITY_EX</a> EffectiveAffinity;                                 //0x268
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LARGE_INTEGER'> _LARGE_INTEGER</a> EffectivePerProcessUserTimeLimit;                  //0x310
+    ULONGLONG EffectiveMinimumWorkingSetSize;                               //0x318
+    ULONGLONG EffectiveMaximumWorkingSetSize;                               //0x320
+    ULONGLONG EffectiveProcessMemoryLimit;                                  //0x328
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* EffectiveProcessMemoryLimitJob;                           //0x330
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* EffectivePerProcessUserTimeLimitJob;                      //0x338
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* EffectiveNetIoRateLimitJob;                               //0x340
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* EffectiveHeapAttributionJob;                              //0x348
+    ULONG EffectiveLimitFlags;                                              //0x350
+    ULONG EffectiveSchedulingClass;                                         //0x354
+    ULONG EffectiveFreezeCount;                                             //0x358
+    ULONG EffectiveBackgroundCount;                                         //0x35c
+    ULONG EffectiveSwapCount;                                               //0x360
+    ULONG EffectiveNotificationLimitCount;                                  //0x364
+    UCHAR EffectivePriorityClass;                                           //0x368
+    UCHAR PriorityClass;                                                    //0x369
+    UCHAR NestingDepth;                                                     //0x36a
+    UCHAR Reserved1[1];                                                     //0x36b
+    ULONG CompletionFilter;                                                 //0x36c
+    union
+    {
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_WNF_STATE_NAME'>_WNF_STATE_NAME</a> WakeChannel;                                 //0x370
+        struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_PS_JOB_WAKE_INFORMATION'>_PS_JOB_WAKE_INFORMATION</a> WakeInfo;                           //0x370
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_JOBOBJECT_WAKE_FILTER'>_JOBOBJECT_WAKE_FILTER</a> WakeFilter;                               //0x3b8
+    ULONG LowEdgeLatchFilter;                                               //0x3c0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* NotificationLink;                                         //0x3c8
+    ULONGLONG CurrentJobMemoryUsed;                                         //0x3d0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_JOB_NOTIFICATION_INFORMATION'> _JOB_NOTIFICATION_INFORMATION</a>* NotificationInfo;                 //0x3d8
+    VOID* NotificationInfoQuotaReference;                                   //0x3e0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_IO_MINI_COMPLETION_PACKET_USER'> _IO_MINI_COMPLETION_PACKET_USER</a>* NotificationPacket;             //0x3e8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_JOB_CPU_RATE_CONTROL'> _JOB_CPU_RATE_CONTROL</a>* CpuRateControl;                           //0x3f0
+    VOID* EffectiveSchedulingGroup;                                         //0x3f8
+    ULONGLONG ReadyTime;                                                    //0x400
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> MemoryLimitsLock;                                  //0x408
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> SiblingJobLinks;                                     //0x410
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> ChildJobListHead;                                    //0x420
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* ParentJob;                                                //0x430
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* volatile RootJob;                                         //0x438
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_LIST_ENTRY'>_LIST_ENTRY</a> IteratorListHead;                                    //0x440
+    ULONGLONG AncestorCount;                                                //0x450
+    union
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>** Ancestors;                                           //0x458
+        VOID* SessionObject;                                                //0x458
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EPROCESS_VALUES'>_EPROCESS_VALUES</a> Accounting;                                     //0x460
+    ULONG ShadowActiveProcessCount;                                         //0x4c8
+    ULONG ActiveAuxiliaryProcessCount;                                      //0x4cc
+    ULONG SequenceNumber;                                                   //0x4d0
+    ULONG JobId;                                                            //0x4d4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_GUID'>_GUID</a> ContainerId;                                               //0x4d8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_GUID'>_GUID</a> ContainerTelemetryId;                                      //0x4e8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_ESERVERSILO_GLOBALS'> _ESERVERSILO_GLOBALS</a>* ServerSiloGlobals;                         //0x4f8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_PS_PROPERTY_SET'>_PS_PROPERTY_SET</a> PropertySet;                                    //0x500
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_PSP_STORAGE'> _PSP_STORAGE</a>* Storage;                                           //0x518
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_JOB_NET_RATE_CONTROL'> _JOB_NET_RATE_CONTROL</a>* NetRateControl;                           //0x520
+    union
+    {
+        ULONG JobFlags;                                                     //0x528
+        struct
+        {
+            ULONG CloseDone:1;                                              //0x528
+            ULONG MultiGroup:1;                                             //0x528
+            ULONG OutstandingNotification:1;                                //0x528
+            ULONG NotificationInProgress:1;                                 //0x528
+            ULONG UILimits:1;                                               //0x528
+            ULONG CpuRateControlActive:1;                                   //0x528
+            ULONG OwnCpuRateControl:1;                                      //0x528
+            ULONG Terminating:1;                                            //0x528
+            ULONG WorkingSetLock:1;                                         //0x528
+            ULONG JobFrozen:1;                                              //0x528
+            ULONG Background:1;                                             //0x528
+            ULONG WakeNotificationAllocated:1;                              //0x528
+            ULONG WakeNotificationEnabled:1;                                //0x528
+            ULONG WakeNotificationPending:1;                                //0x528
+            ULONG LimitNotificationRequired:1;                              //0x528
+            ULONG ZeroCountNotificationRequired:1;                          //0x528
+            ULONG CycleTimeNotificationRequired:1;                          //0x528
+            ULONG CycleTimeNotificationPending:1;                           //0x528
+            ULONG TimersVirtualized:1;                                      //0x528
+            ULONG JobSwapped:1;                                             //0x528
+            ULONG ViolationDetected:1;                                      //0x528
+            ULONG EmptyJobNotified:1;                                       //0x528
+            ULONG NoSystemCharge:1;                                         //0x528
+            ULONG DropNoWakeCharges:1;                                      //0x528
+            ULONG NoWakeChargePolicyDecided:1;                              //0x528
+            ULONG NetRateControlActive:1;                                   //0x528
+            ULONG OwnNetRateControl:1;                                      //0x528
+            ULONG IoRateControlActive:1;                                    //0x528
+            ULONG OwnIoRateControl:1;                                       //0x528
+            ULONG DisallowNewProcesses:1;                                   //0x528
+            ULONG Silo:1;                                                   //0x528
+            ULONG ContainerTelemetryIdSet:1;                                //0x528
+        };
+    };
+    union
+    {
+        ULONG JobFlags2;                                                    //0x52c
+        struct
+        {
+            ULONG ParentLocked:1;                                           //0x52c
+            ULONG EnableUsermodeSiloThreadImpersonation:1;                  //0x52c
+            ULONG DisallowUsermodeSiloThreadImpersonation:1;                //0x52c
+        };
+    };
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_PROCESS_EXTENDED_ENERGY_VALUES'> _PROCESS_EXTENDED_ENERGY_VALUES</a>* EnergyValues;                   //0x530
+    volatile ULONGLONG SharedCommitCharge;                                  //0x538
+    ULONG DiskIoAttributionUserRefCount;                                    //0x540
+    ULONG DiskIoAttributionRefCount;                                        //0x544
+    union
+    {
+        VOID* DiskIoAttributionContext;                                     //0x548
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* DiskIoAttributionOwnerJob;                            //0x548
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_JOB_RATE_CONTROL_HEADER'>_JOB_RATE_CONTROL_HEADER</a> IoRateControlHeader;                    //0x550
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_PS_IO_CONTROL_ENTRY'>_PS_IO_CONTROL_ENTRY</a> GlobalIoControl;                            //0x578
+    volatile LONG IoControlStateLock;                                       //0x5b0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_RTL_RB_TREE'>_RTL_RB_TREE</a> VolumeIoControlTree;                                //0x5b8
+    ULONGLONG IoRateOverQuotaHistory;                                       //0x5c8
+    ULONG IoRateCurrentGeneration;                                          //0x5d0
+    ULONG IoRateLastQueryGeneration;                                        //0x5d4
+    ULONG IoRateGenerationLength;                                           //0x5d8
+    ULONG IoRateOverQuotaNotifySequenceId;                                  //0x5dc
+    ULONGLONG LastThrottledIoTime;                                          //0x5e0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> IoControlLock;                                     //0x5e8
+    LONGLONG SiloHardReferenceCount;                                        //0x5f0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_WORK_QUEUE_ITEM'>_WORK_QUEUE_ITEM</a> RundownWorkItem;                                //0x5f8
+    VOID* PartitionObject;                                                  //0x618
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_EJOB'> _EJOB</a>* PartitionOwnerJob;                                        //0x620
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/2004/_JOBOBJECT_ENERGY_TRACKING_STATE'> _JOBOBJECT_ENERGY_TRACKING_STATE</a> EnergyTrackingState;             //0x628
+    ULONGLONG KernelWaitTime;                                               //0x630
+    ULONGLONG UserWaitTime;                                                 //0x638
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a class="related" href="/kernels/x64/windows-10/2004/_DEVICE_MAP" tabindex="-1">_DEVICE_MAP</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_EJOB" tabindex="-1">_EJOB</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_EPROCESS" tabindex="-1">_EPROCESS</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_ETHREAD" tabindex="-1">_ETHREAD</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_ETW_SILODRIVERSTATE" tabindex="-1">_ETW_SILODRIVERSTATE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_IO_DRIVER_CREATE_CONTEXT" tabindex="-1">_IO_DRIVER_CREATE_CONTEXT</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_MM_SESSION_SPACE" tabindex="-1">_MM_SESSION_SPACE</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_OB_EXTENDED_PARSE_PARAMETERS" tabindex="-1">_OB_EXTENDED_PARSE_PARAMETERS</a>,&nbsp;<a class="related" href="/kernels/x64/windows-10/2004/_SEP_LOGON_SESSION_REFERENCES" tabindex="-1">_SEP_LOGON_SESSION_REFERENCES</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row footer-style"><div class="col-md-10"><a class="footer_link" href="/terms" tabindex="-1"><strong>Terms of Service</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="/privacy" tabindex="-1"><strong>Privacy Policy</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="https://github.com/VergiliusProject/vergilius-project/issues" tabindex="-1"><strong>Report a Bug</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span>© 2018-2024 Copyright <a class="footer_link" href="https://github.com/VergiliusProject" tabindex="-1"><strong>VergiliusProject</strong></a></div><div class="col-md-2 d-none d-md-block"><small>revision e101526</small></div></div></div></footer></body></html>

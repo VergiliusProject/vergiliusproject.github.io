@@ -1,0 +1,164 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _WMI_LOGGER_CONTEXT</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="canonical" href="https://www.vergiliusproject.com/kernels/x86/windows-10/1709/_WMI_LOGGER_CONTEXT"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css?v=2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDEP4DNCRR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "G-YDEP4DNCRR", { 'anonymize_ip': true });</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a class="navbar-brand" href="/" tabindex="-1"><img class="d-inline-block logo" src="/images/logo.png" width="52" height="57" alt="">VERGILIUS</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/" tabindex="-1">HOME</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/kernels" tabindex="-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KERNELS</a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"><div class="container dropdown-menu-style d-block"><div class="row"><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x86" tabindex="-1">x86</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8.1" tabindex="-1">- Windows 8.1</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8" tabindex="-1">- Windows 8</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-7" tabindex="-1">- Windows 7</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/server-2003" tabindex="-1">- Server 2003</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-xp" tabindex="-1">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x64" tabindex="-1">x64</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-11" tabindex="-1">- Windows 11</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8.1" tabindex="-1">- Windows 8.1 | Server 2012R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8" tabindex="-1">- Windows 8 | Server 2012</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-7" tabindex="-1">- Windows 7 | Server 2008R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-xp" tabindex="-1">- Windows XP | Server 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a class="nav-link" href="/about" tabindex="-1">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="breadcrumb-link" href="/" tabindex="-1">> Home</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels" tabindex="-1">Kernels</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86" tabindex="-1">x86</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86/windows-10" tabindex="-1">Windows 10</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x86/windows-10/1709" tabindex="-1">1709 (Fall Creators Update, Redstone 3)</a></li><li class="breadcrumb-item active" aria-current="page">_WMI_LOGGER_CONTEXT</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_WMI_LOGGER_CONTEXT</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/1703/_WMI_LOGGER_CONTEXT" tabindex="-1">Windows 10 1703 (Creators Update, Redstone 2)</a></div></div><div class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/1709/_WMI_LOGGER_CONTEXT" tabindex="-1">Windows 10 1709 (Fall Creators Update, Redstone 3)</a></div></div><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x86/windows-10/1803/_WMI_LOGGER_CONTEXT" tabindex="-1">Windows 10 1803 (April 2018 Update, Redstone 4)</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/1703/_WMI_LOGGER_CONTEXT" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/1709/_WMI_LOGGER_CONTEXT" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x86/windows-10/1803/_WMI_LOGGER_CONTEXT" tabindex="-1"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard("#copy-button");
+})();</script><pre><code class="c" style="min-height: 300px; padding-left: 0px;"><button class="button btn-info" id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy">copy</button><div id="copyblock">//0x5a0 bytes (sizeof)
+struct _WMI_LOGGER_CONTEXT
+{
+    ULONG LoggerId;                                                         //0x0
+    ULONG BufferSize;                                                       //0x4
+    ULONG MaximumEventSize;                                                 //0x8
+    ULONG LoggerMode;                                                       //0xc
+    LONG AcceptNewEvents;                                                   //0x10
+    ULONG EventMarker[1];                                                   //0x14
+    ULONG ErrorMarker;                                                      //0x18
+    ULONG SizeMask;                                                         //0x1c
+    LONGLONG (*GetCpuClock)();                                              //0x20
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETHREAD'> _ETHREAD</a>* LoggerThread;                                          //0x24
+    LONG LoggerStatus;                                                      //0x28
+    ULONG FailureReason;                                                    //0x2c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_BUFFER_QUEUE'>_ETW_BUFFER_QUEUE</a> BufferQueue;                                   //0x30
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_BUFFER_QUEUE'>_ETW_BUFFER_QUEUE</a> OverflowQueue;                                 //0x38
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LIST_ENTRY'>_LIST_ENTRY</a> GlobalList;                                          //0x40
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LIST_ENTRY'>_LIST_ENTRY</a> DebugIdTrackingList;                                 //0x48
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_DECODE_CONTROL_ENTRY'> _ETW_DECODE_CONTROL_ENTRY</a>* DecodeControlList;                    //0x50
+    ULONG DecodeControlCount;                                               //0x54
+    union
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_WMI_BUFFER_HEADER'> _WMI_BUFFER_HEADER</a>* BatchedBufferList;                       //0x58
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_EX_FAST_REF'>_EX_FAST_REF</a> CurrentBuffer;                                  //0x58
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_UNICODE_STRING'>_UNICODE_STRING</a> LoggerName;                                      //0x5c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_UNICODE_STRING'>_UNICODE_STRING</a> LogFileName;                                     //0x64
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_UNICODE_STRING'>_UNICODE_STRING</a> LogFilePattern;                                  //0x6c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_UNICODE_STRING'>_UNICODE_STRING</a> NewLogFileName;                                  //0x74
+    ULONG ClockType;                                                        //0x7c
+    ULONG LastFlushedBuffer;                                                //0x80
+    ULONG FlushTimer;                                                       //0x84
+    ULONG FlushThreshold;                                                   //0x88
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> ByteOffset;                                        //0x90
+    ULONG MinimumBuffers;                                                   //0x98
+    volatile LONG BuffersAvailable;                                         //0x9c
+    volatile LONG NumberOfBuffers;                                          //0xa0
+    ULONG MaximumBuffers;                                                   //0xa4
+    volatile ULONG EventsLost;                                              //0xa8
+    volatile LONG PeakBuffersCount;                                         //0xac
+    ULONG BuffersWritten;                                                   //0xb0
+    ULONG LogBuffersLost;                                                   //0xb4
+    ULONG RealTimeBuffersDelivered;                                         //0xb8
+    ULONG RealTimeBuffersLost;                                              //0xbc
+    LONG* SequencePtr;                                                      //0xc0
+    ULONG LocalSequence;                                                    //0xc4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_GUID'>_GUID</a> InstanceGuid;                                              //0xc8
+    ULONG MaximumFileSize;                                                  //0xd8
+    LONG FileCounter;                                                       //0xdc
+    enum<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_POOL_TYPE'> _POOL_TYPE</a> PoolType;                                               //0xe0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_REF_CLOCK'>_ETW_REF_CLOCK</a> ReferenceTime;                                    //0xe8
+    LONG CollectionOn;                                                      //0xf8
+    ULONG ProviderInfoSize;                                                 //0xfc
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LIST_ENTRY'>_LIST_ENTRY</a> Consumers;                                           //0x100
+    ULONG NumConsumers;                                                     //0x108
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_REALTIME_CONSUMER'> _ETW_REALTIME_CONSUMER</a>* TransitionConsumer;                      //0x10c
+    VOID* RealtimeLogfileHandle;                                            //0x110
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_UNICODE_STRING'>_UNICODE_STRING</a> RealtimeLogfileName;                             //0x114
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> RealtimeWriteOffset;                               //0x120
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> RealtimeReadOffset;                                //0x128
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> RealtimeLogfileSize;                               //0x130
+    ULONGLONG RealtimeLogfileUsage;                                         //0x138
+    ULONGLONG RealtimeMaximumFileSize;                                      //0x140
+    ULONG RealtimeBuffersSaved;                                             //0x148
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_REF_CLOCK'>_ETW_REF_CLOCK</a> RealtimeReferenceTime;                            //0x150
+    enum<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_RT_EVENT_LOSS'> _ETW_RT_EVENT_LOSS</a> NewRTEventsLost;                                //0x160
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_KEVENT'>_KEVENT</a> LoggerEvent;                                             //0x164
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_KEVENT'>_KEVENT</a> FlushEvent;                                              //0x174
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_KTIMER'>_KTIMER</a> FlushTimeOutTimer;                                       //0x188
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_KDPC'>_KDPC</a> LoggerDpc;                                                 //0x1b0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_KMUTANT'>_KMUTANT</a> LoggerMutex;                                            //0x1d0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> LoggerLock;                                        //0x1f0
+    union
+    {
+        ULONG BufferListSpinLock;                                           //0x1f4
+        struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> BufferListPushLock;                            //0x1f4
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_SECURITY_CLIENT_CONTEXT'>_SECURITY_CLIENT_CONTEXT</a> ClientSecurityContext;                  //0x1f8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_TOKEN_ACCESS_INFORMATION'> _TOKEN_ACCESS_INFORMATION</a>* TokenAccessInformation;               //0x234
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_EX_FAST_REF'>_EX_FAST_REF</a> SecurityDescriptor;                                 //0x238
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> StartTime;                                         //0x240
+    VOID* LogFileHandle;                                                    //0x248
+    LONGLONG BufferSequenceNumber;                                          //0x250
+    union
+    {
+        ULONG Flags;                                                        //0x258
+        struct
+        {
+            ULONG Persistent:1;                                             //0x258
+            ULONG AutoLogger:1;                                             //0x258
+            ULONG FsReady:1;                                                //0x258
+            ULONG RealTime:1;                                               //0x258
+            ULONG Wow:1;                                                    //0x258
+            ULONG KernelTrace:1;                                            //0x258
+            ULONG NoMoreEnable:1;                                           //0x258
+            ULONG StackTracing:1;                                           //0x258
+            ULONG ErrorLogged:1;                                            //0x258
+            ULONG RealtimeLoggerContextFreed:1;                             //0x258
+            ULONG PebsTracing:1;                                            //0x258
+            ULONG PmcCounters:1;                                            //0x258
+            ULONG PageAlignBuffers:1;                                       //0x258
+            ULONG StackLookasideListAllocated:1;                            //0x258
+            ULONG SecurityTrace:1;                                          //0x258
+            ULONG LastBranchTracing:1;                                      //0x258
+            ULONG SystemLoggerIndex:8;                                      //0x258
+            ULONG StackCaching:1;                                           //0x258
+            ULONG SpareFlags2:7;                                            //0x258
+        };
+    };
+    union
+    {
+        volatile ULONG RequestFlag;                                         //0x25c
+        struct
+        {
+            ULONG DbgRequestNewFile:1;                                      //0x25c
+            ULONG DbgRequestUpdateFile:1;                                   //0x25c
+            ULONG DbgRequestFlush:1;                                        //0x25c
+            ULONG DbgRequestDisableRealtime:1;                              //0x25c
+            ULONG DbgRequestDisconnectConsumer:1;                           //0x25c
+            ULONG DbgRequestConnectConsumer:1;                              //0x25c
+            ULONG DbgRequestNotifyConsumer:1;                               //0x25c
+            ULONG DbgRequestUpdateHeader:1;                                 //0x25c
+            ULONG DbgRequestDeferredFlush:1;                                //0x25c
+            ULONG DbgRequestDeferredFlushTimer:1;                           //0x25c
+            ULONG DbgRequestFlushTimer:1;                                   //0x25c
+            ULONG DbgRequestUpdateDebugger:1;                               //0x25c
+            ULONG DbgSpareRequestFlags:20;                                  //0x25c
+        };
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_STACK_TRACE_BLOCK'>_ETW_STACK_TRACE_BLOCK</a> StackTraceBlock;                          //0x260
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_RTL_BITMAP'>_RTL_BITMAP</a> HookIdMap;                                           //0x4e8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_STACK_CACHE'> _ETW_STACK_CACHE</a>* StackCache;                                    //0x4f0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_PMC_SUPPORT'> _ETW_PMC_SUPPORT</a>* PmcData;                                       //0x4f4
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_LBR_SUPPORT'> _ETW_LBR_SUPPORT</a>* LbrData;                                       //0x4f8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LIST_ENTRY'>_LIST_ENTRY</a> BinaryTrackingList;                                  //0x4fc
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_WMI_BUFFER_HEADER'> _WMI_BUFFER_HEADER</a>** ScratchArray;                               //0x504
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_DISALLOWED_GUIDS'>_DISALLOWED_GUIDS</a> DisallowedGuids;                               //0x508
+    LONGLONG RelativeTimerDueTime;                                          //0x510
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_PERIODIC_CAPTURE_STATE_GUIDS'>_PERIODIC_CAPTURE_STATE_GUIDS</a> PeriodicCaptureStateGuids;         //0x518
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_EX_TIMER'> _EX_TIMER</a>* PeriodicCaptureStateTimer;                            //0x520
+    enum<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_PERIODIC_TIMER_STATE'> _ETW_PERIODIC_TIMER_STATE</a> PeriodicCaptureStateTimerState;          //0x524
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_SOFT_RESTART_CONTEXT'> _ETW_SOFT_RESTART_CONTEXT</a>* SoftRestartContext;                   //0x528
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_ETW_SILODRIVERSTATE'> _ETW_SILODRIVERSTATE</a>* SiloState;                                 //0x52c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_WORK_QUEUE_ITEM'>_WORK_QUEUE_ITEM</a> CompressionWorkItem;                            //0x530
+    LONG CompressionWorkItemState;                                          //0x540
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_EX_PUSH_LOCK'>_EX_PUSH_LOCK</a> CompressionLock;                                   //0x544
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_WMI_BUFFER_HEADER'> _WMI_BUFFER_HEADER</a>* CompressionTarget;                           //0x548
+    VOID* CompressionWorkspace;                                             //0x54c
+    LONG CompressionOn;                                                     //0x550
+    ULONG CompressionRatioGuess;                                            //0x554
+    ULONG PartialBufferCompressionLevel;                                    //0x558
+    enum<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/ETW_COMPRESSION_RESUMPTION_MODE'> ETW_COMPRESSION_RESUMPTION_MODE</a> CompressionResumptionMode;         //0x55c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> PlaceholderList;                              //0x560
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_KDPC'>_KDPC</a> CompressionDpc;                                            //0x564
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> LastBufferSwitchTime;                              //0x588
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> BufferWriteDuration;                               //0x590
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/windows-10/1709/_LARGE_INTEGER'> _LARGE_INTEGER</a> BufferCompressDuration;                            //0x598
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a class="related" href="/kernels/x86/windows-10/1709/_ETW_SILODRIVERSTATE" tabindex="-1">_ETW_SILODRIVERSTATE</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row footer-style"><div class="col-md-10"><a class="footer_link" href="/terms" tabindex="-1"><strong>Terms of Service</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="/privacy" tabindex="-1"><strong>Privacy Policy</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="https://github.com/VergiliusProject/vergilius-project/issues" tabindex="-1"><strong>Report a Bug</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span>© 2018-2024 Copyright <a class="footer_link" href="https://github.com/VergiliusProject" tabindex="-1"><strong>VergiliusProject</strong></a></div><div class="col-md-2 d-none d-md-block"><small>revision e101526</small></div></div></div></footer></body></html>

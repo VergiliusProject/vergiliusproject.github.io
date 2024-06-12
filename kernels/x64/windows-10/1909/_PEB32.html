@@ -1,0 +1,144 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _PEB32</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="canonical" href="https://www.vergiliusproject.com/kernels/x64/windows-10/1909/_PEB32"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css?v=2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDEP4DNCRR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "G-YDEP4DNCRR", { 'anonymize_ip': true });</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a class="navbar-brand" href="/" tabindex="-1"><img class="d-inline-block logo" src="/images/logo.png" width="52" height="57" alt="">VERGILIUS</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/" tabindex="-1">HOME</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/kernels" tabindex="-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KERNELS</a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"><div class="container dropdown-menu-style d-block"><div class="row"><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x86" tabindex="-1">x86</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8.1" tabindex="-1">- Windows 8.1</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8" tabindex="-1">- Windows 8</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-7" tabindex="-1">- Windows 7</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/server-2003" tabindex="-1">- Server 2003</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-xp" tabindex="-1">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x64" tabindex="-1">x64</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-11" tabindex="-1">- Windows 11</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8.1" tabindex="-1">- Windows 8.1 | Server 2012R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8" tabindex="-1">- Windows 8 | Server 2012</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-7" tabindex="-1">- Windows 7 | Server 2008R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-xp" tabindex="-1">- Windows XP | Server 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a class="nav-link" href="/about" tabindex="-1">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="breadcrumb-link" href="/" tabindex="-1">> Home</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels" tabindex="-1">Kernels</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64" tabindex="-1">x64</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/windows-10" tabindex="-1">Windows 10</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/windows-10/1909" tabindex="-1">1909 (November 2019 Update, Titanium R2)</a></li><li class="breadcrumb-item active" aria-current="page">_PEB32</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_PEB32</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/1903/_PEB32" tabindex="-1">Windows 10 1903 (May 2019 Update, Titanium R1)</a></div></div><div class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/1909/_PEB32" tabindex="-1">Windows 10 1909 (November 2019 Update, Titanium R2)</a></div></div><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/2004/_PEB32" tabindex="-1">Windows 10 2004 (May 2020 Update, Vibranium R1)</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/1903/_PEB32" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/1909/_PEB32" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/2004/_PEB32" tabindex="-1"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard("#copy-button");
+})();</script><pre><code class="c" style="min-height: 300px; padding-left: 0px;"><button class="button btn-info" id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy">copy</button><div id="copyblock">//0x480 bytes (sizeof)
+struct _PEB32
+{
+    UCHAR InheritedAddressSpace;                                            //0x0
+    UCHAR ReadImageFileExecOptions;                                         //0x1
+    UCHAR BeingDebugged;                                                    //0x2
+    union
+    {
+        UCHAR BitField;                                                     //0x3
+        struct
+        {
+            UCHAR ImageUsesLargePages:1;                                    //0x3
+            UCHAR IsProtectedProcess:1;                                     //0x3
+            UCHAR IsImageDynamicallyRelocated:1;                            //0x3
+            UCHAR SkipPatchingUser32Forwarders:1;                           //0x3
+            UCHAR IsPackagedProcess:1;                                      //0x3
+            UCHAR IsAppContainer:1;                                         //0x3
+            UCHAR IsProtectedProcessLight:1;                                //0x3
+            UCHAR IsLongPathAwareProcess:1;                                 //0x3
+        };
+    };
+    ULONG Mutant;                                                           //0x4
+    ULONG ImageBaseAddress;                                                 //0x8
+    ULONG Ldr;                                                              //0xc
+    ULONG ProcessParameters;                                                //0x10
+    ULONG SubSystemData;                                                    //0x14
+    ULONG ProcessHeap;                                                      //0x18
+    ULONG FastPebLock;                                                      //0x1c
+    ULONG AtlThunkSListPtr;                                                 //0x20
+    ULONG IFEOKey;                                                          //0x24
+    union
+    {
+        ULONG CrossProcessFlags;                                            //0x28
+        struct
+        {
+            ULONG ProcessInJob:1;                                           //0x28
+            ULONG ProcessInitializing:1;                                    //0x28
+            ULONG ProcessUsingVEH:1;                                        //0x28
+            ULONG ProcessUsingVCH:1;                                        //0x28
+            ULONG ProcessUsingFTH:1;                                        //0x28
+            ULONG ProcessPreviouslyThrottled:1;                             //0x28
+            ULONG ProcessCurrentlyThrottled:1;                              //0x28
+            ULONG ProcessImagesHotPatched:1;                                //0x28
+            ULONG ReservedBits0:24;                                         //0x28
+        };
+    };
+    union
+    {
+        ULONG KernelCallbackTable;                                          //0x2c
+        ULONG UserSharedInfoPtr;                                            //0x2c
+    };
+    ULONG SystemReserved;                                                   //0x30
+    ULONG AtlThunkSListPtr32;                                               //0x34
+    ULONG ApiSetMap;                                                        //0x38
+    ULONG TlsExpansionCounter;                                              //0x3c
+    ULONG TlsBitmap;                                                        //0x40
+    ULONG TlsBitmapBits[2];                                                 //0x44
+    ULONG ReadOnlySharedMemoryBase;                                         //0x4c
+    ULONG SharedData;                                                       //0x50
+    ULONG ReadOnlyStaticServerData;                                         //0x54
+    ULONG AnsiCodePageData;                                                 //0x58
+    ULONG OemCodePageData;                                                  //0x5c
+    ULONG UnicodeCaseTableData;                                             //0x60
+    ULONG NumberOfProcessors;                                               //0x64
+    ULONG NtGlobalFlag;                                                     //0x68
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/1909/_LARGE_INTEGER'> _LARGE_INTEGER</a> CriticalSectionTimeout;                            //0x70
+    ULONG HeapSegmentReserve;                                               //0x78
+    ULONG HeapSegmentCommit;                                                //0x7c
+    ULONG HeapDeCommitTotalFreeThreshold;                                   //0x80
+    ULONG HeapDeCommitFreeBlockThreshold;                                   //0x84
+    ULONG NumberOfHeaps;                                                    //0x88
+    ULONG MaximumNumberOfHeaps;                                             //0x8c
+    ULONG ProcessHeaps;                                                     //0x90
+    ULONG GdiSharedHandleTable;                                             //0x94
+    ULONG ProcessStarterHelper;                                             //0x98
+    ULONG GdiDCAttributeList;                                               //0x9c
+    ULONG LoaderLock;                                                       //0xa0
+    ULONG OSMajorVersion;                                                   //0xa4
+    ULONG OSMinorVersion;                                                   //0xa8
+    USHORT OSBuildNumber;                                                   //0xac
+    USHORT OSCSDVersion;                                                    //0xae
+    ULONG OSPlatformId;                                                     //0xb0
+    ULONG ImageSubsystem;                                                   //0xb4
+    ULONG ImageSubsystemMajorVersion;                                       //0xb8
+    ULONG ImageSubsystemMinorVersion;                                       //0xbc
+    ULONG ActiveProcessAffinityMask;                                        //0xc0
+    ULONG GdiHandleBuffer[34];                                              //0xc4
+    ULONG PostProcessInitRoutine;                                           //0x14c
+    ULONG TlsExpansionBitmap;                                               //0x150
+    ULONG TlsExpansionBitmapBits[32];                                       //0x154
+    ULONG SessionId;                                                        //0x1d4
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/1909/_ULARGE_INTEGER'> _ULARGE_INTEGER</a> AppCompatFlags;                                   //0x1d8
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/1909/_ULARGE_INTEGER'> _ULARGE_INTEGER</a> AppCompatFlagsUser;                               //0x1e0
+    ULONG pShimData;                                                        //0x1e8
+    ULONG AppCompatInfo;                                                    //0x1ec
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/1909/_STRING32'>_STRING32</a> CSDVersion;                                            //0x1f0
+    ULONG ActivationContextData;                                            //0x1f8
+    ULONG ProcessAssemblyStorageMap;                                        //0x1fc
+    ULONG SystemDefaultActivationContextData;                               //0x200
+    ULONG SystemAssemblyStorageMap;                                         //0x204
+    ULONG MinimumStackCommit;                                               //0x208
+    ULONG SparePointers[4];                                                 //0x20c
+    ULONG SpareUlongs[5];                                                   //0x21c
+    ULONG WerRegistrationData;                                              //0x230
+    ULONG WerShipAssertPtr;                                                 //0x234
+    ULONG pUnused;                                                          //0x238
+    ULONG pImageHeaderHash;                                                 //0x23c
+    union
+    {
+        ULONG TracingFlags;                                                 //0x240
+        struct
+        {
+            ULONG HeapTracingEnabled:1;                                     //0x240
+            ULONG CritSecTracingEnabled:1;                                  //0x240
+            ULONG LibLoaderTracingEnabled:1;                                //0x240
+            ULONG SpareTracingBits:29;                                      //0x240
+        };
+    };
+    ULONGLONG CsrServerReadOnlySharedMemoryBase;                            //0x248
+    ULONG TppWorkerpListLock;                                               //0x250
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/windows-10/1909/LIST_ENTRY32'>LIST_ENTRY32</a> TppWorkerpList;                                     //0x254
+    ULONG WaitOnAddressHashTable[128];                                      //0x25c
+    ULONG TelemetryCoverageHeader;                                          //0x45c
+    ULONG CloudFileFlags;                                                   //0x460
+    ULONG CloudFileDiagFlags;                                               //0x464
+    CHAR PlaceholderCompatibilityMode;                                      //0x468
+    CHAR PlaceholderCompatibilityModeReserved[7];                           //0x469
+    ULONG LeapSecondData;                                                   //0x470
+    union
+    {
+        ULONG LeapSecondFlags;                                              //0x474
+        struct
+        {
+            ULONG SixtySecondEnabled:1;                                     //0x474
+            ULONG Reserved:31;                                              //0x474
+        };
+    };
+    ULONG NtGlobalFlag2;                                                    //0x478
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row footer-style"><div class="col-md-10"><a class="footer_link" href="/terms" tabindex="-1"><strong>Terms of Service</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="/privacy" tabindex="-1"><strong>Privacy Policy</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="https://github.com/VergiliusProject/vergilius-project/issues" tabindex="-1"><strong>Report a Bug</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span>© 2018-2024 Copyright <a class="footer_link" href="https://github.com/VergiliusProject" tabindex="-1"><strong>VergiliusProject</strong></a></div><div class="col-md-2 d-none d-md-block"><small>revision e101526</small></div></div></div></footer></body></html>
