@@ -1,0 +1,115 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _MI_RESAVAIL_TRACKER</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-130860740-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'UA-130860740-1');
+gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a href="/" tabindex="-1" class="navbar-brand"><img src="/images/logo.png" width="52" height="57" alt="" class="d-inline-block logo">VERGILIUS</a><button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button><div id="navbarSupportedContent" class="collapse navbar-collapse"><ul class="navbar-nav ml-auto"><li class="nav-item"><a href="/" tabindex="-1" class="nav-link">HOME</a></li><li class="nav-item dropdown"><a id="navbarDropdown" tabindex="-1" href="/kernels" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle active">KERNELS</a><div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right"><div class="container dropdown-menu-style"><div class="row"><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x86" class="dropdown-item blue-item">x86</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x86/Windows 10" tabindex="-1" class="dropdown-item">- Windows 10</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8.1" tabindex="-1" class="dropdown-item">- Windows 8.1</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8" tabindex="-1" class="dropdown-item">- Windows 8</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 7" tabindex="-1" class="dropdown-item">- Windows 7</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 2003" tabindex="-1" class="dropdown-item">- Windows 2003</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows XP" tabindex="-1" class="dropdown-item">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x64" class="dropdown-item blue-item">x64</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x64/Windows 11" tabindex="-1" class="dropdown-item">- Windows 11</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 10 | 2016" tabindex="-1" class="dropdown-item">- Windows 10 | 2016</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8.1 | 2012R2" tabindex="-1" class="dropdown-item">- Windows 8.1 | 2012R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8 | 2012" tabindex="-1" class="dropdown-item">- Windows 8 | 2012</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 7 | 2008R2" tabindex="-1" class="dropdown-item">- Windows 7 | 2008R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows XP | 2003" tabindex="-1" class="dropdown-item">- Windows XP | 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a href="/about" tabindex="-1" class="nav-link">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" tabindex="-1" class="breadcrumb-link">> Home</a></li><li class="breadcrumb-item"><a href="/kernels" tabindex="-1" class="breadcrumb-link">Kernels</a></li><li class="breadcrumb-item"><a href="/kernels/x64" tabindex="-1" class="breadcrumb-link">x64</a></li><li class="breadcrumb-item"><a href="/kernels/x64/Windows 10 | 2016" tabindex="-1" class="breadcrumb-link">Windows 10 | 2016</a></li><li class="breadcrumb-item"><a href="/kernels/x64/Windows 10 | 2016/1507 Threshold 1" tabindex="-1" class="breadcrumb-link">1507 Threshold 1</a></li><li aria-current="page" class="breadcrumb-item active">_MI_RESAVAIL_TRACKER</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_MI_RESAVAIL_TRACKER</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x64/Windows 8.1 | 2012R2/Update 1/_MI_RESAVAIL_TRACKER" tabindex="-1" class="wizard-links">Windows 8.1 | 2012R2 Update 1 x64</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x64/Windows 10 | 2016/1507 Threshold 1/_MI_RESAVAIL_TRACKER" tabindex="-1" class="wizard-links">Windows 10 | 2016 1507 Threshold 1 x64</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x64/Windows 10 | 2016/1511 Threshold 2/_MI_RESAVAIL_TRACKER" tabindex="-1" class="wizard-links">Windows 10 | 2016 1511 Threshold 2 x64</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x64/Windows 8.1 | 2012R2/Update 1/_MI_RESAVAIL_TRACKER" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x64/Windows 10 | 2016/1507 Threshold 1/_MI_RESAVAIL_TRACKER" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x64/Windows 10 | 2016/1511 Threshold 2/_MI_RESAVAIL_TRACKER" tabindex="-1" class="bs-wizard-dot"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard('#copy-button');
+})();</script><pre><code style="min-height: 300px; padding-left: 0px;" class="c"><button id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy" class="button btn-info">copy</button><div id="copyblock">//0x3c0 bytes (sizeof)
+struct _MI_RESAVAIL_TRACKER
+{
+    ULONGLONG AllocateKernelStack;                                          //0x0
+    ULONGLONG AllocateGrowKernelStack;                                      //0x8
+    ULONGLONG FreeKernelStack;                                              //0x10
+    ULONGLONG FreeKernelStackError;                                         //0x18
+    ULONGLONG FreeGrowKernelStackError;                                     //0x20
+    ULONGLONG AllocateCreateProcess;                                        //0x28
+    ULONGLONG FreeCreateProcessError;                                       //0x30
+    ULONGLONG FreeDeleteProcess;                                            //0x38
+    ULONGLONG FreeCleanProcess;                                             //0x40
+    ULONGLONG FreeCleanProcessError;                                        //0x48
+    ULONGLONG AllocateAddProcessWsMetaPage;                                 //0x50
+    ULONGLONG AllocateWsIncrease;                                           //0x58
+    ULONGLONG FreeWsIncreaseError;                                          //0x60
+    ULONGLONG FreeWsIncreaseErrorMax;                                       //0x68
+    ULONGLONG FreeWsDecrease;                                               //0x70
+    ULONGLONG AllocateWorkingSetPage;                                       //0x78
+    ULONGLONG FreeWorkingSetPageError;                                      //0x80
+    ULONGLONG FreeDeletePteRange;                                           //0x88
+    ULONGLONG AllocatePageTablesForProcessMetadata;                         //0x90
+    ULONGLONG FreePageTablesForProcessMetadataError2;                       //0x98
+    ULONGLONG AllocatePageTablesForSystem;                                  //0xa0
+    ULONGLONG FreePageTablesExcess;                                         //0xa8
+    ULONGLONG FreeSystemVaPageTables;                                       //0xb0
+    ULONGLONG FreeSessionVaPageTables;                                      //0xb8
+    ULONGLONG AllocateCreateSession;                                        //0xc0
+    ULONGLONG FreeSessionWsDereference;                                     //0xc8
+    ULONGLONG FreeSessionDereference;                                       //0xd0
+    ULONGLONG AllocateLockedSessionImage;                                   //0xd8
+    ULONGLONG FreeLockedSessionImage;                                       //0xe0
+    ULONGLONG FreeSessionImageConversion;                                   //0xe8
+    ULONGLONG AllocateWsAdjustPageTable;                                    //0xf0
+    ULONGLONG FreeWsAdjustPageTable;                                        //0xf8
+    ULONGLONG FreeWsAdjustPageTableError;                                   //0x100
+    ULONGLONG AllocateNoLowMemory;                                          //0x108
+    ULONGLONG AllocatePagedPoolLockedDown;                                  //0x110
+    ULONGLONG FreePagedPoolLockedDown;                                      //0x118
+    ULONGLONG AllocateSystemBitmaps;                                        //0x120
+    ULONGLONG FreeSystemBitmapsError;                                       //0x128
+    ULONGLONG AllocateForMdl;                                               //0x130
+    ULONGLONG FreeFromMdl;                                                  //0x138
+    ULONGLONG AllocateForMdlPartition;                                      //0x140
+    ULONGLONG FreeFromMdlPartition;                                         //0x148
+    ULONGLONG FreeMdlExcess;                                                //0x150
+    ULONGLONG AllocateExpansionNonPagedPool;                                //0x158
+    ULONGLONG FreeExpansionNonPagedPool;                                    //0x160
+    ULONGLONG AllocateVad;                                                  //0x168
+    ULONGLONG RemoveVad;                                                    //0x170
+    ULONGLONG FreeVad;                                                      //0x178
+    ULONGLONG AllocateContiguous;                                           //0x180
+    ULONGLONG FreeContiguousPages;                                          //0x188
+    ULONGLONG FreeContiguousError;                                          //0x190
+    ULONGLONG FreeLargePageMemory;                                          //0x198
+    ULONGLONG AllocateSystemWsles;                                          //0x1a0
+    ULONGLONG FreeSystemWsles;                                              //0x1a8
+    ULONGLONG AllocateSystemInitWs;                                         //0x1b0
+    ULONGLONG AllocateSessionInitWs;                                        //0x1b8
+    ULONGLONG FreeSessionInitWsError;                                       //0x1c0
+    ULONGLONG AllocateSystemImage;                                          //0x1c8
+    ULONGLONG AllocateSystemImageLoad;                                      //0x1d0
+    ULONGLONG AllocateSessionSharedImage;                                   //0x1d8
+    ULONGLONG FreeSystemImageInitCode;                                      //0x1e0
+    ULONGLONG FreeSystemImageLargePageConversion;                           //0x1e8
+    ULONGLONG FreeSystemImageError;                                         //0x1f0
+    ULONGLONG FreeSystemImageLoadExcess;                                    //0x1f8
+    ULONGLONG FreeUnloadSystemImage;                                        //0x200
+    ULONGLONG FreeReloadBootImageLarge;                                     //0x208
+    ULONGLONG FreeIndependent;                                              //0x210
+    ULONGLONG AllocateHotAdd;                                               //0x218
+    ULONGLONG AllocateHotRemove;                                            //0x220
+    ULONGLONG FreeHotAdd;                                                   //0x228
+    ULONGLONG FreeHotAddEcc;                                                //0x230
+    ULONGLONG FreeHotAddError;                                              //0x238
+    ULONGLONG FreeHotAddUnmap;                                              //0x240
+    ULONGLONG AllocateBoot;                                                 //0x248
+    ULONGLONG FreeLoaderBlock;                                              //0x250
+    ULONGLONG AllocateNonPagedSpecialPool;                                  //0x258
+    ULONGLONG FreeNonPagedSpecialPoolError;                                 //0x260
+    ULONGLONG FreeNonPagedSpecialPool;                                      //0x268
+    ULONGLONG AllocateSharedSegmentPage;                                    //0x270
+    ULONGLONG FreeSharedSegmentPage;                                        //0x278
+    ULONGLONG AllocateZeroPage;                                             //0x280
+    ULONGLONG FreeZeroPage;                                                 //0x288
+    ULONGLONG AllocateForPo;                                                //0x290
+    ULONGLONG AllocateForPoForce;                                           //0x298
+    ULONGLONG FreeForPo;                                                    //0x2a0
+    ULONGLONG AllocateThreadHardFaultBehavior;                              //0x2a8
+    ULONGLONG FreeThreadHardFaultBehavior;                                  //0x2b0
+    ULONGLONG ObtainFaultCharges;                                           //0x2b8
+    ULONGLONG FreeFaultCharges;                                             //0x2c0
+    ULONGLONG AllocateStoreCharges;                                         //0x2c8
+    ULONGLONG FreeStoreCharges;                                             //0x2d0
+    ULONGLONG ObtainLockedPageCharge;                                       //0x300
+    ULONGLONG FreeLockedPageCharge;                                         //0x340
+    ULONGLONG AllocateStore;                                                //0x348
+    ULONGLONG FreeStore;                                                    //0x350
+    ULONGLONG AllocateSystemImageProtos;                                    //0x358
+    ULONGLONG FreeSystemImageProtos;                                        //0x360
+    ULONGLONG AllocateModWriterCharge;                                      //0x368
+    ULONGLONG FreeModWriterCharge;                                          //0x370
+    ULONGLONG AllocateMappedWriterCharge;                                   //0x378
+    ULONGLONG FreeMappedWriterCharge;                                       //0x380
+    ULONGLONG AllocateRegistryCharges;                                      //0x388
+    ULONGLONG FreeRegistryCharges;                                          //0x390
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x64/Windows 10 | 2016/1507 Threshold 1/_MI_SYSTEM_INFORMATION" tabindex="-1" class="related">_MI_SYSTEM_INFORMATION</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

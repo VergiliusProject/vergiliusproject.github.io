@@ -1,0 +1,439 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _KPRCB</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-130860740-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'UA-130860740-1');
+gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a href="/" tabindex="-1" class="navbar-brand"><img src="/images/logo.png" width="52" height="57" alt="" class="d-inline-block logo">VERGILIUS</a><button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button><div id="navbarSupportedContent" class="collapse navbar-collapse"><ul class="navbar-nav ml-auto"><li class="nav-item"><a href="/" tabindex="-1" class="nav-link">HOME</a></li><li class="nav-item dropdown"><a id="navbarDropdown" tabindex="-1" href="/kernels" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle active">KERNELS</a><div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right"><div class="container dropdown-menu-style"><div class="row"><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x86" class="dropdown-item blue-item">x86</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x86/Windows 10" tabindex="-1" class="dropdown-item">- Windows 10</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8.1" tabindex="-1" class="dropdown-item">- Windows 8.1</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8" tabindex="-1" class="dropdown-item">- Windows 8</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 7" tabindex="-1" class="dropdown-item">- Windows 7</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 2003" tabindex="-1" class="dropdown-item">- Windows 2003</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows XP" tabindex="-1" class="dropdown-item">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x64" class="dropdown-item blue-item">x64</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x64/Windows 11" tabindex="-1" class="dropdown-item">- Windows 11</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 10 | 2016" tabindex="-1" class="dropdown-item">- Windows 10 | 2016</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8.1 | 2012R2" tabindex="-1" class="dropdown-item">- Windows 8.1 | 2012R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8 | 2012" tabindex="-1" class="dropdown-item">- Windows 8 | 2012</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 7 | 2008R2" tabindex="-1" class="dropdown-item">- Windows 7 | 2008R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows XP | 2003" tabindex="-1" class="dropdown-item">- Windows XP | 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a href="/about" tabindex="-1" class="nav-link">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" tabindex="-1" class="breadcrumb-link">> Home</a></li><li class="breadcrumb-item"><a href="/kernels" tabindex="-1" class="breadcrumb-link">Kernels</a></li><li class="breadcrumb-item"><a href="/kernels/x64" tabindex="-1" class="breadcrumb-link">x64</a></li><li class="breadcrumb-item"><a href="/kernels/x64/Windows 10 | 2016" tabindex="-1" class="breadcrumb-link">Windows 10 | 2016</a></li><li class="breadcrumb-item"><a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)" tabindex="-1" class="breadcrumb-link">1903 19H1 (May 2019 Update)</a></li><li aria-current="page" class="breadcrumb-item active">_KPRCB</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_KPRCB</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x64/Windows 10 | 2016/1809 Redstone 5 (October Update)/_KPRCB" tabindex="-1" class="wizard-links">Windows 10 | 2016 1809 Redstone 5 (October Update) x64</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KPRCB" tabindex="-1" class="wizard-links">Windows 10 | 2016 1903 19H1 (May 2019 Update) x64</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x64/Windows 10 | 2016/1909 19H2 (November 2019 Update)/_KPRCB" tabindex="-1" class="wizard-links">Windows 10 | 2016 1909 19H2 (November 2019 Update) x64</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x64/Windows 10 | 2016/1809 Redstone 5 (October Update)/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x64/Windows 10 | 2016/1909 19H2 (November 2019 Update)/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard('#copy-button');
+})();</script><pre><code style="min-height: 300px; padding-left: 0px;" class="c"><button id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy" class="button btn-info">copy</button><div id="copyblock">//0x8f00 bytes (sizeof)
+struct _KPRCB
+{
+    ULONG MxCsr;                                                            //0x0
+    UCHAR LegacyNumber;                                                     //0x4
+    UCHAR ReservedMustBeZero;                                               //0x5
+    UCHAR InterruptRequest;                                                 //0x6
+    UCHAR IdleHalt;                                                         //0x7
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTHREAD'> _KTHREAD</a>* CurrentThread;                                         //0x8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTHREAD'> _KTHREAD</a>* NextThread;                                            //0x10
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTHREAD'> _KTHREAD</a>* IdleThread;                                            //0x18
+    UCHAR NestingLevel;                                                     //0x20
+    UCHAR ClockOwner;                                                       //0x21
+    union
+    {
+        UCHAR PendingTickFlags;                                             //0x22
+        struct
+        {
+            UCHAR PendingTick:1;                                            //0x22
+            UCHAR PendingBackupTick:1;                                      //0x22
+        };
+    };
+    UCHAR IdleState;                                                        //0x23
+    ULONG Number;                                                           //0x24
+    ULONGLONG RspBase;                                                      //0x28
+    ULONGLONG PrcbLock;                                                     //0x30
+    CHAR* PriorityState;                                                    //0x38
+    CHAR CpuType;                                                           //0x40
+    CHAR CpuID;                                                             //0x41
+    union
+    {
+        USHORT CpuStep;                                                     //0x42
+        struct
+        {
+            UCHAR CpuStepping;                                              //0x42
+            UCHAR CpuModel;                                                 //0x43
+        };
+    };
+    ULONG MHz;                                                              //0x44
+    ULONGLONG HalReserved[8];                                               //0x48
+    USHORT MinorVersion;                                                    //0x88
+    USHORT MajorVersion;                                                    //0x8a
+    UCHAR BuildType;                                                        //0x8c
+    UCHAR CpuVendor;                                                        //0x8d
+    UCHAR CoresPerPhysicalProcessor;                                        //0x8e
+    UCHAR LogicalProcessorsPerCore;                                         //0x8f
+    ULONGLONG TscFrequency;                                                 //0x90
+    ULONGLONG PrcbPad04[5];                                                 //0x98
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KNODE'> _KNODE</a>* ParentNode;                                              //0xc0
+    ULONGLONG GroupSetMember;                                               //0xc8
+    UCHAR Group;                                                            //0xd0
+    UCHAR GroupIndex;                                                       //0xd1
+    UCHAR PrcbPad05[2];                                                     //0xd2
+    ULONG InitialApicId;                                                    //0xd4
+    ULONG ScbOffset;                                                        //0xd8
+    ULONG ApicMask;                                                         //0xdc
+    VOID* AcpiReserved;                                                     //0xe0
+    ULONG CFlushSize;                                                       //0xe8
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KPRCBFLAG'> _KPRCBFLAG</a> PrcbFlags;                                             //0xec
+    union
+    {
+        struct
+        {
+            ULONGLONG TrappedSecurityDomain;                                //0xf0
+            union
+            {
+                UCHAR BpbState;                                             //0xf8
+                struct
+                {
+                    UCHAR BpbCpuIdle:1;                                     //0xf8
+                    UCHAR BpbFlushRsbOnTrap:1;                              //0xf8
+                    UCHAR BpbIbpbOnReturn:1;                                //0xf8
+                    UCHAR BpbIbpbOnTrap:1;                                  //0xf8
+                    UCHAR BpbIbpbOnRetpolineExit:1;                         //0xf8
+                    UCHAR BpbStateReserved:3;                               //0xf8
+                };
+            };
+            union
+            {
+                UCHAR BpbFeatures;                                          //0xf9
+                struct
+                {
+                    UCHAR BpbClearOnIdle:1;                                 //0xf9
+                    UCHAR BpbEnabled:1;                                     //0xf9
+                    UCHAR BpbSmep:1;                                        //0xf9
+                    UCHAR BpbFeaturesReserved:5;                            //0xf9
+                };
+            };
+            UCHAR BpbCurrentSpecCtrl;                                       //0xfa
+            UCHAR BpbKernelSpecCtrl;                                        //0xfb
+            UCHAR BpbNmiSpecCtrl;                                           //0xfc
+            UCHAR BpbUserSpecCtrl;                                          //0xfd
+            volatile SHORT PairRegister;                                    //0xfe
+        };
+        ULONGLONG PrcbPad11[2];                                             //0xf0
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KPROCESSOR_STATE'>_KPROCESSOR_STATE</a> ProcessorState;                                //0x100
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_XSAVE_AREA_HEADER'> _XSAVE_AREA_HEADER</a>* ExtendedSupervisorState;                     //0x6c0
+    ULONG ProcessorSignature;                                               //0x6c8
+    ULONG ProcessorFlags;                                                   //0x6cc
+    union
+    {
+        struct
+        {
+            UCHAR BpbRetpolineExitSpecCtrl;                                 //0x6d0
+            UCHAR BpbTrappedRetpolineExitSpecCtrl;                          //0x6d1
+            union
+            {
+                UCHAR BpbTrappedBpbState;                                   //0x6d2
+                struct
+                {
+                    UCHAR BpbTrappedCpuIdle:1;                              //0x6d2
+                    UCHAR BpbTrappedFlushRsbOnTrap:1;                       //0x6d2
+                    UCHAR BpbTrappedIbpbOnReturn:1;                         //0x6d2
+                    UCHAR BpbTrappedIbpbOnTrap:1;                           //0x6d2
+                    UCHAR BpbTrappedIbpbOnRetpolineExit:1;                  //0x6d2
+                    UCHAR BpbtrappedBpbStateReserved:3;                     //0x6d2
+                };
+            };
+            union
+            {
+                UCHAR BpbRetpolineState;                                    //0x6d3
+                struct
+                {
+                    UCHAR BpbRunningNonRetpolineCode:1;                     //0x6d3
+                    UCHAR BpbIndirectCallsSafe:1;                           //0x6d3
+                    UCHAR BpbRetpolineEnabled:1;                            //0x6d3
+                    UCHAR BpbRetpolineStateReserved:5;                      //0x6d3
+                };
+            };
+            ULONG PrcbPad12b;                                               //0x6d4
+        };
+        ULONGLONG PrcbPad12a;                                               //0x6d0
+    };
+    ULONGLONG PrcbPad12[3];                                                 //0x6d8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KSPIN_LOCK_QUEUE'>_KSPIN_LOCK_QUEUE</a> LockQueue[17];                                 //0x6f0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_PP_LOOKASIDE_LIST'>_PP_LOOKASIDE_LIST</a> PPLookasideList[16];                          //0x800
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPNxPagedLookasideList[32];              //0x900
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPNPagedLookasideList[32];               //0x1500
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPPagedLookasideList[32];                //0x2100
+    ULONGLONG PrcbPad20;                                                    //0x2d00
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> DeferredReadyListHead;                        //0x2d08
+    volatile LONG MmPageFaultCount;                                         //0x2d10
+    volatile LONG MmCopyOnWriteCount;                                       //0x2d14
+    volatile LONG MmTransitionCount;                                        //0x2d18
+    volatile LONG MmDemandZeroCount;                                        //0x2d1c
+    volatile LONG MmPageReadCount;                                          //0x2d20
+    volatile LONG MmPageReadIoCount;                                        //0x2d24
+    volatile LONG MmDirtyPagesWriteCount;                                   //0x2d28
+    volatile LONG MmDirtyWriteIoCount;                                      //0x2d2c
+    volatile LONG MmMappedPagesWriteCount;                                  //0x2d30
+    volatile LONG MmMappedWriteIoCount;                                     //0x2d34
+    ULONG KeSystemCalls;                                                    //0x2d38
+    ULONG KeContextSwitches;                                                //0x2d3c
+    ULONG PrcbPad40;                                                        //0x2d40
+    ULONG CcFastReadNoWait;                                                 //0x2d44
+    ULONG CcFastReadWait;                                                   //0x2d48
+    ULONG CcFastReadNotPossible;                                            //0x2d4c
+    ULONG CcCopyReadNoWait;                                                 //0x2d50
+    ULONG CcCopyReadWait;                                                   //0x2d54
+    ULONG CcCopyReadNoWaitMiss;                                             //0x2d58
+    volatile LONG IoReadOperationCount;                                     //0x2d5c
+    volatile LONG IoWriteOperationCount;                                    //0x2d60
+    volatile LONG IoOtherOperationCount;                                    //0x2d64
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoReadTransferCount;                               //0x2d68
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoWriteTransferCount;                              //0x2d70
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoOtherTransferCount;                              //0x2d78
+    volatile LONG PacketBarrier;                                            //0x2d80
+    volatile LONG TargetCount;                                              //0x2d84
+    volatile ULONG IpiFrozen;                                               //0x2d88
+    ULONG PrcbPad30;                                                        //0x2d8c
+    VOID* IsrDpcStats;                                                      //0x2d90
+    ULONG DeviceInterrupts;                                                 //0x2d98
+    LONG LookasideIrpFloat;                                                 //0x2d9c
+    ULONG InterruptLastCount;                                               //0x2da0
+    ULONG InterruptRate;                                                    //0x2da4
+    ULONGLONG LastNonHrTimerExpiration;                                     //0x2da8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KPRCB'> _KPRCB</a>* PairPrcb;                                                //0x2db0
+    ULONGLONG PrcbPad35[1];                                                 //0x2db8
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_SLIST_HEADER'> _SLIST_HEADER</a> InterruptObjectPool;                                //0x2dc0
+    ULONGLONG PrcbPad41[6];                                                 //0x2dd0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KDPC_DATA'>_KDPC_DATA</a> DpcData[2];                                           //0x2e00
+    VOID* DpcStack;                                                         //0x2e50
+    LONG MaximumDpcQueueDepth;                                              //0x2e58
+    ULONG DpcRequestRate;                                                   //0x2e5c
+    ULONG MinimumDpcRate;                                                   //0x2e60
+    ULONG DpcLastCount;                                                     //0x2e64
+    UCHAR ThreadDpcEnable;                                                  //0x2e68
+    volatile UCHAR QuantumEnd;                                              //0x2e69
+    volatile UCHAR DpcRoutineActive;                                        //0x2e6a
+    volatile UCHAR IdleSchedule;                                            //0x2e6b
+    union
+    {
+        volatile LONG DpcRequestSummary;                                    //0x2e6c
+        SHORT DpcRequestSlot[2];                                            //0x2e6c
+        struct
+        {
+            SHORT NormalDpcState;                                           //0x2e6c
+            SHORT ThreadDpcState;                                           //0x2e6e
+        };
+        struct
+        {
+            ULONG DpcNormalProcessingActive:1;                              //0x2e6c
+            ULONG DpcNormalProcessingRequested:1;                           //0x2e6c
+            ULONG DpcNormalThreadSignal:1;                                  //0x2e6c
+            ULONG DpcNormalTimerExpiration:1;                               //0x2e6c
+            ULONG DpcNormalDpcPresent:1;                                    //0x2e6c
+            ULONG DpcNormalLocalInterrupt:1;                                //0x2e6c
+            ULONG DpcNormalSpare:10;                                        //0x2e6c
+            ULONG DpcThreadActive:1;                                        //0x2e6c
+            ULONG DpcThreadRequested:1;                                     //0x2e6c
+            ULONG DpcThreadSpare:14;                                        //0x2e6c
+        };
+    };
+    ULONG LastTimerHand;                                                    //0x2e70
+    ULONG LastTick;                                                         //0x2e74
+    ULONG ClockInterrupts;                                                  //0x2e78
+    ULONG ReadyScanTick;                                                    //0x2e7c
+    VOID* InterruptObject[256];                                             //0x2e80
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTIMER_TABLE'>_KTIMER_TABLE</a> TimerTable;                                        //0x3680
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KGATE'>_KGATE</a> DpcGate;                                                  //0x5880
+    VOID* PrcbPad52;                                                        //0x5898
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KDPC'>_KDPC</a> CallDpc;                                                   //0x58a0
+    LONG ClockKeepAlive;                                                    //0x58e0
+    UCHAR PrcbPad60[2];                                                     //0x58e4
+    USHORT NmiActive;                                                       //0x58e6
+    LONG DpcWatchdogPeriod;                                                 //0x58e8
+    LONG DpcWatchdogCount;                                                  //0x58ec
+    volatile LONG KeSpinLockOrdering;                                       //0x58f0
+    ULONG DpcWatchdogProfileCumulativeDpcThreshold;                         //0x58f4
+    VOID* CachedPtes;                                                       //0x58f8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> WaitListHead;                                        //0x5900
+    ULONGLONG WaitLock;                                                     //0x5910
+    ULONG ReadySummary;                                                     //0x5918
+    LONG AffinitizedSelectionMask;                                          //0x591c
+    ULONG QueueIndex;                                                       //0x5920
+    ULONG PrcbPad75[3];                                                     //0x5924
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KDPC'>_KDPC</a> TimerExpirationDpc;                                        //0x5930
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_RTL_RB_TREE'>_RTL_RB_TREE</a> ScbQueue;                                           //0x5970
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> DispatcherReadyListHead[32];                         //0x5980
+    ULONG InterruptCount;                                                   //0x5b80
+    ULONG KernelTime;                                                       //0x5b84
+    ULONG UserTime;                                                         //0x5b88
+    ULONG DpcTime;                                                          //0x5b8c
+    ULONG InterruptTime;                                                    //0x5b90
+    ULONG AdjustDpcThreshold;                                               //0x5b94
+    UCHAR DebuggerSavedIRQL;                                                //0x5b98
+    UCHAR GroupSchedulingOverQuota;                                         //0x5b99
+    volatile UCHAR DeepSleep;                                               //0x5b9a
+    UCHAR PrcbPad80;                                                        //0x5b9b
+    ULONG DpcTimeCount;                                                     //0x5b9c
+    ULONG DpcTimeLimit;                                                     //0x5ba0
+    ULONG PeriodicCount;                                                    //0x5ba4
+    ULONG PeriodicBias;                                                     //0x5ba8
+    ULONG AvailableTime;                                                    //0x5bac
+    ULONG KeExceptionDispatchCount;                                         //0x5bb0
+    ULONG ReadyThreadCount;                                                 //0x5bb4
+    ULONGLONG ReadyQueueExpectedRunTime;                                    //0x5bb8
+    ULONGLONG StartCycles;                                                  //0x5bc0
+    ULONGLONG TaggedCyclesStart;                                            //0x5bc8
+    ULONGLONG TaggedCycles[2];                                              //0x5bd0
+    ULONGLONG GenerationTarget;                                             //0x5be0
+    ULONGLONG AffinitizedCycles;                                            //0x5be8
+    ULONGLONG ImportantCycles;                                              //0x5bf0
+    ULONGLONG UnimportantCycles;                                            //0x5bf8
+    ULONG DpcWatchdogProfileSingleDpcThreshold;                             //0x5c00
+    volatile LONG MmSpinLockOrdering;                                       //0x5c04
+    VOID* volatile CachedStack;                                             //0x5c08
+    ULONG PageColor;                                                        //0x5c10
+    ULONG NodeColor;                                                        //0x5c14
+    ULONG NodeShiftedColor;                                                 //0x5c18
+    ULONG SecondaryColorMask;                                               //0x5c1c
+    UCHAR PrcbPad81[6];                                                     //0x5c20
+    UCHAR ExceptionStackActive;                                             //0x5c26
+    UCHAR TbFlushListActive;                                                //0x5c27
+    VOID* ExceptionStack;                                                   //0x5c28
+    ULONGLONG PrcbPad82[1];                                                 //0x5c30
+    ULONGLONG CycleTime;                                                    //0x5c38
+    ULONGLONG Cycles[4][2];                                                 //0x5c40
+    ULONG CcFastMdlReadNoWait;                                              //0x5c80
+    ULONG CcFastMdlReadWait;                                                //0x5c84
+    ULONG CcFastMdlReadNotPossible;                                         //0x5c88
+    ULONG CcMapDataNoWait;                                                  //0x5c8c
+    ULONG CcMapDataWait;                                                    //0x5c90
+    ULONG CcPinMappedDataCount;                                             //0x5c94
+    ULONG CcPinReadNoWait;                                                  //0x5c98
+    ULONG CcPinReadWait;                                                    //0x5c9c
+    ULONG CcMdlReadNoWait;                                                  //0x5ca0
+    ULONG CcMdlReadWait;                                                    //0x5ca4
+    ULONG CcLazyWriteHotSpots;                                              //0x5ca8
+    ULONG CcLazyWriteIos;                                                   //0x5cac
+    ULONG CcLazyWritePages;                                                 //0x5cb0
+    ULONG CcDataFlushes;                                                    //0x5cb4
+    ULONG CcDataPages;                                                      //0x5cb8
+    ULONG CcLostDelayedWrites;                                              //0x5cbc
+    ULONG CcFastReadResourceMiss;                                           //0x5cc0
+    ULONG CcCopyReadWaitMiss;                                               //0x5cc4
+    ULONG CcFastMdlReadResourceMiss;                                        //0x5cc8
+    ULONG CcMapDataNoWaitMiss;                                              //0x5ccc
+    ULONG CcMapDataWaitMiss;                                                //0x5cd0
+    ULONG CcPinReadNoWaitMiss;                                              //0x5cd4
+    ULONG CcPinReadWaitMiss;                                                //0x5cd8
+    ULONG CcMdlReadNoWaitMiss;                                              //0x5cdc
+    ULONG CcMdlReadWaitMiss;                                                //0x5ce0
+    ULONG CcReadAheadIos;                                                   //0x5ce4
+    volatile LONG MmCacheTransitionCount;                                   //0x5ce8
+    volatile LONG MmCacheReadCount;                                         //0x5cec
+    volatile LONG MmCacheIoCount;                                           //0x5cf0
+    ULONG PrcbPad91;                                                        //0x5cf4
+    VOID* MmInternal;                                                       //0x5cf8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_PROCESSOR_POWER_STATE'>_PROCESSOR_POWER_STATE</a> PowerState;                               //0x5d00
+    VOID* HyperPte;                                                         //0x5f00
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_LIST_ENTRY'>_LIST_ENTRY</a> ScbList;                                             //0x5f08
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KDPC'>_KDPC</a> ForceIdleDpc;                                              //0x5f18
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KDPC'>_KDPC</a> DpcWatchdogDpc;                                            //0x5f58
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTIMER'>_KTIMER</a> DpcWatchdogTimer;                                        //0x5f98
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_CACHE_DESCRIPTOR'>_CACHE_DESCRIPTOR</a> Cache[5];                                      //0x5fd8
+    ULONG CacheCount;                                                       //0x6014
+    volatile ULONG CachedCommit;                                            //0x6018
+    volatile ULONG CachedResidentAvailable;                                 //0x601c
+    VOID* WheaInfo;                                                         //0x6020
+    VOID* EtwSupport;                                                       //0x6028
+    VOID* ExSaPageArray;                                                    //0x6030
+    ULONG KeAlignmentFixupCount;                                            //0x6038
+    ULONG PrcbPad95;                                                        //0x603c
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_SLIST_HEADER'> _SLIST_HEADER</a> HypercallPageList;                                  //0x6040
+    ULONGLONG* StatisticsPage;                                              //0x6050
+    ULONGLONG PrcbPad85[5];                                                 //0x6058
+    VOID* HypercallCachedPages;                                             //0x6080
+    VOID* VirtualApicAssist;                                                //0x6088
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KAFFINITY_EX'>_KAFFINITY_EX</a> PackageProcessorSet;                               //0x6090
+    ULONG PackageId;                                                        //0x6138
+    ULONG PrcbPad86;                                                        //0x613c
+    ULONGLONG SharedReadyQueueMask;                                         //0x6140
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KSHARED_READY_QUEUE'> _KSHARED_READY_QUEUE</a>* SharedReadyQueue;                          //0x6148
+    ULONG SharedQueueScanOwner;                                             //0x6150
+    ULONG ScanSiblingIndex;                                                 //0x6154
+    ULONGLONG CoreProcessorSet;                                             //0x6158
+    ULONGLONG ScanSiblingMask;                                              //0x6160
+    ULONGLONG LLCMask;                                                      //0x6168
+    ULONGLONG CacheProcessorMask[5];                                        //0x6170
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_PROCESSOR_PROFILE_CONTROL_AREA'> _PROCESSOR_PROFILE_CONTROL_AREA</a>* ProcessorProfileControlArea;    //0x6198
+    VOID* ProfileEventIndexAddress;                                         //0x61a0
+    VOID** DpcWatchdogProfile;                                              //0x61a8
+    VOID** DpcWatchdogProfileCurrentEmptyCapture;                           //0x61b0
+    VOID* SchedulerAssist;                                                  //0x61b8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_SYNCH_COUNTERS'>_SYNCH_COUNTERS</a> SynchCounters;                                   //0x61c0
+    ULONGLONG PrcbPad94;                                                    //0x6278
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_FILESYSTEM_DISK_COUNTERS'>_FILESYSTEM_DISK_COUNTERS</a> FsCounters;                            //0x6280
+    UCHAR VendorString[13];                                                 //0x6290
+    UCHAR PrcbPad100[3];                                                    //0x629d
+    ULONGLONG FeatureBits;                                                  //0x62a0
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> UpdateSignature;                                   //0x62a8
+    ULONGLONG PteBitCache;                                                  //0x62b0
+    ULONG PteBitOffset;                                                     //0x62b8
+    ULONG PrcbPad105;                                                       //0x62bc
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_CONTEXT'> _CONTEXT</a>* Context;                                               //0x62c0
+    ULONG ContextFlagsInit;                                                 //0x62c8
+    ULONG PrcbPad115;                                                       //0x62cc
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_XSAVE_AREA'> _XSAVE_AREA</a>* ExtendedState;                                      //0x62d0
+    VOID* IsrStack;                                                         //0x62d8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KENTROPY_TIMING_STATE'>_KENTROPY_TIMING_STATE</a> EntropyTimingState;                       //0x62e0
+    ULONGLONG PrcbPad110;                                                   //0x6430
+    struct
+    {
+        ULONG UpdateCycle;                                                  //0x6438
+        union
+        {
+            SHORT PairLocal;                                                //0x643c
+            struct
+            {
+                UCHAR PairLocalLow;                                         //0x643c
+                UCHAR PairLocalForceStibp:1;                                //0x643d
+                UCHAR Reserved:4;                                           //0x643d
+                UCHAR Frozen:1;                                             //0x643d
+                UCHAR ForceUntrusted:1;                                     //0x643d
+                UCHAR SynchIpi:1;                                           //0x643d
+            };
+        };
+        union
+        {
+            SHORT PairRemote;                                               //0x643e
+            struct
+            {
+                UCHAR PairRemoteLow;                                        //0x643e
+                UCHAR Reserved2;                                            //0x643f
+            };
+        };
+        UCHAR Trace[24];                                                    //0x6440
+        ULONGLONG LocalDomain;                                              //0x6458
+        ULONGLONG RemoteDomain;                                             //0x6460
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTHREAD'> _KTHREAD</a>* Thread;                                            //0x6468
+    } StibpPairingTrace;                                                    //0x6438
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> AbSelfIoBoostsList;                           //0x6470
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> AbPropagateBoostsList;                        //0x6478
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KDPC'>_KDPC</a> AbDpc;                                                     //0x6480
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_IOP_IRP_STACK_PROFILER'>_IOP_IRP_STACK_PROFILER</a> IoIrpStackProfilerCurrent;               //0x64c0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_IOP_IRP_STACK_PROFILER'>_IOP_IRP_STACK_PROFILER</a> IoIrpStackProfilerPrevious;              //0x6514
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KSECURE_FAULT_INFORMATION'>_KSECURE_FAULT_INFORMATION</a> SecureFault;                          //0x6568
+    ULONGLONG PrcbPad120;                                                   //0x6578
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KSHARED_READY_QUEUE'>_KSHARED_READY_QUEUE</a> LocalSharedReadyQueue;                      //0x6580
+    ULONGLONG PrcbPad125[2];                                                //0x67f0
+    ULONG TimerExpirationTraceCount;                                        //0x6800
+    ULONG PrcbPad127;                                                       //0x6804
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTIMER_EXPIRATION_TRACE'>_KTIMER_EXPIRATION_TRACE</a> TimerExpirationTrace[16];               //0x6808
+    ULONGLONG PrcbPad128[7];                                                //0x6908
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_REQUEST_MAILBOX'> _REQUEST_MAILBOX</a>* Mailbox;                                       //0x6940
+    ULONGLONG PrcbPad130[7];                                                //0x6948
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_MACHINE_CHECK_CONTEXT'>_MACHINE_CHECK_CONTEXT</a> McheckContext[2];                         //0x6980
+    ULONGLONG PrcbPad134[4];                                                //0x6a20
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KLOCK_QUEUE_HANDLE'>_KLOCK_QUEUE_HANDLE</a> SelfmapLockHandle[4];                        //0x6a40
+    ULONGLONG PrcbPad134a[4];                                               //0x6aa0
+    UCHAR PrcbPad138[896];                                                  //0x6ac0
+    UCHAR PrcbPad138a[64];                                                  //0x6e40
+    ULONGLONG KernelDirectoryTableBase;                                     //0x6e80
+    ULONGLONG RspBaseShadow;                                                //0x6e88
+    ULONGLONG UserRspShadow;                                                //0x6e90
+    ULONG ShadowFlags;                                                      //0x6e98
+    ULONG PrcbPad138b;                                                      //0x6e9c
+    ULONGLONG PrcbPad138c;                                                  //0x6ea0
+    USHORT PrcbPad138d;                                                     //0x6ea8
+    USHORT PrcbPad138e;                                                     //0x6eaa
+    ULONG DbgMceNestingLevel;                                               //0x6eac
+    ULONG DbgMceFlags;                                                      //0x6eb0
+    ULONG PrcbPad139b;                                                      //0x6eb4
+    ULONGLONG PrcbPad140[505];                                              //0x6eb8
+    ULONGLONG PrcbPad140a[8];                                               //0x7e80
+    ULONGLONG PrcbPad141[504];                                              //0x7ec0
+    UCHAR PrcbPad141a[64];                                                  //0x8e80
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_REQUEST_MAILBOX'>_REQUEST_MAILBOX</a> RequestMailbox[1];                              //0x8ec0
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KPCR" tabindex="-1" class="related">_KPCR</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KPRCB" tabindex="-1" class="related">_KPRCB</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_KTHREAD" tabindex="-1" class="related">_KTHREAD</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_PROC_PERF_CONSTRAINT" tabindex="-1" class="related">_PROC_PERF_CONSTRAINT</a>,&nbsp;<a href="/kernels/x64/Windows 10 | 2016/1903 19H1 (May 2019 Update)/_PROC_PERF_DOMAIN" tabindex="-1" class="related">_PROC_PERF_DOMAIN</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

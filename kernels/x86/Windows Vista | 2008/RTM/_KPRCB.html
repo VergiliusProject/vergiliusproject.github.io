@@ -1,0 +1,205 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _KPRCB</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-130860740-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'UA-130860740-1');
+gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a href="/" tabindex="-1" class="navbar-brand"><img src="/images/logo.png" width="52" height="57" alt="" class="d-inline-block logo">VERGILIUS</a><button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button><div id="navbarSupportedContent" class="collapse navbar-collapse"><ul class="navbar-nav ml-auto"><li class="nav-item"><a href="/" tabindex="-1" class="nav-link">HOME</a></li><li class="nav-item dropdown"><a id="navbarDropdown" tabindex="-1" href="/kernels" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle active">KERNELS</a><div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right"><div class="container dropdown-menu-style"><div class="row"><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x86" class="dropdown-item blue-item">x86</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x86/Windows 10" tabindex="-1" class="dropdown-item">- Windows 10</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8.1" tabindex="-1" class="dropdown-item">- Windows 8.1</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8" tabindex="-1" class="dropdown-item">- Windows 8</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 7" tabindex="-1" class="dropdown-item">- Windows 7</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 2003" tabindex="-1" class="dropdown-item">- Windows 2003</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows XP" tabindex="-1" class="dropdown-item">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x64" class="dropdown-item blue-item">x64</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x64/Windows 11" tabindex="-1" class="dropdown-item">- Windows 11</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 10 | 2016" tabindex="-1" class="dropdown-item">- Windows 10 | 2016</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8.1 | 2012R2" tabindex="-1" class="dropdown-item">- Windows 8.1 | 2012R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8 | 2012" tabindex="-1" class="dropdown-item">- Windows 8 | 2012</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 7 | 2008R2" tabindex="-1" class="dropdown-item">- Windows 7 | 2008R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows XP | 2003" tabindex="-1" class="dropdown-item">- Windows XP | 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a href="/about" tabindex="-1" class="nav-link">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" tabindex="-1" class="breadcrumb-link">> Home</a></li><li class="breadcrumb-item"><a href="/kernels" tabindex="-1" class="breadcrumb-link">Kernels</a></li><li class="breadcrumb-item"><a href="/kernels/x86" tabindex="-1" class="breadcrumb-link">x86</a></li><li class="breadcrumb-item"><a href="/kernels/x86/Windows Vista | 2008" tabindex="-1" class="breadcrumb-link">Windows Vista | 2008</a></li><li class="breadcrumb-item"><a href="/kernels/x86/Windows Vista | 2008/RTM" tabindex="-1" class="breadcrumb-link">RTM</a></li><li aria-current="page" class="breadcrumb-item active">_KPRCB</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_KPRCB</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x86/Windows 2003/SP2/_KPRCB" tabindex="-1" class="wizard-links">Windows 2003 SP2 x86</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x86/Windows Vista | 2008/RTM/_KPRCB" tabindex="-1" class="wizard-links">Windows Vista | 2008 RTM x86</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x86/Windows Vista | 2008/SP1/_KPRCB" tabindex="-1" class="wizard-links">Windows Vista | 2008 SP1 x86</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x86/Windows 2003/SP2/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x86/Windows Vista | 2008/RTM/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x86/Windows Vista | 2008/SP1/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard('#copy-button');
+})();</script><pre><code style="min-height: 300px; padding-left: 0px;" class="c"><button id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy" class="button btn-info">copy</button><div id="copyblock">//0x1f98 bytes (sizeof)
+struct _KPRCB
+{
+    USHORT MinorVersion;                                                    //0x0
+    USHORT MajorVersion;                                                    //0x2
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KTHREAD'> _KTHREAD</a>* CurrentThread;                                         //0x4
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KTHREAD'> _KTHREAD</a>* NextThread;                                            //0x8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KTHREAD'> _KTHREAD</a>* IdleThread;                                            //0xc
+    UCHAR Number;                                                           //0x10
+    UCHAR NestingLevel;                                                     //0x11
+    USHORT BuildType;                                                       //0x12
+    ULONG SetMember;                                                        //0x14
+    CHAR CpuType;                                                           //0x18
+    CHAR CpuID;                                                             //0x19
+    union
+    {
+        USHORT CpuStep;                                                     //0x1a
+        struct
+        {
+            UCHAR CpuStepping;                                              //0x1a
+            UCHAR CpuModel;                                                 //0x1b
+        };
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KPROCESSOR_STATE'>_KPROCESSOR_STATE</a> ProcessorState;                                //0x1c
+    ULONG KernelReserved[16];                                               //0x33c
+    ULONG HalReserved[16];                                                  //0x37c
+    ULONG CFlushSize;                                                       //0x3bc
+    UCHAR PrcbPad0[88];                                                     //0x3c0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KSPIN_LOCK_QUEUE'>_KSPIN_LOCK_QUEUE</a> LockQueue[33];                                 //0x418
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KTHREAD'> _KTHREAD</a>* NpxThread;                                             //0x520
+    ULONG InterruptCount;                                                   //0x524
+    ULONG KernelTime;                                                       //0x528
+    ULONG UserTime;                                                         //0x52c
+    ULONG DpcTime;                                                          //0x530
+    ULONG DpcTimeCount;                                                     //0x534
+    ULONG InterruptTime;                                                    //0x538
+    ULONG AdjustDpcThreshold;                                               //0x53c
+    ULONG PageColor;                                                        //0x540
+    UCHAR SkipTick;                                                         //0x544
+    UCHAR DebuggerSavedIRQL;                                                //0x545
+    UCHAR NodeColor;                                                        //0x546
+    UCHAR PollSlot;                                                         //0x547
+    ULONG NodeShiftedColor;                                                 //0x548
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KNODE'> _KNODE</a>* ParentNode;                                              //0x54c
+    ULONG MultiThreadProcessorSet;                                          //0x550
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KPRCB'> _KPRCB</a>* MultiThreadSetMaster;                                    //0x554
+    ULONG SecondaryColorMask;                                               //0x558
+    ULONG DpcTimeLimit;                                                     //0x55c
+    ULONG CcFastReadNoWait;                                                 //0x560
+    ULONG CcFastReadWait;                                                   //0x564
+    ULONG CcFastReadNotPossible;                                            //0x568
+    ULONG CcCopyReadNoWait;                                                 //0x56c
+    ULONG CcCopyReadWait;                                                   //0x570
+    ULONG CcCopyReadNoWaitMiss;                                             //0x574
+    volatile LONG MmSpinLockOrdering;                                       //0x578
+    volatile LONG IoReadOperationCount;                                     //0x57c
+    volatile LONG IoWriteOperationCount;                                    //0x580
+    volatile LONG IoOtherOperationCount;                                    //0x584
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoReadTransferCount;                               //0x588
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoWriteTransferCount;                              //0x590
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoOtherTransferCount;                              //0x598
+    ULONG CcFastMdlReadNoWait;                                              //0x5a0
+    ULONG CcFastMdlReadWait;                                                //0x5a4
+    ULONG CcFastMdlReadNotPossible;                                         //0x5a8
+    ULONG CcMapDataNoWait;                                                  //0x5ac
+    ULONG CcMapDataWait;                                                    //0x5b0
+    ULONG CcPinMappedDataCount;                                             //0x5b4
+    ULONG CcPinReadNoWait;                                                  //0x5b8
+    ULONG CcPinReadWait;                                                    //0x5bc
+    ULONG CcMdlReadNoWait;                                                  //0x5c0
+    ULONG CcMdlReadWait;                                                    //0x5c4
+    ULONG CcLazyWriteHotSpots;                                              //0x5c8
+    ULONG CcLazyWriteIos;                                                   //0x5cc
+    ULONG CcLazyWritePages;                                                 //0x5d0
+    ULONG CcDataFlushes;                                                    //0x5d4
+    ULONG CcDataPages;                                                      //0x5d8
+    ULONG CcLostDelayedWrites;                                              //0x5dc
+    ULONG CcFastReadResourceMiss;                                           //0x5e0
+    ULONG CcCopyReadWaitMiss;                                               //0x5e4
+    ULONG CcFastMdlReadResourceMiss;                                        //0x5e8
+    ULONG CcMapDataNoWaitMiss;                                              //0x5ec
+    ULONG CcMapDataWaitMiss;                                                //0x5f0
+    ULONG CcPinReadNoWaitMiss;                                              //0x5f4
+    ULONG CcPinReadWaitMiss;                                                //0x5f8
+    ULONG CcMdlReadNoWaitMiss;                                              //0x5fc
+    ULONG CcMdlReadWaitMiss;                                                //0x600
+    ULONG CcReadAheadIos;                                                   //0x604
+    ULONG KeAlignmentFixupCount;                                            //0x608
+    ULONG KeExceptionDispatchCount;                                         //0x60c
+    ULONG KeSystemCalls;                                                    //0x610
+    ULONG PrcbPad1[3];                                                      //0x614
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_PP_LOOKASIDE_LIST'>_PP_LOOKASIDE_LIST</a> PPLookasideList[16];                          //0x620
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPNPagedLookasideList[32];               //0x6a0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPPagedLookasideList[32];                //0xfa0
+    volatile ULONG PacketBarrier;                                           //0x18a0
+    volatile LONG ReverseStall;                                             //0x18a4
+    VOID* IpiFrame;                                                         //0x18a8
+    UCHAR PrcbPad2[52];                                                     //0x18ac
+    VOID* volatile CurrentPacket[3];                                        //0x18e0
+    volatile ULONG TargetSet;                                               //0x18ec
+    VOID (* volatileWorkerRoutine)(VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4); //0x18f0
+    volatile ULONG IpiFrozen;                                               //0x18f4
+    UCHAR PrcbPad3[40];                                                     //0x18f8
+    volatile ULONG RequestSummary;                                          //0x1920
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KPRCB'> _KPRCB</a>* volatile SignalDone;                                     //0x1924
+    UCHAR PrcbPad4[56];                                                     //0x1928
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KDPC_DATA'>_KDPC_DATA</a> DpcData[2];                                           //0x1960
+    VOID* DpcStack;                                                         //0x1988
+    LONG MaximumDpcQueueDepth;                                              //0x198c
+    ULONG DpcRequestRate;                                                   //0x1990
+    ULONG MinimumDpcRate;                                                   //0x1994
+    volatile UCHAR DpcInterruptRequested;                                   //0x1998
+    volatile UCHAR DpcThreadRequested;                                      //0x1999
+    volatile UCHAR DpcRoutineActive;                                        //0x199a
+    volatile UCHAR DpcThreadActive;                                         //0x199b
+    ULONG PrcbLock;                                                         //0x199c
+    ULONG DpcLastCount;                                                     //0x19a0
+    volatile ULONG TimerHand;                                               //0x19a4
+    volatile ULONG TimerRequest;                                            //0x19a8
+    VOID* PrcbPad41;                                                        //0x19ac
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KEVENT'>_KEVENT</a> DpcEvent;                                                //0x19b0
+    UCHAR ThreadDpcEnable;                                                  //0x19c0
+    volatile UCHAR QuantumEnd;                                              //0x19c1
+    UCHAR PrcbPad50;                                                        //0x19c2
+    volatile UCHAR IdleSchedule;                                            //0x19c3
+    LONG DpcSetEventRequest;                                                //0x19c4
+    LONG Sleeping;                                                          //0x19c8
+    ULONG PeriodicCount;                                                    //0x19cc
+    ULONG PeriodicBias;                                                     //0x19d0
+    UCHAR PrcbPad5[6];                                                      //0x19d4
+    LONG TickOffset;                                                        //0x19dc
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KDPC'>_KDPC</a> CallDpc;                                                   //0x19e0
+    LONG ClockKeepAlive;                                                    //0x1a00
+    UCHAR ClockCheckSlot;                                                   //0x1a04
+    UCHAR ClockPollCycle;                                                   //0x1a05
+    UCHAR PrcbPad6[2];                                                      //0x1a06
+    LONG DpcWatchdogPeriod;                                                 //0x1a08
+    LONG DpcWatchdogCount;                                                  //0x1a0c
+    LONG ThreadWatchdogPeriod;                                              //0x1a10
+    LONG ThreadWatchdogCount;                                               //0x1a14
+    ULONG PrcbPad70[2];                                                     //0x1a18
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_LIST_ENTRY'>_LIST_ENTRY</a> WaitListHead;                                        //0x1a20
+    ULONG WaitLock;                                                         //0x1a28
+    ULONG ReadySummary;                                                     //0x1a2c
+    ULONG QueueIndex;                                                       //0x1a30
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> DeferredReadyListHead;                        //0x1a34
+    ULONGLONG StartCycles;                                                  //0x1a38
+    ULONGLONG CycleTime;                                                    //0x1a40
+    ULONGLONG PrcbPad71[3];                                                 //0x1a48
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_LIST_ENTRY'>_LIST_ENTRY</a> DispatcherReadyListHead[32];                         //0x1a60
+    VOID* ChainedInterruptList;                                             //0x1b60
+    LONG LookasideIrpFloat;                                                 //0x1b64
+    volatile LONG MmPageFaultCount;                                         //0x1b68
+    volatile LONG MmCopyOnWriteCount;                                       //0x1b6c
+    volatile LONG MmTransitionCount;                                        //0x1b70
+    volatile LONG MmCacheTransitionCount;                                   //0x1b74
+    volatile LONG MmDemandZeroCount;                                        //0x1b78
+    volatile LONG MmPageReadCount;                                          //0x1b7c
+    volatile LONG MmPageReadIoCount;                                        //0x1b80
+    volatile LONG MmCacheReadCount;                                         //0x1b84
+    volatile LONG MmCacheIoCount;                                           //0x1b88
+    volatile LONG MmDirtyPagesWriteCount;                                   //0x1b8c
+    volatile LONG MmDirtyWriteIoCount;                                      //0x1b90
+    volatile LONG MmMappedPagesWriteCount;                                  //0x1b94
+    volatile LONG MmMappedWriteIoCount;                                     //0x1b98
+    volatile ULONG CachedCommit;                                            //0x1b9c
+    volatile ULONG CachedResidentAvailable;                                 //0x1ba0
+    VOID* HyperPte;                                                         //0x1ba4
+    UCHAR CpuVendor;                                                        //0x1ba8
+    UCHAR PrcbPad9[3];                                                      //0x1ba9
+    UCHAR VendorString[13];                                                 //0x1bac
+    UCHAR InitialApicId;                                                    //0x1bb9
+    UCHAR CoresPerPhysicalProcessor;                                        //0x1bba
+    UCHAR LogicalProcessorsPerPhysicalProcessor;                            //0x1bbb
+    ULONG MHz;                                                              //0x1bbc
+    ULONG FeatureBits;                                                      //0x1bc0
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_LARGE_INTEGER'> _LARGE_INTEGER</a> UpdateSignature;                                   //0x1bc8
+    volatile ULONGLONG IsrTime;                                             //0x1bd0
+    ULONGLONG SpareField1;                                                  //0x1bd8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_FX_SAVE_AREA'>_FX_SAVE_AREA</a> NpxSaveArea;                                       //0x1be0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_PROCESSOR_POWER_STATE'>_PROCESSOR_POWER_STATE</a> PowerState;                               //0x1df0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KDPC'>_KDPC</a> DpcWatchdogDpc;                                            //0x1ed0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_KTIMER'>_KTIMER</a> DpcWatchdogTimer;                                        //0x1ef0
+    VOID* WheaInfo;                                                         //0x1f18
+    VOID* EtwSupport;                                                       //0x1f1c
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_SLIST_HEADER'> _SLIST_HEADER</a> InterruptObjectPool;                                //0x1f20
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_LARGE_INTEGER'> _LARGE_INTEGER</a> HypercallPagePhysical;                             //0x1f28
+    VOID* HypercallPageVirtual;                                             //0x1f30
+    VOID* RateControl;                                                      //0x1f34
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows Vista | 2008/RTM/_CACHE_DESCRIPTOR'>_CACHE_DESCRIPTOR</a> Cache[5];                                      //0x1f38
+    ULONG CacheCount;                                                       //0x1f74
+    ULONG CacheProcessorMask[5];                                            //0x1f78
+    UCHAR LogicalProcessorsPerCore;                                         //0x1f8c
+    UCHAR PrcbPad8[3];                                                      //0x1f8d
+    ULONG PackageProcessorSet;                                              //0x1f90
+    ULONG CoreProcessorSet;                                                 //0x1f94
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows Vista | 2008/RTM/_KPCR" tabindex="-1" class="related">_KPCR</a>,&nbsp;<a href="/kernels/x86/Windows Vista | 2008/RTM/_KPRCB" tabindex="-1" class="related">_KPRCB</a>,&nbsp;<a href="/kernels/x86/Windows Vista | 2008/RTM/_KTHREAD" tabindex="-1" class="related">_KTHREAD</a>,&nbsp;<a href="/kernels/x86/Windows Vista | 2008/RTM/_PROCESSOR_POWER_STATE" tabindex="-1" class="related">_PROCESSOR_POWER_STATE</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>

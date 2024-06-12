@@ -1,0 +1,298 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _KPRCB</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-130860740-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'UA-130860740-1');
+gtag('set', 'anonymizeIp', true);</script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a href="/" tabindex="-1" class="navbar-brand"><img src="/images/logo.png" width="52" height="57" alt="" class="d-inline-block logo">VERGILIUS</a><button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button><div id="navbarSupportedContent" class="collapse navbar-collapse"><ul class="navbar-nav ml-auto"><li class="nav-item"><a href="/" tabindex="-1" class="nav-link">HOME</a></li><li class="nav-item dropdown"><a id="navbarDropdown" tabindex="-1" href="/kernels" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle active">KERNELS</a><div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right"><div class="container dropdown-menu-style"><div class="row"><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x86" class="dropdown-item blue-item">x86</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x86/Windows 10" tabindex="-1" class="dropdown-item">- Windows 10</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8.1" tabindex="-1" class="dropdown-item">- Windows 8.1</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 8" tabindex="-1" class="dropdown-item">- Windows 8</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 7" tabindex="-1" class="dropdown-item">- Windows 7</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows 2003" tabindex="-1" class="dropdown-item">- Windows 2003</a></p></li><li><p class="menu-list"><a href="/kernels/x86/Windows XP" tabindex="-1" class="dropdown-item">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a tabindex="-1" href="/kernels/x64" class="dropdown-item blue-item">x64</a><ul type="none"><li><p class="menu-list"><a href="/kernels/x64/Windows 11" tabindex="-1" class="dropdown-item">- Windows 11</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 10 | 2016" tabindex="-1" class="dropdown-item">- Windows 10 | 2016</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8.1 | 2012R2" tabindex="-1" class="dropdown-item">- Windows 8.1 | 2012R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 8 | 2012" tabindex="-1" class="dropdown-item">- Windows 8 | 2012</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows 7 | 2008R2" tabindex="-1" class="dropdown-item">- Windows 7 | 2008R2</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows Vista | 2008" tabindex="-1" class="dropdown-item">- Windows Vista | 2008</a></p></li><li><p class="menu-list"><a href="/kernels/x64/Windows XP | 2003" tabindex="-1" class="dropdown-item">- Windows XP | 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a href="/about" tabindex="-1" class="nav-link">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" tabindex="-1" class="breadcrumb-link">> Home</a></li><li class="breadcrumb-item"><a href="/kernels" tabindex="-1" class="breadcrumb-link">Kernels</a></li><li class="breadcrumb-item"><a href="/kernels/x86" tabindex="-1" class="breadcrumb-link">x86</a></li><li class="breadcrumb-item"><a href="/kernels/x86/Windows 10" tabindex="-1" class="breadcrumb-link">Windows 10</a></li><li class="breadcrumb-item"><a href="/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)" tabindex="-1" class="breadcrumb-link">1709 Redstone 3 (Fall Creators Update)</a></li><li aria-current="page" class="breadcrumb-item active">_KPRCB</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_KPRCB</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x86/Windows 10/1703 Redstone 2 (Creators Update)/_KPRCB" tabindex="-1" class="wizard-links">Windows 10 1703 Redstone 2 (Creators Update) x86</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KPRCB" tabindex="-1" class="wizard-links">Windows 10 1709 Redstone 3 (Fall Creators Update) x86</a></div></div><div style="padding-right: 5px;" class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block"><div class="text-center bs-wizard-stepnum"><a href="/kernels/x86/Windows 10/1803 Redstone 4 (Spring Creators Update)/_KPRCB" tabindex="-1" class="wizard-links">Windows 10 1803 Redstone 4 (Spring Creators Update) x86</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x86/Windows 10/1703 Redstone 2 (Creators Update)/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a href="/kernels/x86/Windows 10/1803 Redstone 4 (Spring Creators Update)/_KPRCB" tabindex="-1" class="bs-wizard-dot"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard('#copy-button');
+})();</script><pre><code style="min-height: 300px; padding-left: 0px;" class="c"><button id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy" class="button btn-info">copy</button><div id="copyblock">//0x4940 bytes (sizeof)
+struct _KPRCB
+{
+    USHORT MinorVersion;                                                    //0x0
+    USHORT MajorVersion;                                                    //0x2
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KTHREAD'> _KTHREAD</a>* CurrentThread;                                         //0x4
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KTHREAD'> _KTHREAD</a>* NextThread;                                            //0x8
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KTHREAD'> _KTHREAD</a>* IdleThread;                                            //0xc
+    UCHAR LegacyNumber;                                                     //0x10
+    UCHAR NestingLevel;                                                     //0x11
+    USHORT BuildType;                                                       //0x12
+    CHAR CpuType;                                                           //0x14
+    CHAR CpuID;                                                             //0x15
+    union
+    {
+        USHORT CpuStep;                                                     //0x16
+        struct
+        {
+            UCHAR CpuStepping;                                              //0x16
+            UCHAR CpuModel;                                                 //0x17
+        };
+    };
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KPROCESSOR_STATE'>_KPROCESSOR_STATE</a> ProcessorState;                                //0x18
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KNODE'> _KNODE</a>* ParentNode;                                              //0x338
+    CHAR* PriorityState;                                                    //0x33c
+    ULONG KernelReserved[14];                                               //0x340
+    ULONG HalReserved[16];                                                  //0x378
+    ULONG CFlushSize;                                                       //0x3b8
+    UCHAR CoresPerPhysicalProcessor;                                        //0x3bc
+    UCHAR LogicalProcessorsPerCore;                                         //0x3bd
+    UCHAR CpuVendor;                                                        //0x3be
+    UCHAR PrcbPad0[1];                                                      //0x3bf
+    ULONG MHz;                                                              //0x3c0
+    UCHAR GroupIndex;                                                       //0x3c4
+    UCHAR Group;                                                            //0x3c5
+    UCHAR PrcbPad05[2];                                                     //0x3c6
+    ULONG GroupSetMember;                                                   //0x3c8
+    ULONG Number;                                                           //0x3cc
+    UCHAR ClockOwner;                                                       //0x3d0
+    union
+    {
+        UCHAR PendingTickFlags;                                             //0x3d1
+        struct
+        {
+            UCHAR PendingTick:1;                                            //0x3d1
+            UCHAR PendingBackupTick:1;                                      //0x3d1
+        };
+    };
+    UCHAR PrcbPad10[70];                                                    //0x3d2
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KSPIN_LOCK_QUEUE'>_KSPIN_LOCK_QUEUE</a> LockQueue[17];                                 //0x418
+    ULONG InterruptCount;                                                   //0x4a0
+    ULONG KernelTime;                                                       //0x4a4
+    ULONG UserTime;                                                         //0x4a8
+    ULONG DpcTime;                                                          //0x4ac
+    ULONG DpcTimeCount;                                                     //0x4b0
+    ULONG InterruptTime;                                                    //0x4b4
+    ULONG AdjustDpcThreshold;                                               //0x4b8
+    ULONG PageColor;                                                        //0x4bc
+    UCHAR DebuggerSavedIRQL;                                                //0x4c0
+    UCHAR NodeColor;                                                        //0x4c1
+    UCHAR DeepSleep;                                                        //0x4c2
+    UCHAR PrcbPad20;                                                        //0x4c3
+    VOID* volatile CachedStack;                                             //0x4c4
+    ULONG NodeShiftedColor;                                                 //0x4c8
+    ULONG SecondaryColorMask;                                               //0x4cc
+    ULONG DpcTimeLimit;                                                     //0x4d0
+    ULONG PrcbPad21[2];                                                     //0x4d4
+    VOID* SchedulerAssist;                                                  //0x4dc
+    ULONG CcFastReadNoWait;                                                 //0x4e0
+    ULONG CcFastReadWait;                                                   //0x4e4
+    ULONG CcFastReadNotPossible;                                            //0x4e8
+    ULONG CcCopyReadNoWait;                                                 //0x4ec
+    ULONG CcCopyReadWait;                                                   //0x4f0
+    ULONG CcCopyReadNoWaitMiss;                                             //0x4f4
+    volatile LONG MmSpinLockOrdering;                                       //0x4f8
+    volatile LONG IoReadOperationCount;                                     //0x4fc
+    volatile LONG IoWriteOperationCount;                                    //0x500
+    volatile LONG IoOtherOperationCount;                                    //0x504
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoReadTransferCount;                               //0x508
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoWriteTransferCount;                              //0x510
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> IoOtherTransferCount;                              //0x518
+    ULONG CcFastMdlReadNoWait;                                              //0x520
+    ULONG CcFastMdlReadWait;                                                //0x524
+    ULONG CcFastMdlReadNotPossible;                                         //0x528
+    ULONG CcMapDataNoWait;                                                  //0x52c
+    ULONG CcMapDataWait;                                                    //0x530
+    ULONG CcPinMappedDataCount;                                             //0x534
+    ULONG CcPinReadNoWait;                                                  //0x538
+    ULONG CcPinReadWait;                                                    //0x53c
+    ULONG CcMdlReadNoWait;                                                  //0x540
+    ULONG CcMdlReadWait;                                                    //0x544
+    ULONG CcLazyWriteHotSpots;                                              //0x548
+    ULONG CcLazyWriteIos;                                                   //0x54c
+    ULONG CcLazyWritePages;                                                 //0x550
+    ULONG CcDataFlushes;                                                    //0x554
+    ULONG CcDataPages;                                                      //0x558
+    ULONG CcLostDelayedWrites;                                              //0x55c
+    ULONG CcFastReadResourceMiss;                                           //0x560
+    ULONG CcCopyReadWaitMiss;                                               //0x564
+    ULONG CcFastMdlReadResourceMiss;                                        //0x568
+    ULONG CcMapDataNoWaitMiss;                                              //0x56c
+    ULONG CcMapDataWaitMiss;                                                //0x570
+    ULONG CcPinReadNoWaitMiss;                                              //0x574
+    ULONG CcPinReadWaitMiss;                                                //0x578
+    ULONG CcMdlReadNoWaitMiss;                                              //0x57c
+    ULONG CcMdlReadWaitMiss;                                                //0x580
+    ULONG CcReadAheadIos;                                                   //0x584
+    ULONG KeAlignmentFixupCount;                                            //0x588
+    ULONG KeExceptionDispatchCount;                                         //0x58c
+    ULONG KeSystemCalls;                                                    //0x590
+    ULONG AvailableTime;                                                    //0x594
+    ULONG PrcbPad22[2];                                                     //0x598
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_PP_LOOKASIDE_LIST'>_PP_LOOKASIDE_LIST</a> PPLookasideList[16];                          //0x5a0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPNxPagedLookasideList[32];              //0x620
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPNPagedLookasideList[32];               //0xf20
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_GENERAL_LOOKASIDE_POOL'>_GENERAL_LOOKASIDE_POOL</a> PPPagedLookasideList[32];                //0x1820
+    volatile LONG PacketBarrier;                                            //0x2120
+    volatile LONG ReverseStall;                                             //0x2124
+    VOID* IpiFrame;                                                         //0x2128
+    UCHAR PrcbPad3[52];                                                     //0x212c
+    VOID* volatile CurrentPacket[3];                                        //0x2160
+    volatile ULONG TargetSet;                                               //0x216c
+    VOID (* volatileWorkerRoutine)(VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4); //0x2170
+    volatile ULONG IpiFrozen;                                               //0x2174
+    UCHAR PrcbPad4[40];                                                     //0x2178
+    volatile ULONG RequestSummary;                                          //0x21a0
+    volatile LONG TargetCount;                                              //0x21a4
+    ULONGLONG LastNonHrTimerExpiration;                                     //0x21a8
+    UCHAR PrcbPad50[32];                                                    //0x21b0
+    ULONG InterruptLastCount;                                               //0x21d0
+    ULONG InterruptRate;                                                    //0x21d4
+    ULONG DeviceInterrupts;                                                 //0x21d8
+    VOID* IsrDpcStats;                                                      //0x21dc
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KDPC_DATA'>_KDPC_DATA</a> DpcData[2];                                           //0x21e0
+    VOID* DpcStack;                                                         //0x2210
+    LONG MaximumDpcQueueDepth;                                              //0x2214
+    ULONG DpcRequestRate;                                                   //0x2218
+    ULONG MinimumDpcRate;                                                   //0x221c
+    ULONG DpcLastCount;                                                     //0x2220
+    ULONG PrcbLock;                                                         //0x2224
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KGATE'>_KGATE</a> DpcGate;                                                  //0x2228
+    UCHAR IdleState;                                                        //0x2238
+    volatile UCHAR QuantumEnd;                                              //0x2239
+    volatile UCHAR DpcRoutineActive;                                        //0x223a
+    volatile UCHAR IdleSchedule;                                            //0x223b
+    union
+    {
+        volatile LONG DpcRequestSummary;                                    //0x223c
+        SHORT DpcRequestSlot[2];                                            //0x223c
+        struct
+        {
+            SHORT NormalDpcState;                                           //0x223c
+            SHORT ThreadDpcState;                                           //0x223e
+        };
+        struct
+        {
+            ULONG DpcNormalProcessingActive:1;                              //0x223c
+            ULONG DpcNormalProcessingRequested:1;                           //0x223c
+            ULONG DpcNormalThreadSignal:1;                                  //0x223c
+            ULONG DpcNormalTimerExpiration:1;                               //0x223c
+            ULONG DpcNormalDpcPresent:1;                                    //0x223c
+            ULONG DpcNormalLocalInterrupt:1;                                //0x223c
+            ULONG DpcNormalSpare:10;                                        //0x223c
+            ULONG DpcThreadActive:1;                                        //0x223c
+            ULONG DpcThreadRequested:1;                                     //0x223c
+            ULONG DpcThreadSpare:14;                                        //0x223c
+        };
+    };
+    ULONG LastTimerHand;                                                    //0x2240
+    ULONG LastTick;                                                         //0x2244
+    ULONG PeriodicCount;                                                    //0x2248
+    ULONG PeriodicBias;                                                     //0x224c
+    ULONG ClockInterrupts;                                                  //0x2250
+    ULONG ReadyScanTick;                                                    //0x2254
+    UCHAR GroupSchedulingOverQuota;                                         //0x2258
+    UCHAR ThreadDpcEnable;                                                  //0x2259
+    UCHAR PrcbPad41[2];                                                     //0x225a
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KTIMER_TABLE'>_KTIMER_TABLE</a> TimerTable;                                        //0x2260
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KDPC'>_KDPC</a> CallDpc;                                                   //0x3aa0
+    LONG ClockKeepAlive;                                                    //0x3ac0
+    UCHAR PrcbPad6[4];                                                      //0x3ac4
+    LONG DpcWatchdogPeriod;                                                 //0x3ac8
+    LONG DpcWatchdogCount;                                                  //0x3acc
+    volatile LONG KeSpinLockOrdering;                                       //0x3ad0
+    ULONG DpcWatchdogProfileCumulativeDpcThreshold;                         //0x3ad4
+    ULONG QueueIndex;                                                       //0x3ad8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> DeferredReadyListHead;                        //0x3adc
+    ULONG ReadySummary;                                                     //0x3ae0
+    LONG AffinitizedSelectionMask;                                          //0x3ae4
+    ULONG WaitLock;                                                         //0x3ae8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_LIST_ENTRY'>_LIST_ENTRY</a> WaitListHead;                                        //0x3aec
+    ULONG ScbOffset;                                                        //0x3af4
+    ULONG ReadyThreadCount;                                                 //0x3af8
+    ULONGLONG StartCycles;                                                  //0x3b00
+    ULONGLONG TaggedCyclesStart;                                            //0x3b08
+    ULONGLONG TaggedCycles[2];                                              //0x3b10
+    ULONGLONG GenerationTarget;                                             //0x3b20
+    volatile ULONGLONG CycleTime;                                           //0x3b28
+    ULONGLONG AffinitizedCycles;                                            //0x3b30
+    ULONGLONG ImportantCycles;                                              //0x3b38
+    ULONGLONG UnimportantCycles;                                            //0x3b40
+    ULONGLONG ReadyQueueExpectedRunTime;                                    //0x3b48
+    volatile ULONG HighCycleTime;                                           //0x3b50
+    ULONGLONG Cycles[4][2];                                                 //0x3b58
+    ULONG PrcbPad71[2];                                                     //0x3b98
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_LIST_ENTRY'>_LIST_ENTRY</a> DispatcherReadyListHead[32];                         //0x3ba0
+    VOID* ChainedInterruptList;                                             //0x3ca0
+    LONG LookasideIrpFloat;                                                 //0x3ca4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_RTL_RB_TREE'>_RTL_RB_TREE</a> ScbQueue;                                           //0x3ca8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_LIST_ENTRY'>_LIST_ENTRY</a> ScbList;                                             //0x3cb0
+    volatile LONG MmPageFaultCount;                                         //0x3cb8
+    volatile LONG MmCopyOnWriteCount;                                       //0x3cbc
+    volatile LONG MmTransitionCount;                                        //0x3cc0
+    volatile LONG MmCacheTransitionCount;                                   //0x3cc4
+    volatile LONG MmDemandZeroCount;                                        //0x3cc8
+    volatile LONG MmPageReadCount;                                          //0x3ccc
+    volatile LONG MmPageReadIoCount;                                        //0x3cd0
+    volatile LONG MmCacheReadCount;                                         //0x3cd4
+    volatile LONG MmCacheIoCount;                                           //0x3cd8
+    volatile LONG MmDirtyPagesWriteCount;                                   //0x3cdc
+    volatile LONG MmDirtyWriteIoCount;                                      //0x3ce0
+    volatile LONG MmMappedPagesWriteCount;                                  //0x3ce4
+    volatile LONG MmMappedWriteIoCount;                                     //0x3ce8
+    volatile ULONG CachedCommit;                                            //0x3cec
+    volatile ULONG CachedResidentAvailable;                                 //0x3cf0
+    VOID* HyperPte;                                                         //0x3cf4
+    UCHAR PrcbPad8[4];                                                      //0x3cf8
+    UCHAR VendorString[13];                                                 //0x3cfc
+    UCHAR InitialApicId;                                                    //0x3d09
+    UCHAR LogicalProcessorsPerPhysicalProcessor;                            //0x3d0a
+    UCHAR PrcbPad9[1];                                                      //0x3d0b
+    ULONGLONG FeatureBits;                                                  //0x3d10
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_LARGE_INTEGER'> _LARGE_INTEGER</a> UpdateSignature;                                   //0x3d18
+    volatile ULONGLONG IsrTime;                                             //0x3d20
+    ULONG PrcbPad90[2];                                                     //0x3d28
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_PROCESSOR_POWER_STATE'>_PROCESSOR_POWER_STATE</a> PowerState;                               //0x3d30
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KDPC'>_KDPC</a> ForceIdleDpc;                                              //0x3ed8
+    ULONG PrcbPad91[14];                                                    //0x3ef8
+    ULONG DpcWatchdogProfileSingleDpcThreshold;                             //0x3f30
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KDPC'>_KDPC</a> DpcWatchdogDpc;                                            //0x3f34
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KTIMER'>_KTIMER</a> DpcWatchdogTimer;                                        //0x3f58
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_SLIST_HEADER'> _SLIST_HEADER</a> HypercallPageList;                                  //0x3f80
+    VOID* HypercallCachedPages;                                             //0x3f88
+    VOID* VirtualApicAssist;                                                //0x3f8c
+    ULONGLONG* StatisticsPage;                                              //0x3f90
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_CACHE_DESCRIPTOR'>_CACHE_DESCRIPTOR</a> Cache[5];                                      //0x3f94
+    ULONG CacheCount;                                                       //0x3fd0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KAFFINITY_EX'>_KAFFINITY_EX</a> PackageProcessorSet;                               //0x3fd4
+    ULONG SharedReadyQueueMask;                                             //0x3fe0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KSHARED_READY_QUEUE'> _KSHARED_READY_QUEUE</a>* SharedReadyQueue;                          //0x3fe4
+    ULONG SharedQueueScanOwner;                                             //0x3fe8
+    ULONG CoreProcessorSet;                                                 //0x3fec
+    ULONG ScanSiblingMask;                                                  //0x3ff0
+    ULONG LLCMask;                                                          //0x3ff4
+    ULONG CacheProcessorMask[5];                                            //0x3ff8
+    ULONG ScanSiblingIndex;                                                 //0x400c
+    VOID* WheaInfo;                                                         //0x4010
+    VOID* EtwSupport;                                                       //0x4014
+    union<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_SLIST_HEADER'> _SLIST_HEADER</a> InterruptObjectPool;                                //0x4018
+    VOID** DpcWatchdogProfile;                                              //0x4020
+    VOID** DpcWatchdogProfileCurrentEmptyCapture;                           //0x4024
+    ULONG PrcbPad92[1];                                                     //0x4028
+    ULONG PteBitCache;                                                      //0x402c
+    ULONG PteBitOffset;                                                     //0x4030
+    ULONG PrcbPad93;                                                        //0x4034
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_PROCESSOR_PROFILE_CONTROL_AREA'> _PROCESSOR_PROFILE_CONTROL_AREA</a>* ProcessorProfileControlArea;    //0x4038
+    VOID* ProfileEventIndexAddress;                                         //0x403c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KDPC'>_KDPC</a> TimerExpirationDpc;                                        //0x4040
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_SYNCH_COUNTERS'>_SYNCH_COUNTERS</a> SynchCounters;                                   //0x4060
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_FILESYSTEM_DISK_COUNTERS'>_FILESYSTEM_DISK_COUNTERS</a> FsCounters;                            //0x4118
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_CONTEXT'> _CONTEXT</a>* Context;                                               //0x4128
+    ULONG ContextFlagsInit;                                                 //0x412c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_XSAVE_AREA'> _XSAVE_AREA</a>* ExtendedState;                                      //0x4130
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KENTROPY_TIMING_STATE'>_KENTROPY_TIMING_STATE</a> EntropyTimingState;                       //0x4134
+    VOID* IsrStack;                                                         //0x425c
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KINTERRUPT'> _KINTERRUPT</a>* VectorToInterruptObject[208];                       //0x4260
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> AbSelfIoBoostsList;                           //0x45a0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_SINGLE_LIST_ENTRY'>_SINGLE_LIST_ENTRY</a> AbPropagateBoostsList;                        //0x45a4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KDPC'>_KDPC</a> AbDpc;                                                     //0x45a8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_IOP_IRP_STACK_PROFILER'>_IOP_IRP_STACK_PROFILER</a> IoIrpStackProfilerCurrent;               //0x45c8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_IOP_IRP_STACK_PROFILER'>_IOP_IRP_STACK_PROFILER</a> IoIrpStackProfilerPrevious;              //0x461c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KTIMER_EXPIRATION_TRACE'>_KTIMER_EXPIRATION_TRACE</a> TimerExpirationTrace[16];               //0x4670
+    ULONG TimerExpirationTraceCount;                                        //0x4770
+    VOID* ExSaPageArray;                                                    //0x4774
+    ULONG PrcbPad100[10];                                                   //0x4778
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KSHARED_READY_QUEUE'>_KSHARED_READY_QUEUE</a> LocalSharedReadyQueue;                      //0x47a0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_REQUEST_MAILBOX'> _REQUEST_MAILBOX</a>* Mailbox;                                       //0x48e0
+    UCHAR PrcbPad[60];                                                      //0x48e4
+    struct <a class='str-link' tabindex='-1' href='/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_REQUEST_MAILBOX'>_REQUEST_MAILBOX</a> RequestMailbox[1];                              //0x4920
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a href="/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KPCR" tabindex="-1" class="related">_KPCR</a>,&nbsp;<a href="/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_KTHREAD" tabindex="-1" class="related">_KTHREAD</a>,&nbsp;<a href="/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_PROC_PERF_CONSTRAINT" tabindex="-1" class="related">_PROC_PERF_CONSTRAINT</a>,&nbsp;<a href="/kernels/x86/Windows 10/1709 Redstone 3 (Fall Creators Update)/_PROC_PERF_DOMAIN" tabindex="-1" class="related">_PROC_PERF_DOMAIN</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row"><div class="col-md-12 footer-style"><a href="/terms" tabindex="-1" class="footer_link"><strong>Terms of Service&nbsp;</strong></a><span style="color: #262633">|</span><a href="/privacy" tabindex="-1" class="footer_link"><strong>&nbsp;Privacy Policy&nbsp;</strong></a><span style="color: #262633">|<a href="https://github.com/RevJay/vergilius-project/issues" tabindex="-1" class="footer_link"><strong>&nbsp;Report a Bug &nbsp;</strong></a></span><span style="color: #262633">|</span>&nbsp;© 2018 Copyright: <a href="https://github.com/RevJay" tabindex="-1" class="footer_link"><strong>RevJay&nbsp;</strong></a></div></div></div></footer></body></html>
