@@ -1,5 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.vergiliusproject.com/sitemap1.txt
-Sitemap: https://www.vergiliusproject.com/sitemap2.txt
