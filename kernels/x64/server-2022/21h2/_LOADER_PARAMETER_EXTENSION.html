@@ -1,0 +1,154 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="twitter:card" content="summary"><meta property="og:url" content="https://www.vergiliusproject.com"><meta property="og:title" content="Vergilius Project"><meta property="og:description" content="Take a look into the depths of Windows kernels and reveal more than 60000 undocumented structures."><meta property="og:image" content="https://www.vergiliusproject.com/images/bigback.jpg"><title>Vergilius Project | _LOADER_PARAMETER_EXTENSION</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"><link rel="canonical" href="https://www.vergiliusproject.com/kernels/x64/server-2022/21h2/_LOADER_PARAMETER_EXTENSION"><link rel="stylesheet" href="/css/dracula.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><link rel="stylesheet" href="/css/verg.css?v=2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/socicon@3.0.5/css/socicon.min.css"><link rel="prefetch" href="/images/bigback.jpg"><link rel="prefetch" href="/images/abstrHalf.jpg"><link rel="prefetch" href="/images/edit.png"><link rel="prefetch" href="/images/inter.jpg"><link rel="prefetch" href="/images/lonelysturn.jpg"><link rel="prefetch" href="/images/mainpla.png"><link rel="prefetch" href="/images/man.jpg"><link rel="prefetch" href="/images/multlong2.jpg"><link rel="prefetch" href="/images/newfam.jpg"><link rel="prefetch" href="/images/view.jpg"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDEP4DNCRR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "G-YDEP4DNCRR", { 'anonymize_ip': true });</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><nav class="navbar navbar-expand-lg navbar-light bg-dark"><a class="navbar-brand" href="/" tabindex="-1"><img class="d-inline-block logo" src="/images/logo.png" width="52" height="57" alt="">VERGILIUS</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/" tabindex="-1">HOME</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/kernels" tabindex="-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KERNELS</a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"><div class="container dropdown-menu-style d-block"><div class="row"><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x86" tabindex="-1">x86</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8.1" tabindex="-1">- Windows 8.1</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-8" tabindex="-1">- Windows 8</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-7" tabindex="-1">- Windows 7</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/server-2003" tabindex="-1">- Server 2003</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x86/windows-xp" tabindex="-1">- Windows XP</a></p></li></ul></div><div class="col-md-6 no-pad"><a class="dropdown-item blue-item" href="/kernels/x64" tabindex="-1">x64</a><ul type="none"><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-11" tabindex="-1">- Windows 11</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/server-2022" tabindex="-1">- Server 2022</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-10" tabindex="-1">- Windows 10</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8.1" tabindex="-1">- Windows 8.1 | Server 2012R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-8" tabindex="-1">- Windows 8 | Server 2012</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-7" tabindex="-1">- Windows 7 | Server 2008R2</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-vista" tabindex="-1">- Windows Vista | Server 2008</a></p></li><li><p class="menu-list"><a class="dropdown-item" href="/kernels/x64/windows-xp" tabindex="-1">- Windows XP | Server 2003</a></p></li></ul></div></div></div></div></li><li class="nav-item"><a class="nav-link" href="/about" tabindex="-1">ABOUT</a></li></ul></div></nav><div class="container mainblock main-tdata-sm"><div class="row"><div class="col-md-12 breadcrumbs-col"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="breadcrumb-link" href="/" tabindex="-1">> Home</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels" tabindex="-1">Kernels</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64" tabindex="-1">x64</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/server-2022" tabindex="-1">Server 2022</a></li><li class="breadcrumb-item"><a class="breadcrumb-link" href="/kernels/x64/server-2022/21h2" tabindex="-1">21H2 (GA, Iron)</a></li><li class="breadcrumb-item active" aria-current="page">_LOADER_PARAMETER_EXTENSION</li></ol></nav></div></div><div class="row fill"><div class="col-md-12"><div class="container mainblock-content main-tdata-sm"><div class="row"><div class="col-md-12"><h2 class="h2-tdata">_LOADER_PARAMETER_EXTENSION</h2></div></div><div class="row"><div class="col-md-12"><div class="container"><div class="row bs-wizard"><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-10/22h2/_LOADER_PARAMETER_EXTENSION" tabindex="-1">Windows 10 22H2 (2022 Update, Vibranium R5)</a></div></div><div class="col-sm-4 bs-wizard-step complete toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/server-2022/21h2/_LOADER_PARAMETER_EXTENSION" tabindex="-1">Server 2022 21H2 (GA, Iron)</a></div></div><div class="col-sm-4 bs-wizard-step completed toprow d-none d-md-block" style="padding-right: 5px;"><div class="text-center bs-wizard-stepnum"><a class="wizard-links" href="/kernels/x64/windows-11/insider-preview-jun-2021/_LOADER_PARAMETER_EXTENSION" tabindex="-1">Windows 11 Insider Preview (Jun 2021)</a></div></div></div></div><div class="row bs-wizard hide-padd"><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-10/22h2/_LOADER_PARAMETER_EXTENSION" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step complete bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/server-2022/21h2/_LOADER_PARAMETER_EXTENSION" tabindex="-1"></a></div><div class="col-sm-4 bs-wizard-step completed bottomrow d-none d-md-block"><div class="progress"><div class="progress-bar"></div></div><a class="bs-wizard-dot" href="/kernels/x64/windows-11/insider-preview-jun-2021/_LOADER_PARAMETER_EXTENSION" tabindex="-1"></a></div></div></div></div><div class="row"><div class="col-md-12"><div class="container tdata-code"><script type="text/javascript">(function () {
+    new Clipboard("#copy-button");
+})();</script><pre><code class="c" style="min-height: 300px; padding-left: 0px;"><button class="button btn-info" id="copy-button" data-clipboard-target="#copyblock" tabindex="-1" data-clipboard-action="copy">copy</button><div id="copyblock">//0xec8 bytes (sizeof)
+struct _LOADER_PARAMETER_EXTENSION
+{
+    ULONG Size;                                                             //0x0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_PROFILE_PARAMETER_BLOCK'>_PROFILE_PARAMETER_BLOCK</a> Profile;                                //0x4
+    VOID* EmInfFileImage;                                                   //0x18
+    ULONG EmInfFileSize;                                                    //0x20
+    VOID* TriageDumpBlock;                                                  //0x28
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_HEADLESS_LOADER_BLOCK'> _HEADLESS_LOADER_BLOCK</a>* HeadlessLoaderBlock;                     //0x30
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_SMBIOS3_TABLE_HEADER'> _SMBIOS3_TABLE_HEADER</a>* SMBiosEPSHeader;                          //0x38
+    VOID* DrvDBImage;                                                       //0x40
+    ULONG DrvDBSize;                                                        //0x48
+    VOID* DrvDBPatchImage;                                                  //0x50
+    ULONG DrvDBPatchSize;                                                   //0x58
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_NETWORK_LOADER_BLOCK'> _NETWORK_LOADER_BLOCK</a>* NetworkLoaderBlock;                       //0x60
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LIST_ENTRY'>_LIST_ENTRY</a> FirmwareDescriptorListHead;                          //0x68
+    VOID* AcpiTable;                                                        //0x78
+    ULONG AcpiTableSize;                                                    //0x80
+    ULONG LastBootSucceeded:1;                                              //0x84
+    ULONG LastBootShutdown:1;                                               //0x84
+    ULONG IoPortAccessSupported:1;                                          //0x84
+    ULONG BootDebuggerActive:1;                                             //0x84
+    ULONG StrongCodeGuarantees:1;                                           //0x84
+    ULONG HardStrongCodeGuarantees:1;                                       //0x84
+    ULONG SidSharingDisabled:1;                                             //0x84
+    ULONG TpmInitialized:1;                                                 //0x84
+    ULONG VsmConfigured:1;                                                  //0x84
+    ULONG IumEnabled:1;                                                     //0x84
+    ULONG IsSmbboot:1;                                                      //0x84
+    ULONG BootLogEnabled:1;                                                 //0x84
+    ULONG DriverVerifierEnabled:1;                                          //0x84
+    ULONG SuppressMonitorX:1;                                               //0x84
+    ULONG KernelCetEnabled:1;                                               //0x84
+    ULONG SuppressSmap:1;                                                   //0x84
+    ULONG PointerAuthKernelIpEnabled:1;                                     //0x84
+    ULONG SplitLargeNumaNodes:1;                                            //0x84
+    ULONG KernelCetAuditModeEnabled:1;                                      //0x84
+    ULONG Unused:2;                                                         //0x84
+    ULONG FeatureSimulations:6;                                             //0x84
+    ULONG MicrocodeSelfHosting:1;                                           //0x84
+    ULONG XhciLegacyHandoffSkip:1;                                          //0x84
+    ULONG DisableInsiderOptInHVCI:1;                                        //0x84
+    ULONG MicrocodeMinVerSupported:1;                                       //0x84
+    ULONG GpuIommuEnabled:1;                                                //0x84
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LOADER_PERFORMANCE_DATA'>_LOADER_PERFORMANCE_DATA</a> LoaderPerformanceData;                  //0x88
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LIST_ENTRY'>_LIST_ENTRY</a> BootApplicationPersistentData;                       //0xe8
+    VOID* WmdTestResult;                                                    //0xf8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_GUID'>_GUID</a> BootIdentifier;                                            //0x100
+    ULONG ResumePages;                                                      //0x110
+    VOID* DumpHeader;                                                       //0x118
+    VOID* BgContext;                                                        //0x120
+    VOID* NumaLocalityInfo;                                                 //0x128
+    VOID* NumaGroupAssignment;                                              //0x130
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LIST_ENTRY'>_LIST_ENTRY</a> AttachedHives;                                       //0x138
+    ULONG MemoryCachingRequirementsCount;                                   //0x148
+    VOID* MemoryCachingRequirements;                                        //0x150
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_BOOT_ENTROPY_LDR_RESULT'>_BOOT_ENTROPY_LDR_RESULT</a> BootEntropyResult;                      //0x158
+    ULONGLONG ProcessorCounterFrequency;                                    //0x9c0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LOADER_PARAMETER_HYPERVISOR_EXTENSION'>_LOADER_PARAMETER_HYPERVISOR_EXTENSION</a> HypervisorExtension;      //0x9c8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_GUID'>_GUID</a> HardwareConfigurationId;                                   //0xa08
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LIST_ENTRY'>_LIST_ENTRY</a> HalExtensionModuleList;                              //0xa18
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LIST_ENTRY'>_LIST_ENTRY</a> PrmUpdateModuleList;                                 //0xa28
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LIST_ENTRY'>_LIST_ENTRY</a> PrmFirmwareModuleList;                               //0xa38
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LARGE_INTEGER'> _LARGE_INTEGER</a> SystemTime;                                        //0xa48
+    ULONGLONG TimeStampAtSystemTimeRead;                                    //0xa50
+    union
+    {
+        ULONGLONG BootFlags;                                                //0xa58
+        struct
+        {
+            ULONGLONG DbgMenuOsSelection:1;                                 //0xa58
+            ULONGLONG DbgHiberBoot:1;                                       //0xa58
+            ULONGLONG DbgSoftRestart:1;                                     //0xa58
+            ULONGLONG DbgMeasuredLaunch:1;                                  //0xa58
+        };
+    };
+    union
+    {
+        ULONGLONG InternalBootFlags;                                        //0xa60
+        struct
+        {
+            ULONGLONG DbgUtcBootTime:1;                                     //0xa60
+            ULONGLONG DbgRtcBootTime:1;                                     //0xa60
+            ULONGLONG DbgNoLegacyServices:1;                                //0xa60
+        };
+    };
+    VOID* WfsFPData;                                                        //0xa68
+    ULONG WfsFPDataSize;                                                    //0xa70
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LOADER_BUGCHECK_PARAMETERS'>_LOADER_BUGCHECK_PARAMETERS</a> BugcheckParameters;                  //0xa78
+    VOID* ApiSetSchema;                                                     //0xaa0
+    ULONG ApiSetSchemaSize;                                                 //0xaa8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LIST_ENTRY'>_LIST_ENTRY</a> ApiSetSchemaExtensions;                              //0xab0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_UNICODE_STRING'>_UNICODE_STRING</a> AcpiBiosVersion;                                 //0xac0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_UNICODE_STRING'>_UNICODE_STRING</a> SmbiosVersion;                                   //0xad0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_UNICODE_STRING'>_UNICODE_STRING</a> EfiVersion;                                      //0xae0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_DEBUG_DEVICE_DESCRIPTOR'> _DEBUG_DEVICE_DESCRIPTOR</a>* KdDebugDevice;                         //0xaf0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_OFFLINE_CRASHDUMP_CONFIGURATION_TABLE_V2'>_OFFLINE_CRASHDUMP_CONFIGURATION_TABLE_V2</a> OfflineCrashdumpConfigurationTable; //0xaf8
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_UNICODE_STRING'>_UNICODE_STRING</a> ManufacturingProfile;                            //0xb18
+    VOID* BbtBuffer;                                                        //0xb28
+    ULONGLONG XsaveAllowedFeatures;                                         //0xb30
+    ULONG XsaveFlags;                                                       //0xb38
+    VOID* BootOptions;                                                      //0xb40
+    ULONG IumEnablement;                                                    //0xb48
+    ULONG IumPolicy;                                                        //0xb4c
+    LONG IumStatus;                                                         //0xb50
+    ULONG BootId;                                                           //0xb54
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LOADER_PARAMETER_CI_EXTENSION'> _LOADER_PARAMETER_CI_EXTENSION</a>* CodeIntegrityData;               //0xb58
+    ULONG CodeIntegrityDataSize;                                            //0xb60
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LOADER_HIVE_RECOVERY_INFO'>_LOADER_HIVE_RECOVERY_INFO</a> SystemHiveRecoveryInfo;               //0xb64
+    ULONG SoftRestartCount;                                                 //0xb78
+    LONGLONG SoftRestartTime;                                               //0xb80
+    VOID* HypercallCodeVa;                                                  //0xb88
+    VOID* HalVirtualAddress;                                                //0xb90
+    ULONGLONG HalNumberOfBytes;                                             //0xb98
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LEAP_SECOND_DATA'> _LEAP_SECOND_DATA</a>* LeapSecondData;                               //0xba0
+    ULONG MajorRelease;                                                     //0xba8
+    ULONG Reserved1;                                                        //0xbac
+    CHAR NtBuildLab[224];                                                   //0xbb0
+    CHAR NtBuildLabEx[224];                                                 //0xc90
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LOADER_RESET_REASON'>_LOADER_RESET_REASON</a> ResetReason;                                //0xd70
+    ULONG MaxPciBusNumber;                                                  //0xda0
+    ULONG FeatureSettings;                                                  //0xda4
+    ULONG HotPatchReserveSize;                                              //0xda8
+    ULONG RetpolineReserveSize;                                             //0xdac
+    struct
+    {
+        VOID* CodeBase;                                                     //0xdb0
+        ULONGLONG CodeSize;                                                 //0xdb8
+    } MiniExecutive;                                                        //0xdb0
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_VSM_PERFORMANCE_DATA'>_VSM_PERFORMANCE_DATA</a> VsmPerformanceData;                        //0xdc0
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_NUMA_MEMORY_RANGE'> _NUMA_MEMORY_RANGE</a>* NumaMemoryRanges;                            //0xe00
+    ULONG NumaMemoryRangeCount;                                             //0xe08
+    ULONG IommuFaultPolicy;                                                 //0xe0c
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LOADER_FEATURE_CONFIGURATION_INFORMATION'>_LOADER_FEATURE_CONFIGURATION_INFORMATION</a> FeatureConfigurationInformation; //0xe10
+    struct <a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_ETW_BOOT_CONFIG'>_ETW_BOOT_CONFIG</a> EtwBootConfig;                                  //0xe58
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_BOOT_FIRMWARE_RAMDISK_INFO'> _BOOT_FIRMWARE_RAMDISK_INFO</a>* FwRamdiskInfo;                      //0xe70
+    VOID* IpmiHwContext;                                                    //0xe78
+    ULONGLONG IdleThreadShadowStack;                                        //0xe80
+    ULONGLONG TransitionShadowStack;                                        //0xe88
+    ULONGLONG* IstShadowStacksTable;                                        //0xe90
+    ULONGLONG ReservedForKernelCet[2];                                      //0xe98
+    struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_MEMORY_MIRRORING_DATA'> _MEMORY_MIRRORING_DATA</a>* MirroringData;                           //0xea8
+    union<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_LARGE_INTEGER'> _LARGE_INTEGER</a> Luid;                                              //0xeb0
+    struct
+    {
+        struct<a class='str-link' tabindex='-1' href='/kernels/x64/server-2022/21h2/_INSTALLED_MEMORY_RANGE'> _INSTALLED_MEMORY_RANGE</a>* Ranges;                             //0xeb8
+        ULONG RangeCount;                                                   //0xec0
+    } InstalledMemory;                                                      //0xeb8
+}; </div></code></pre></div></div></div></div></div></div><div class="row"><div class="col-md-12"><div class="maincross"><h4 class="h4-tdata">Used in</h4><div class="used-in-block"><ul type="none"><li><a class="related" href="/kernels/x64/server-2022/21h2/_LOADER_PARAMETER_BLOCK" tabindex="-1">_LOADER_PARAMETER_BLOCK</a></li></ul></div></div></div></div></div><footer class="container-fluid footer-fluid"><div class="container"><div class="row footer-style"><div class="col-md-10"><a class="footer_link" href="/terms" tabindex="-1"><strong>Terms of Service</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="/privacy" tabindex="-1"><strong>Privacy Policy</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span><a class="footer_link" href="https://github.com/VergiliusProject/vergilius-project/issues" tabindex="-1"><strong>Report a Bug</strong></a><span style="color: #262633">&nbsp;|&nbsp;</span>© 2018-2025 Copyright <a class="footer_link" href="https://github.com/VergiliusProject" tabindex="-1"><strong>VergiliusProject</strong></a></div><div class="col-md-2 d-none d-md-block"><small>revision 24c124f</small></div></div></div></footer></body></html>
